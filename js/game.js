@@ -1,8 +1,12 @@
 let canvas;
-let character = new Image;
+let world;
+
 
 
 function init() {
     canvas = document.getElementById('canvas');
-    character.src = '../img/1.Sharkie/3.Swim/1.png';
+    ctx = canvas.getContext('2d');
+
+    console.log('My Character is', world.character);
+
 }
