@@ -6,6 +6,13 @@ class World {
         new JellyFish(),
         new JellyFish()
     ];
+    backgroundObjects = [
+        new BackgroundObject('img/3. Background/Layers/5. Water/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/4.Fondo 2/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/3.Fondo 1/D1.png', 0),
+        new BackgroundObject('img/3. Background/Layers/2. Floor/D1.png', 0)
+    ];
+
     canvas;
     ctx;
 
@@ -17,19 +24,32 @@ class World {
 
 
     draw() {
+        // delete World
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        this.ctx.drawImage(this.character.img, this.character.x, this.character.y, this.character.width, this.character.height);
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.x, enemy.y, enemy.width, enemy.height);
-        });
+        this.addObjectsToMap(this.backgroundObjects);
+        this.addToMap(this.character);
+        this.addObjectsToMap(this.enemies);
 
-        // Draw wird immer wieder ausgeführt
+
+
+        // Draw() wird immer wieder ausgeführt
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
         });
+    }
 
+    addObjectsToMap(objects) {
+        objects.forEach(o => {
+            this.addToMap(o)
+        });
+    }
+
+
+
+    addToMap(mo) {
+        this.ctx.drawImage(mo.img, mo.x, mo.y, mo.width, mo.height);
 
 
     }
