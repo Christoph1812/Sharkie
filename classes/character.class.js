@@ -9,7 +9,7 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
     ];
-    currentImage = 0;
+
 
 
     constructor() {
@@ -27,7 +27,7 @@ class Character extends MovableObject {
             this.img = this.imageCache[path];
             this.currentImage++;
 
-        }, 1000 / 3);
+        }, 1000 / 2);
     }
 
 
