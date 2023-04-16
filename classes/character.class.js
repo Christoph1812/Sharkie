@@ -1,6 +1,7 @@
 class Character extends MovableObject {
     height = 180;
     width = 220;
+    speed = 8;
     images_swimming = [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -9,7 +10,7 @@ class Character extends MovableObject {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
     ];
-
+    world;
 
 
     constructor() {
@@ -20,15 +21,54 @@ class Character extends MovableObject {
     }
 
     animate() {
-        setInterval(() => {
-            let i = this.currentImage % this.images_swimming.length; // modulo  let i = 7 % 6; => 1, Rest 1
-            // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0
-            let path = this.images_swimming[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
 
-        }, 1000 / 2);
+        setInterval(() => {
+            if (this.world.keyboard.right) {
+                this.x += this.speed;
+                this.otherDirection = false
+            }
+            if (this.world.keyboard.left) {
+                this.x -= this.speed;
+                this.otherDirection = true;
+            }
+            if (this.world.keyboard.up) {
+                this.y -= this.speed;
+                this.otherDirection = true;
+            }
+            if (this.world.keyboard.down) {
+                this.y += this.speed;
+                this.otherDirection = true;
+            }
+            this.world.camera_x = -this.x
+        }, 1000 / 60);
+
+        setInterval(() => {
+            if (this.world.keyboard.up || this.world.keyboard.down) {
+                this.y += this.speed;
+                // Walk animation
+                let i = this.currentImage % this.images_swimming.length; // modulo  let i = 7 % 6; => 1, Rest 1
+                // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0
+                let path = this.images_swimming[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
+        }, 150);
+
+
+        setInterval(() => {
+            if (this.world.keyboard.right || this.world.keyboard.left) {
+                this.x += this.speed;
+                // Walk animation
+                let i = this.currentImage % this.images_swimming.length; // modulo  let i = 7 % 6; => 1, Rest 1
+                // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0
+                let path = this.images_swimming[i];
+                this.img = this.imageCache[path];
+                this.currentImage++;
+            }
+        }, 150);
+
     }
+
 
 
 
