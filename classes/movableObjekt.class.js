@@ -21,6 +21,16 @@ class MovableObject {
 
 
     drawFrame(ctx) {
+        if (this instanceof JellyFish) {
+            ctx.beginPath();
+            ctx.lineWidth = '5';
+            ctx.strokeStyle = 'blue';
+            ctx.rect(this.x, this.y, this.width, this.height);
+            ctx.stroke();
+        }
+    }
+
+    drawFrameCharacter(ctx) {
         if (this instanceof Character) {
             ctx.beginPath();
             ctx.lineWidth = '5';
@@ -30,7 +40,27 @@ class MovableObject {
         }
     }
 
-    
+
+    // character.isColloding(JellyFish)
+    isCollidingFalse(obj) {
+        return ((this.x + 40) + (this.width - 80)) >= obj.x && (this.x + 40) <= (obj.x + obj.width) &&
+            ((this.y + 80) + this.offsetY + (this.height - 120)) >= obj.y &&
+            ((this.y + 80) + this.offsetY) <= (obj.y + obj.height);
+    }
+
+    isColliding(obj) {
+        return (this.X + this.width) >= obj.X && this.X <= (obj.X + obj.width) &&
+            (this.Y + this.offsetY + this.height) >= obj.Y &&
+            (this.Y + this.offsetY) <= (obj.Y + obj.height)
+    }
+
+
+    isCollidingOld(mo) {
+        return this.x + this.width > mo.x && this.y + this.height > mo.y && this.x < mo.x && this.y < mo.y + mo.height
+    }
+
+
+
     /**
      * 
      * @param {Json} arr {'img/image1.png', 'img/image2.png' .....}
@@ -49,7 +79,7 @@ class MovableObject {
         console.log('Moving right');
     }
 
-    
+
     moveLeft() {
         setInterval(() => {
             this.x -= this.speed
