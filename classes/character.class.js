@@ -67,6 +67,26 @@ class Character extends MovableObject {
 
         }, 1);
 
+        // setInterval(() => {
+        //     switch (true) {
+        //         case (this.world.keyboard.right && this.x < this.world.level.level_end_x):
+        //             this.moveRight();
+        //             break;
+        //         case (this.world.keyboard.left && this.x > 0):
+        //             this.moveLeft();
+        //             break;
+        //         case (this.world.keyboard.up && this.y > -60):
+        //             this.moveUp();
+        //             break;
+        //         case (this.world.keyboard.down && this.y < 300):
+        //             this.moveDown();
+        //             break;
+        //         default:
+        //             break;
+        //     }
+        //     this.world.camera_x = -this.x + 100;
+        // }, 1);
+
         setInterval(() => {
             if (this.isDead()) {
                 this.playAnimation(this.images_dead_poisoned);
