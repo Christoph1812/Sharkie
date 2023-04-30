@@ -1,0 +1,3 @@
+class CollecteableObjects extends MovableObject {
+
+}

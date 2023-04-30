@@ -2,6 +2,7 @@ class Endboss extends MovableObject {
     height = 290;
     width = 350;
     speed = 2;
+    x = 2000;
     y = 200;
     images_swimming = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
@@ -46,7 +47,8 @@ class Endboss extends MovableObject {
             this.img = this.imageCache[path];
             this.currentImage++;
         }, 150);
-
     }
+
+
 
 }
