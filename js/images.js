@@ -87,7 +87,7 @@ const pf_die_img = {
 
     ],
     orange: [
-
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.2.png'
     ],
     red: [
 
@@ -99,6 +99,18 @@ const coin_img = [
     'img/4. Marcadores/1. Coins/2.png',
     'img/4. Marcadores/1. Coins/3.png',
     'img/4. Marcadores/1. Coins/4.png',
+]
+
+const posion_img = [
+    'img/4. Marcadores/Posión/Animada/1.png',
+    'img/4. Marcadores/Posión/Animada/2.png',
+    'img/4. Marcadores/Posión/Animada/3.png',
+    'img/4. Marcadores/Posión/Animada/4.png',
+    'img/4. Marcadores/Posión/Animada/5.png',
+    'img/4. Marcadores/Posión/Animada/6.png',
+    'img/4. Marcadores/Posión/Animada/7.png',
+    'img/4. Marcadores/Posión/Animada/8.png',
+
 ]
 
 const status_bar_img = {
@@ -127,6 +139,47 @@ const status_bar_img = {
         'img/4. Marcadores/green/poisoned bubbles/6.png',
     ]
 }
+
+
+sharkie_img = {
+    swimming: [
+        'img/1.Sharkie/3.Swim/1.png',
+        'img/1.Sharkie/3.Swim/2.png',
+        'img/1.Sharkie/3.Swim/3.png',
+        'img/1.Sharkie/3.Swim/4.png',
+        'img/1.Sharkie/3.Swim/5.png',
+        'img/1.Sharkie/3.Swim/6.png'
+    ],
+    hurt_poisoned: [
+        'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/3.png',
+        'img/1.Sharkie/5.Hurt/1.Poisoned/4.png'
+    ],
+    hurt_electric_shock: [
+
+    ],
+    dead_poisoned: [
+        'img/1.Sharkie/6.dead/1.Poisoned/1.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/2.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/3.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/4.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/5.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/6.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/7.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/8.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/9.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/10.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/11.png',
+        'img/1.Sharkie/6.dead/1.Poisoned/12.png'
+
+    ]
+
+}
+
+
+
+
 
 
 

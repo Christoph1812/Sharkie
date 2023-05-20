@@ -4,6 +4,10 @@ class Endboss extends MovableObject {
     speed = 2;
     x = 2000;
     y = 200;
+    world;
+
+
+
     images_swimming = [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
         'img/2.Enemy/3 Final Enemy/2.floating/2.png',
@@ -36,19 +40,17 @@ class Endboss extends MovableObject {
         super().loadImage('img/2.Enemy/3 Final Enemy/2.floating/1.png');
         this.loadImages(this.images_swimming);
         this.animate();
-    };
+        console.log()
+
+    }
+
+
 
     animate() {
         setInterval(() => {
-            // Swimming animation
-            let i = this.currentImage % this.images_swimming.length; // modulo  let i = 7 % 6; => 1, Rest 1
-            // i = 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0, 1, 2, 3, 4, 5, 0
-            let path = this.images_swimming[i];
-            this.img = this.imageCache[path];
-            this.currentImage++;
+            this.playAnimation(this.images_swimming)
         }, 150);
     }
-
 
 
 }
