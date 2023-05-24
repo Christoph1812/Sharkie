@@ -82,24 +82,36 @@ const pf_bubbleswim_img = {
 const pf_die_img = {
     green: [
         'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 2 (can animate by going up).png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 3 (can animate by going up).png',
 
     ],
     orange: [
         'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.2.png'
     ],
     red: [
-
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/3.2.png'
     ]
 }
 
-const coin_img = [
-    'img/4. Marcadores/1. Coins/1.png',
-    'img/4. Marcadores/1. Coins/2.png',
-    'img/4. Marcadores/1. Coins/3.png',
-    'img/4. Marcadores/1. Coins/4.png',
-]
+
+const collecteables = {
+    coin: [
+        'img/4. Marcadores/1. Coins/1.png',
+        'img/4. Marcadores/1. Coins/2.png',
+        'img/4. Marcadores/1. Coins/3.png',
+        'img/4. Marcadores/1. Coins/4.png',
+    ],
+    posion: [
+        'img/4. Marcadores/Posión/Animada/1.png',
+        'img/4. Marcadores/Posión/Animada/2.png',
+        'img/4. Marcadores/Posión/Animada/3.png',
+        'img/4. Marcadores/Posión/Animada/4.png',
+        'img/4. Marcadores/Posión/Animada/5.png',
+        'img/4. Marcadores/Posión/Animada/6.png',
+        'img/4. Marcadores/Posión/Animada/7.png',
+        'img/4. Marcadores/Posión/Animada/8.png',
+    ]
+}
+
 
 const posion_img = [
     'img/4. Marcadores/Posión/Animada/1.png',
@@ -110,7 +122,6 @@ const posion_img = [
     'img/4. Marcadores/Posión/Animada/6.png',
     'img/4. Marcadores/Posión/Animada/7.png',
     'img/4. Marcadores/Posión/Animada/8.png',
-
 ]
 
 const status_bar_img = {
@@ -137,11 +148,19 @@ const status_bar_img = {
         'img/4. Marcadores/green/poisoned bubbles/4.png',
         'img/4. Marcadores/green/poisoned bubbles/5.png',
         'img/4. Marcadores/green/poisoned bubbles/6.png',
+    ],
+    endboss: [
+        'img/4. Marcadores/Endboss/0.png',
+        'img/4. Marcadores/Endboss/20.png',
+        'img/4. Marcadores/Endboss/40.png',
+        'img/4. Marcadores/Endboss/60.png',
+        'img/4. Marcadores/Endboss/80.png',
+        'img/4. Marcadores/Endboss/100.png'
     ]
 }
 
 
-sharkie_img = {
+const sharkie_img = {
     swimming: [
         'img/1.Sharkie/3.Swim/1.png',
         'img/1.Sharkie/3.Swim/2.png',
@@ -176,6 +195,39 @@ sharkie_img = {
     ]
 
 }
+
+const endboss_img = {
+    swimming: [
+        'img/2.Enemy/3 Final Enemy/2.floating/1.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/2.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/3.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/4.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/5.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/6.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/7.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/8.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/9.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/10.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/11.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/12.png',
+        'img/2.Enemy/3 Final Enemy/2.floating/13.png'
+    ],
+    introducing: [
+        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/2.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/3.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/4.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/5.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/6.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/7.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/8.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/9.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+    ],
+
+}
+
+
 
 
 

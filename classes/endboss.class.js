@@ -2,55 +2,47 @@ class Endboss extends MovableObject {
     height = 290;
     width = 350;
     speed = 2;
-    x = 2000;
-    y = 200;
+    x = 2600;
+    y = 0;
+    offset = {
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
+    }
     world;
+    hadFirstContact = false;
 
-
-
-    images_swimming = [
-        'img/2.Enemy/3 Final Enemy/2.floating/1.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/2.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/3.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/4.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/5.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/6.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/7.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/8.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/9.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/10.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/11.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/12.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/13.png'
-    ];
-    images_introdcuing = [
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/1.png'
-    ];
 
     constructor() {
-        super().loadImage('img/2.Enemy/3 Final Enemy/2.floating/1.png');
-        this.loadImages(this.images_swimming);
+        super();
+        this.loadImages(endboss_img['swimming']);
+        this.loadImages(endboss_img['introducing']);
         this.animate();
-        console.log()
 
     }
-
-
 
     animate() {
+        let i = 0
         setInterval(() => {
-            this.playAnimation(this.images_swimming)
+            if (i < 10 && this.hadFirstContact) {
+                this.playAnimation(endboss_img['introducing']);
+            }
+            else {
+                this.playAnimation(endboss_img['swimming']);
+            }
+
+            i++;
+
+            if (this.world && this.world.character && this.world.character.x > 2000 && !this.hadFirstContact) {
+                i = 0;
+                this.hadFirstContact = true;
+            }
+
         }, 150);
     }
+
+
 
 
 }

@@ -29,7 +29,7 @@ h1 {
 canvas {
     display: block;
     border: 20px groove rgba(35, 137, 204, 0.9);
-    border-radius: 7px;
+    border-radius: 10px;
     background-color: black;
     margin-bottom: 200px;
 }

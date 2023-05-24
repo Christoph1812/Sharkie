@@ -3,18 +3,12 @@ class Character extends MovableObject {
     width = 220;
     speed = 2;
     x = 120;
-
-
-    images_hurt_poisoned = [
-
-    ];
-    images_hurt_elektric_shock = [
-
-    ];
-    images_dead_poisoned = [
-
-    ];
-
+    offset = {
+        x: 40,
+        y: 80,
+        width: 80,
+        height: 120
+    }
 
     world;
 
@@ -43,7 +37,6 @@ class Character extends MovableObject {
             if (this.world.keyboard.down && this.y < 300) {
                 this.moveDown();
             }
-
 
         }, 1);
 

@@ -4,28 +4,12 @@ class MovableObject extends DrawableObject {
     speedY = 1;
     energy = 100;
     lastHit = 0;
-
-
-    drawFrame(ctx) {
-        if (this instanceof JellyFish) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x, this.y, this.width, this.height);
-            ctx.stroke();
-        }
+    offset = {
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
     }
-
-    drawFrameCharacter(ctx) {
-        if (this instanceof Character) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x + 40, this.y + 80, this.width - 80, this.height - 120);
-            ctx.stroke();
-        }
-    }
-
 
     // character.isColloding(JellyFish)
     isColliding(obj) {

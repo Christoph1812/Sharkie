@@ -6,8 +6,6 @@ class PufferFish extends MovableObject {
         this.loadImages(pf_swimming_img[color]);
         this.x = x;
         this.y = y;
-
-
     }
 
 }
