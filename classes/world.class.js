@@ -5,9 +5,11 @@ class World {
     ctx;
     keyboard;
     camera_x;
-    statusBarLife = new StatusBar('life', 100, 0);
-    statusBarCoin = new StatusBar('coin', 0, 40);
-    statusbarPoisoned = new StatusBar('poisoned', 0, 80);
+    statusbarEndbossAdded = false;
+    statusBarLife = new StatusBar('life', 100, 25, 0);
+    statusBarCoin = new StatusBar('coin', 0, 25, 45);
+    statusbarPoisoned = new StatusBar('poisoned', 0, 25, 90);
+    statusBarEndboss = new StatusBar('endboss', 100, 400, 0)
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -20,6 +22,7 @@ class World {
 
     setWorld() {
         this.character.world = this;
+        this.level.enemies[this.level.enemies.length - 1].world = this;
     }
 
 
@@ -46,11 +49,14 @@ class World {
         this.addToMap(this.statusBarLife);
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusbarPoisoned);
+        // this.addToMap(this.statusBarEndboss);
+        this.addendbossStatus();
         this.ctx.translate(+this.camera_x, 0);
 
 
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.collectebales);
 
         this.ctx.translate(-this.camera_x, 0);
 
@@ -59,6 +65,14 @@ class World {
         requestAnimationFrame(function () {
             self.draw();
         });
+    }
+
+
+    addendbossStatus() {
+        if (this.character.x >= 2000 || this.statusbarEndbossAdded) {
+            this.addToMap(this.statusBarEndboss);
+            this.statusbarEndbossAdded = true;
+        }
     }
 
 
@@ -76,7 +90,6 @@ class World {
         }
         mo.draw(this.ctx);
         mo.drawFrame(this.ctx);
-        mo.drawFrameCharacter(this.ctx)
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);
