@@ -26,7 +26,7 @@ class World {
     }
 
 
-    checkCollisions() {
+    checkCollisionsEnemy() {
         setInterval(() => {
             this.level.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
@@ -36,6 +36,12 @@ class World {
             });
         }, 1000);
     }
+
+    checkCollisionsCollectables() {
+        this.level
+    }
+
+
 
     draw() {
         // delete World

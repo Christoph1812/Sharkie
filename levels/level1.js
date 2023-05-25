@@ -40,7 +40,7 @@ const level1 = new Level(
         new BackgroundObject('img/3. Background/Layers/2. Floor/D2.png', 720 * 5)
     ],
     [
-        new CollecteableObject('coin', 300, 250),
+        new CollecteableObject('coin', 300, 250, 1),
         new CollecteableObject('coin', 500, 100),
         new CollecteableObject('coin', 850, 200),
         new CollecteableObject('coin', 850, 80),

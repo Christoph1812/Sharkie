@@ -3,6 +3,7 @@ class CollecteableObject extends MovableObject {
     y = 0;
     height = 40;
     width = 40;
+    id;
     offset = {
         x: 0,
         y: 0,
@@ -11,10 +12,11 @@ class CollecteableObject extends MovableObject {
     }
 
 
-    constructor(type, x, y) {
+    constructor(type, x, y, id) {
         super();
         this.loadImage(collecteables[type][0]);
         this.loadImages(collecteables[type]);
+        id = this.id;
         this.x = x;
         this.y = y;
         this.animate(type);
