@@ -4,6 +4,7 @@ class CollecteableObject extends MovableObject {
     height = 40;
     width = 40;
     id;
+    type;
     offset = {
         x: 0,
         y: 0,
@@ -16,7 +17,8 @@ class CollecteableObject extends MovableObject {
         super();
         this.loadImage(collecteables[type][0]);
         this.loadImages(collecteables[type]);
-        id = this.id;
+        this.type = type
+        this.id = id;
         this.x = x;
         this.y = y;
         this.animate(type);

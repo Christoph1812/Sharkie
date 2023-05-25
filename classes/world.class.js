@@ -26,19 +26,35 @@ class World {
     }
 
 
-    checkCollisionsEnemy() {
+    checkCollisions() {
         setInterval(() => {
-            this.level.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBarLife.setPercentage(this.character.energy, 'life')
-                }
-            });
-        }, 1000);
+            this.checkCollisionsEnemy();
+            this.checkCollisionsCollectables();
+        }, 100)
+    }
+
+
+    checkCollisionsEnemy() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarLife.setPercentage(this.character.energy, 'life');
+            }
+        });
     }
 
     checkCollisionsCollectables() {
-        this.level
+        this.level.collectebales.forEach((collecteable, index) => {
+            if (this.character.isColliding(collecteable)) {
+                if (collecteable.type == 'coin') {
+                    this.statusBarCoin.setPercentage(this.statusBarCoin.percentage += 20, 'coin');
+                }
+                else if (collecteable.type == 'posion') {
+                    this.statusbarPoisoned.setPercentage(this.statusbarPoisoned.percentage += 20, 'poisoned');
+                }
+                this.level.collectebales.splice(index, 1);
+            }
+        });
     }
 
 
