@@ -1,11 +1,11 @@
 const level1 = new Level(
     [
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish(),
-        new JellyFish(),
+        new JellyFish('lila', 500, 200, 100, 0),
+        new JellyFish('lila', 500, 100, 100, 0),
+        new JellyFish('green', 800, 100, 0, 50),
+        new JellyFish('green', 900, 100, 0, 50),
+        // new JellyFish(),
+        // new JellyFish(),
         // new PufferFish('orange', 50, 50),
         new Endboss()
     ],

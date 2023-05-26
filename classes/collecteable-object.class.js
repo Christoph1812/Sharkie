@@ -21,13 +21,13 @@ class CollecteableObject extends MovableObject {
         this.id = id;
         this.x = x;
         this.y = y;
-        this.animate(type);
+        this.animate();
 
     }
 
     animate(type) {
         setInterval(() => {
-            this.playAnimation(collecteables[type]);
+            this.playAnimation(collecteables[this.type]);
         }, 300);
 
     }

@@ -1,6 +1,10 @@
 class JellyFish extends MovableObject {
     height = 80;
     width = 70;
+    move_right = false;
+    move_down = false;
+    rangeX;
+    rangeY;
     offset = {
         x: 0,
         y: 0,
@@ -8,31 +12,53 @@ class JellyFish extends MovableObject {
         height: 0
     }
 
-    images_swimming = [
-        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
-        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
-        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png',
-        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png'
-    ];
 
-
-    constructor() {
-        super().loadImage('img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png');
-        this.loadImages(this.images_swimming);
-        this.x = 200 + Math.random() * 2000; //Zahl zwischen 200 und 500
+    constructor(color, x, y, rangeX, rangeY) {
+        super();
+        this.loadImage(JF_swimming_img[color][0]);
+        this.loadImages(JF_swimming_img[color]);
+        this.color = color
+        this.x = x;
+        this.y = y;
+        this.rangeX = rangeX;
+        this.rangeY = rangeY;
         this.speed = 0.15 + Math.random() * 0.25;
-        this.animate()
+        this.animate(x, y)
 
     }
 
 
-    animate() {
+    animate(x, y) {
         setInterval(() => {
-            this.moveLeft();
+            if (!this.move_right && !this.rangeY >= 0 && this.rangeX >= 0) {
+                this.moveLeft();
+            }
+            if (this.move_right && !this.rangeY >= 0 && this.rangeX >= 0) {
+                this.moveRight();
+            }
+            if (!this.move_down && !this.rangeX >= 0 && this.rangeY >= 0) {
+                this.moveUp();
+            }
+            if (this.move_down && !this.rangeX >= 0 && this.rangeY >= 0) {
+                this.moveDown();
+            }
+            if (this.y >= y) {
+                this.move_down = false;
+            }
+            if (this.y <= (y - this.rangeY)) {
+                this.move_down = true;
+            }
+            if (this.x <= (x - this.rangeX)) {
+                this.move_right = true;
+            }
+            if (this.x >= x) {
+                this.move_right = false;
+            }
+
         }, 1000 / 60);
 
         setInterval(() => {
-            this.playAnimation(this.images_swimming)
+            this.playAnimation(JF_swimming_img[this.color]);
 
         }, 1000 / 3);
     }

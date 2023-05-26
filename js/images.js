@@ -92,6 +92,67 @@ const pf_die_img = {
     ]
 }
 
+// Jelly Fish
+
+const JF_swimming_img = {
+    lila: [
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png'
+
+    ],
+    yellow: [
+        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 2.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 3.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 4.png',
+    ],
+    green: [
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
+    ],
+    pink: [
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 2.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 3.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 4.png',
+
+    ]
+}
+
+const JF_dead_img = {
+    lila: [
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
+
+    ],
+    yellow: [
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png',
+
+
+    ],
+    green: [
+        'img/2.Enemy/2 Jelly fish/Dead/green/g1.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/green/g2.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/green/g3.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/green/g4.png ',
+    ],
+    pink: [
+        'img/2.Enemy/2 Jelly fish/Dead/Pink/P1.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/Pink/P2.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/Pink/P3.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/Pink/P4.png ',
+    ]
+}
+
 
 const collecteables = {
     coin: [
