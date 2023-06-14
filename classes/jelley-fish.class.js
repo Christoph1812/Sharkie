@@ -1,6 +1,6 @@
 class JellyFish extends MovableObject {
-    height = 80;
-    width = 70;
+    height = 60;
+    width = 50;
     move_right = false;
     move_down = false;
     rangeX;
@@ -30,16 +30,16 @@ class JellyFish extends MovableObject {
 
     animate(x, y) {
         setInterval(() => {
-            if (!this.move_right && !this.rangeY >= 0 && this.rangeX >= 0) {
+            if (!this.move_right && !this.rangeY >= 0) {
                 this.moveLeft();
             }
-            if (this.move_right && !this.rangeY >= 0 && this.rangeX >= 0) {
+            if (this.move_right && !this.rangeY >= 0) {
                 this.moveRight();
             }
-            if (!this.move_down && !this.rangeX >= 0 && this.rangeY >= 0) {
+            if (!this.move_down && !this.rangeX >= 0) {
                 this.moveUp();
             }
-            if (this.move_down && !this.rangeX >= 0 && this.rangeY >= 0) {
+            if (this.move_down && !this.rangeX >= 0) {
                 this.moveDown();
             }
             if (this.y >= y) {

@@ -252,7 +252,14 @@ const sharkie_img = {
         'img/1.Sharkie/6.dead/1.Poisoned/10.png',
         'img/1.Sharkie/6.dead/1.Poisoned/11.png',
         'img/1.Sharkie/6.dead/1.Poisoned/12.png'
-
+    ],
+    fin_slap: [
+        'img/1.Sharkie/4.Attack/Fin slap/1.png',
+        'img/1.Sharkie/4.Attack/Fin slap/4.png',
+        'img/1.Sharkie/4.Attack/Fin slap/5.png',
+        'img/1.Sharkie/4.Attack/Fin slap/6.png',
+        'img/1.Sharkie/4.Attack/Fin slap/7.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png',
     ]
 
 }

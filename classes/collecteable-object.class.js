@@ -1,8 +1,8 @@
 class CollecteableObject extends MovableObject {
     x = 0;
     y = 0;
-    height = 40;
-    width = 40;
+    height = 35;
+    width = 35;
     id;
     type;
     offset = {
@@ -25,7 +25,7 @@ class CollecteableObject extends MovableObject {
 
     }
 
-    animate(type) {
+    animate() {
         setInterval(() => {
             this.playAnimation(collecteables[this.type]);
         }, 300);

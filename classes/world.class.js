@@ -1,6 +1,6 @@
 class World {
     character = new Character();
-    level = level1;
+    level;
     canvas;
     ctx;
     keyboard;
@@ -9,20 +9,23 @@ class World {
     statusBarLife = new StatusBar('life', 100, 25, 0);
     statusBarCoin = new StatusBar('coin', 0, 25, 45);
     statusbarPoisoned = new StatusBar('poisoned', 0, 25, 90);
-    statusBarEndboss = new StatusBar('endboss', 100, 400, 0)
+    statusBarEndboss = new StatusBar('endboss', 100, 400, 0);
+    endboss;
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
-        this.draw();
         this.setWorld();
+        this.draw();
         this.checkCollisions();
     }
 
     setWorld() {
+        this.level = level1;
+        this.endboss = this.level.enemies.find(e => e instanceof Endboss);
         this.character.world = this;
-        this.level.enemies[this.level.enemies.length - 1].world = this;
+        this.endboss.world = this;
     }
 
 
@@ -36,7 +39,7 @@ class World {
 
     checkCollisionsEnemy() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy)) {
+            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
                 this.character.hit();
                 this.statusBarLife.setPercentage(this.character.energy, 'life');
             }

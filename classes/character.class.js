@@ -1,15 +1,14 @@
 class Character extends MovableObject {
-    height = 180;
-    width = 220;
+    height = 190;
+    width = 230;
     speed = 2;
     x = 120;
     offset = {
         x: 40,
         y: 80,
         width: 80,
-        height: 120
+        height: 130
     }
-
     world;
 
 
@@ -18,6 +17,7 @@ class Character extends MovableObject {
         this.loadImages(sharkie_img['swimming']);
         this.loadImages(sharkie_img['hurt_poisoned']);
         this.loadImages(sharkie_img['dead_poisoned']);
+        this.loadImages(sharkie_img['fin_slap']);
         this.animate();
 
     }
@@ -40,30 +40,11 @@ class Character extends MovableObject {
             if (this.world.keyboard.down && this.y < 300) {
                 this.moveDown();
                 this.otherDirection = true;
-
             }
+
 
         }, 1);
 
-        // setInterval(() => {
-        //     switch (true) {
-        //         case (this.world.keyboard.right && this.x < this.world.level.level_end_x):
-        //             this.moveRight();
-        //             break;
-        //         case (this.world.keyboard.left && this.x > 0):
-        //             this.moveLeft();
-        //             break;
-        //         case (this.world.keyboard.up && this.y > -60):
-        //             this.moveUp();
-        //             break;
-        //         case (this.world.keyboard.down && this.y < 300):
-        //             this.moveDown();
-        //             break;
-        //         default:
-        //             break;
-        //     }
-        //     this.world.camera_x = -this.x + 100;
-        // }, 1);
 
         setInterval(() => {
             if (this.isDead()) {
@@ -71,10 +52,13 @@ class Character extends MovableObject {
             }
             else if (this.isHurt() && !this.isDead()) {
                 this.playAnimation(sharkie_img['hurt_poisoned']);
+            } else if (this.world.keyboard.space) {
+                this.playAnimation(sharkie_img['fin_slap']);
+
             } else {
                 this.playAnimation(sharkie_img['swimming']);
             }
-        }, 150);
+        }, 250);
     }
 }
 

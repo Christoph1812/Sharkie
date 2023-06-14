@@ -5,9 +5,17 @@ let keyboard = new Keyboard();
 
 
 function init() {
-
     canvas = document.getElementById('canvas');
+
+
+
+}
+
+function startGame() {
+    initLevel();
     world = new World(canvas, keyboard);
+    document.getElementById('start-screen').classList.add('d-none');
+
 
 
 }

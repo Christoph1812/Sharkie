@@ -13,9 +13,9 @@ class MovableObject extends DrawableObject {
 
     // character.isColloding(JellyFish)
     isColliding(obj) {
-        return ((this.x + 40) + (this.width - 80)) >= obj.x && (this.x + 40) <= (obj.x + obj.width) &&
-            ((this.y + 80) + (this.height - 120)) >= obj.y &&
-            (this.y + 80) <= (obj.y + obj.height);
+        return ((this.x + this.offset.x) + (this.width - this.offset.width)) >= (obj.x + obj.offset.x) && (this.x + this.offset.x) <= ((obj.x + this.offset.x) + (obj.width - obj.width)) &&
+            ((this.y + this.offset.y) + (this.height - this.offset.height)) >= (obj.y + obj.offset.y) &&
+            (this.y + this.offset.y) <= ((obj.y + obj.offset.y) + (obj.height - obj.offset.height));
     }
 
 
@@ -38,7 +38,7 @@ class MovableObject extends DrawableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; //Difference in ms
         timepassed = timepassed / 1000; //Difference in s
-        return timepassed = timepassed < 1;
+        return timepassed = timepassed < 3;
     }
 
 

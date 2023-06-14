@@ -5,17 +5,17 @@ class Endboss extends MovableObject {
     x = 2600;
     y = 0;
     offset = {
-        x: 0,
-        y: 0,
-        width: 0,
-        height: 0
+        x: 30,
+        y: 100,
+        width: 70,
+        height: 150
     }
     world;
     hadFirstContact = false;
 
 
     constructor() {
-        super();
+        super().loadImage(endboss_img['swimming'][0])
         this.loadImages(endboss_img['swimming']);
         this.loadImages(endboss_img['introducing']);
         this.animate();
@@ -25,7 +25,7 @@ class Endboss extends MovableObject {
     animate() {
         let i = 0
         setInterval(() => {
-            if (i < 10 && this.hadFirstContact) {
+            if (i < 10) {
                 this.playAnimation(endboss_img['introducing']);
             }
             else {

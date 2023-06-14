@@ -7,10 +7,10 @@ class DrawableObject {
     height = 120;
     width = 140;
     offset = {
-        x: 40,
-        y: 80,
-        width: 80,
-        height: 120
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
     }
 
     loadImage(path) {
@@ -40,8 +40,8 @@ class DrawableObject {
     drawFrame(ctx) {
         if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject)) {
             ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
             ctx.rect(this.x + this.offset.x, this.y + this.offset.y, this.width - this.offset.width, this.height - this.offset.height);
             ctx.stroke();
         }

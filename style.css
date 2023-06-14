@@ -11,10 +11,12 @@ body {
     min-height: 100vh;
     margin: 0;
     background-image: url('img/assests/dragon-scales.svg');
-
     background-position: center;
     font-family: 'luckiestGuy', Arial, 'Helventica', sans-serif;
+}
 
+.d-none {
+    display: none;
 }
 
 h1 {
@@ -25,11 +27,20 @@ h1 {
     margin-bottom: 20px;
 }
 
-
-canvas {
+.canvas-container {
     display: block;
     border: 20px groove rgba(35, 137, 204, 0.9);
     border-radius: 10px;
     background-color: black;
     margin-bottom: 200px;
+}
+
+.start-screen {
+    z-index: 999;
+    position: absolute;
+    background-image: url('img/3. Background/Mesa de trabajo 1.png');
+    background-size: 720px 480px;
+    object-fit: contain;
+    width: 720px;
+    height: 480px;
 }
