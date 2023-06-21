@@ -1,7 +1,7 @@
 class MovableObject extends DrawableObject {
     speed = 0.15;
     otherDirection = false;
-    speedY = 1;
+    speedY = 30;
     energy = 100;
     lastHit = 0;
     offset = {
@@ -71,7 +71,15 @@ class MovableObject extends DrawableObject {
         let path = images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
-
-
     }
+
+    playAnimationOnce(images) {
+        let i = this.currentImage % images.length;
+        let path = images[i];
+        this.img = this.imageCache[path];
+        if (i != (images.length - 1)) {
+            this.currentImage++;
+        }
+    }
+
 }

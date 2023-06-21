@@ -11,6 +11,9 @@ class World {
     statusbarPoisoned = new StatusBar('poisoned', 0, 25, 90);
     statusBarEndboss = new StatusBar('endboss', 100, 400, 0);
     endboss;
+    bubbles = [];
+    poisonedBubbles = [];
+
 
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
@@ -61,7 +64,6 @@ class World {
     }
 
 
-
     draw() {
         // delete World
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -82,6 +84,7 @@ class World {
         this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.collectebales);
+        this.addObjectsToMap(this.bubbles);
 
         this.ctx.translate(-this.camera_x, 0);
 

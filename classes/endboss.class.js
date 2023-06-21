@@ -26,7 +26,7 @@ class Endboss extends MovableObject {
         let i = 0
         setInterval(() => {
             if (i < 10) {
-                this.playAnimation(endboss_img['introducing']);
+                this.playAnimationOnce(endboss_img['introducing']);
             }
             else {
                 this.playAnimation(endboss_img['swimming']);

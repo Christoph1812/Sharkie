@@ -5,7 +5,7 @@ const pf_swimming_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim5.png'
 
     ],
     orange: [
@@ -13,7 +13,7 @@ const pf_swimming_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/2.swim5.png'
 
 
     ],
@@ -22,7 +22,7 @@ const pf_swimming_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim5.png'
 
     ]
 
@@ -34,7 +34,7 @@ const pf_transition_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition5.png'
 
     ],
     orange: [
@@ -42,7 +42,7 @@ const pf_transition_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/2.transition5.png'
 
 
     ],
@@ -51,7 +51,7 @@ const pf_transition_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition2.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition4.png',
-        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition5.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/3.transition5.png'
     ]
 }
 
@@ -81,8 +81,7 @@ const pf_bubbleswim_img = {
 
 const pf_die_img = {
     green: [
-        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png',
-
+        'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png'
     ],
     orange: [
         'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/2.2.png'
@@ -106,19 +105,19 @@ const JF_swimming_img = {
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 1.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 2.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 3.png',
-        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 4.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Yellow 4.png'
     ],
     green: [
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 1.png',
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 2.png',
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 3.png',
-        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Green 4.png'
     ],
     pink: [
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 1.png',
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 2.png',
         'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 3.png',
-        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 4.png',
+        'img/2.Enemy/2 Jelly fish/Súper dangerous/Pink 4.png'
 
     ]
 }
@@ -128,14 +127,14 @@ const JF_dead_img = {
         'img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
         'img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
         'img/2.Enemy/2 Jelly fish/Dead/Lila/L3.png',
-        'img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Lila/L4.png'
 
     ],
     yellow: [
         'img/2.Enemy/2 Jelly fish/Dead/Yellow/y1.png',
         'img/2.Enemy/2 Jelly fish/Dead/Yellow/y2.png',
         'img/2.Enemy/2 Jelly fish/Dead/Yellow/y3.png',
-        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png',
+        'img/2.Enemy/2 Jelly fish/Dead/Yellow/y4.png'
 
 
     ],
@@ -143,13 +142,13 @@ const JF_dead_img = {
         'img/2.Enemy/2 Jelly fish/Dead/green/g1.png ',
         'img/2.Enemy/2 Jelly fish/Dead/green/g2.png ',
         'img/2.Enemy/2 Jelly fish/Dead/green/g3.png ',
-        'img/2.Enemy/2 Jelly fish/Dead/green/g4.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/green/g4.png '
     ],
     pink: [
         'img/2.Enemy/2 Jelly fish/Dead/Pink/P1.png ',
         'img/2.Enemy/2 Jelly fish/Dead/Pink/P2.png ',
         'img/2.Enemy/2 Jelly fish/Dead/Pink/P3.png ',
-        'img/2.Enemy/2 Jelly fish/Dead/Pink/P4.png ',
+        'img/2.Enemy/2 Jelly fish/Dead/Pink/P4.png '
     ]
 }
 
@@ -159,7 +158,7 @@ const collecteables = {
         'img/4. Marcadores/1. Coins/1.png',
         'img/4. Marcadores/1. Coins/2.png',
         'img/4. Marcadores/1. Coins/3.png',
-        'img/4. Marcadores/1. Coins/4.png',
+        'img/4. Marcadores/1. Coins/4.png'
     ],
     posion: [
         'img/4. Marcadores/Posión/Animada/1.png',
@@ -169,7 +168,7 @@ const collecteables = {
         'img/4. Marcadores/Posión/Animada/5.png',
         'img/4. Marcadores/Posión/Animada/6.png',
         'img/4. Marcadores/Posión/Animada/7.png',
-        'img/4. Marcadores/Posión/Animada/8.png',
+        'img/4. Marcadores/Posión/Animada/8.png'
     ]
 }
 
@@ -182,7 +181,7 @@ const posion_img = [
     'img/4. Marcadores/Posión/Animada/5.png',
     'img/4. Marcadores/Posión/Animada/6.png',
     'img/4. Marcadores/Posión/Animada/7.png',
-    'img/4. Marcadores/Posión/Animada/8.png',
+    'img/4. Marcadores/Posión/Animada/8.png'
 ]
 
 const status_bar_img = {
@@ -192,7 +191,7 @@ const status_bar_img = {
         'img/4. Marcadores/green/Coin/3.png',
         'img/4. Marcadores/green/Coin/4.png',
         'img/4. Marcadores/green/Coin/5.png',
-        'img/4. Marcadores/green/Coin/6.png',
+        'img/4. Marcadores/green/Coin/6.png'
     ],
     life: [
         'img/4. Marcadores/green/Life/1.png',
@@ -208,7 +207,7 @@ const status_bar_img = {
         'img/4. Marcadores/green/poisoned bubbles/3.png',
         'img/4. Marcadores/green/poisoned bubbles/4.png',
         'img/4. Marcadores/green/poisoned bubbles/5.png',
-        'img/4. Marcadores/green/poisoned bubbles/6.png',
+        'img/4. Marcadores/green/poisoned bubbles/6.png'
     ],
     endboss: [
         'img/4. Marcadores/Endboss/0.png',
@@ -230,6 +229,43 @@ const sharkie_img = {
         'img/1.Sharkie/3.Swim/5.png',
         'img/1.Sharkie/3.Swim/6.png'
     ],
+    idle: [
+        'img/1.Sharkie/1.IDLE/1.png',
+        'img/1.Sharkie/1.IDLE/2.png',
+        'img/1.Sharkie/1.IDLE/3.png',
+        'img/1.Sharkie/1.IDLE/4.png',
+        'img/1.Sharkie/1.IDLE/5.png',
+        'img/1.Sharkie/1.IDLE/6.png',
+        'img/1.Sharkie/1.IDLE/7.png',
+        'img/1.Sharkie/1.IDLE/8.png',
+        'img/1.Sharkie/1.IDLE/9.png',
+        'img/1.Sharkie/1.IDLE/10.png',
+        'img/1.Sharkie/1.IDLE/11.png',
+        'img/1.Sharkie/1.IDLE/12.png',
+        'img/1.Sharkie/1.IDLE/13.png',
+        'img/1.Sharkie/1.IDLE/14.png',
+        'img/1.Sharkie/1.IDLE/15.png',
+        'img/1.Sharkie/1.IDLE/16.png',
+        'img/1.Sharkie/1.IDLE/17.png',
+        'img/1.Sharkie/1.IDLE/18.png'
+    ],
+    sinking: [
+        'img/1.Sharkie/2.Long_IDLE/i1.png ',
+        'img/1.Sharkie/2.Long_IDLE/i2.png ',
+        'img/1.Sharkie/2.Long_IDLE/i3.png ',
+        'img/1.Sharkie/2.Long_IDLE/i4.png ',
+        'img/1.Sharkie/2.Long_IDLE/i5.png ',
+        'img/1.Sharkie/2.Long_IDLE/i6.png ',
+        'img/1.Sharkie/2.Long_IDLE/i7.png ',
+        'img/1.Sharkie/2.Long_IDLE/i8.png ',
+        'img/1.Sharkie/2.Long_IDLE/i9.png '
+    ],
+    sleeping: [
+        'img/1.Sharkie/2.Long_IDLE/I10.png',
+        'img/1.Sharkie/2.Long_IDLE/I11.png',
+        'img/1.Sharkie/2.Long_IDLE/I12.png',
+        'img/1.Sharkie/2.Long_IDLE/I13.png'
+    ],
     hurt_poisoned: [
         'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
         'img/1.Sharkie/5.Hurt/1.Poisoned/2.png',
@@ -237,7 +273,9 @@ const sharkie_img = {
         'img/1.Sharkie/5.Hurt/1.Poisoned/4.png'
     ],
     hurt_electric_shock: [
-
+        'img/1.Sharkie/5.Hurt/2.Electric shock/1.png',
+        'img/1.Sharkie/5.Hurt/2.Electric shock/2.png',
+        'img/1.Sharkie/5.Hurt/2.Electric shock/3.png',
     ],
     dead_poisoned: [
         'img/1.Sharkie/6.dead/1.Poisoned/1.png',
@@ -259,7 +297,37 @@ const sharkie_img = {
         'img/1.Sharkie/4.Attack/Fin slap/5.png',
         'img/1.Sharkie/4.Attack/Fin slap/6.png',
         'img/1.Sharkie/4.Attack/Fin slap/7.png',
-        'img/1.Sharkie/4.Attack/Fin slap/8.png',
+        'img/1.Sharkie/4.Attack/Fin slap/8.png'
+    ],
+    blow_poisend_bubble: [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/8.png'
+    ],
+    blow_normal_bubble: [
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png'
+    ],
+    blow_no_bubble: [
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/1.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/2.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/3.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/4.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/5.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/6.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/7.png',
+        'img/1.Sharkie/4.Attack/Bubble trap/For Whale/Whitout bubbles/8.png'
     ]
 
 }
@@ -290,7 +358,7 @@ const endboss_img = {
         'img/2.Enemy/3 Final Enemy/1.Introduce/7.png',
         'img/2.Enemy/3 Final Enemy/1.Introduce/8.png',
         'img/2.Enemy/3 Final Enemy/1.Introduce/9.png',
-        'img/2.Enemy/3 Final Enemy/1.Introduce/10.png',
+        'img/2.Enemy/3 Final Enemy/1.Introduce/10.png'
     ],
 
 }

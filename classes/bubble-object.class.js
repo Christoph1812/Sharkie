@@ -1,6 +1,5 @@
 class Bubble extends MovableObject {
 
-
     constructor() {
         super().loadImage('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
         this.x;
@@ -12,7 +11,9 @@ class Bubble extends MovableObject {
 
     blow(x, y) {
         this.x = x;
-        this.y = y
-        this.speedY = 30;
+        this.y = y;
+        setInterval(() => {
+            this.x += 10;
+        }, 50);
     }
 }
