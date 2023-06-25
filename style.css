@@ -28,19 +28,91 @@ h1 {
 }
 
 .canvas-container {
-    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border: 20px groove rgba(35, 137, 204, 0.9);
     border-radius: 10px;
-    background-color: black;
+
     margin-bottom: 200px;
 }
 
+.canvas {
+    z-index: -1;
+}
+
 .start-screen {
-    z-index: 999;
+    z-index: 1;
     position: absolute;
     background-image: url('img/3. Background/Mesa de trabajo 1.png');
     background-size: 720px 480px;
     object-fit: contain;
     width: 720px;
     height: 480px;
+}
+
+.panel-top {
+    margin: 12px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+
+.panel-top img {
+    width: 50px;
+    height: 50px;
+    filter: brightness(0) invert(1);
+}
+
+.settings-img:hover {
+    cursor: pointer;
+    filter: brightness(0.7) invert(0.7)
+}
+
+.panel-bottom {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.button {
+    border-color: white;
+    border-style: solid;
+    border-width: 2px 2px;
+    background-color: #FCEE21;
+    border-radius: 20px;
+    margin-top: 180px;
+    font-family: 'luckiestGuy', Arial, 'Helventica', sans-serif;
+    font-size: 24px;
+    width: 180px;
+    height: 50px;
+}
+
+.yellow {
+    background-color: #FCEE21;
+}
+
+.button:hover {
+    cursor: pointer;
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.settings-overlay {
+    border-radius: 15px;
+    position: absolute;
+    width: 600px;
+    height: 400px;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+
+.overview {
+
+    font-weight: lighter;
+    margin: 12px;
+    color: white;
 }
