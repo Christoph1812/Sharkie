@@ -33,7 +33,6 @@ h1 {
     align-items: center;
     border: 20px groove rgba(35, 137, 204, 0.9);
     border-radius: 10px;
-
     margin-bottom: 200px;
 }
 
@@ -75,7 +74,6 @@ h1 {
 }
 
 
-
 .button {
     border-color: white;
     border-style: solid;
@@ -111,8 +109,49 @@ h1 {
 
 
 .overview {
-
     font-weight: lighter;
     margin: 12px;
     color: white;
+}
+
+.slider-container {
+    display: flex;
+    align-items: center;
+
+    width: 300px;
+}
+
+
+/* <-------------------VolumeSlider-----------------------> */
+input[type="range"] {
+    -webkit-appearance: none;
+    margin-right: 6px;
+    height: 14px;
+    border-radius: 5px;
+    width: 50%;
+    background: white;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border-radius: 100%;
+    width: 14px;
+    height: 14px;
+    background: #1f045f;
+    cursor: pointer;
+}
+
+output {
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.sound-icon {
+    width: 35px;
+    height: 35px;
+    filter: brightness(0) invert(1);
 }

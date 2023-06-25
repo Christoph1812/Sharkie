@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     height = 190;
     width = 230;
-    speed = 2;
+    speed = 3;
     x = 150;
     y = 120;
     offset = {
@@ -38,62 +38,84 @@ class Character extends MovableObject {
 
     motionControl() {
         setInterval(() => {
-            if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up && !this.world.keyboard.down) {
-                this.counter();
-                if (this.idle_counter > 3 && this.idle_counter < 20) {
-                    this.playAnimation(sharkie_img['idle']);
+            if (!this.isDead()) {
+                if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
+                    this.moveRight();
+                    this.otherDirection = false;
                 }
-                else if (this.idle_counter > 20 && this.y < 300) {
-                    this.playAnimation(sharkie_img['sinking']);
-                    this.moveDown();
+                if (this.world.keyboard.left && this.x > 0) {
+                    this.moveLeft();
                     this.otherDirection = true;
                 }
+                if (this.world.keyboard.up && this.y > -60) {
+                    this.moveUp();
+                    this.otherDirection = false;
+                }
+                if (this.world.keyboard.down && this.y < 300) {
+                    this.moveDown();
+                    this.otherDirection = false;
+                }
+                if (this.world.keyboard.right || this.world.keyboard.left || this.world.keyboard.up || this.world.keyboard.down) {
+                    this.resetCounter()
+                    this.playAnimation(sharkie_img['swimming']);
+                }
+                this.world.camera_x = -this.x + 100;
             }
-        }, 1000);
 
-        setInterval(() => {
-            if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
-                this.moveRight();
-                this.otherDirection = false;
-            }
-            else if (this.world.keyboard.left && this.x > 0) {
-                this.moveLeft();
-                this.otherDirection = true;
-            }
-            else if (this.world.keyboard.up && this.y > -60) {
-                this.moveUp();
-                this.otherDirection = true;
-            }
-            else if (this.world.keyboard.down && this.y < 300) {
-                this.moveDown();
-                this.otherDirection = true;
-            }
-            this.world.camera_x = -this.x + 100;
-        }, 1);
+        }, 1000 / 60);
 
     }
 
 
     animate() {
         setInterval(() => {
+            if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up && !this.world.keyboard.down) {
+                this.idleControl()
+            }
             if (this.isDead()) {
                 this.playAnimation(sharkie_img['dead_poisoned']);
             }
-            else if (this.isHurt() && !this.isDead()) {
+            if (this.isHurt() && !this.isDead()) {
                 this.playAnimation(sharkie_img['hurt_poisoned']);
-            } else if (this.world.keyboard.space) {
+            } if (this.world.keyboard.space) {
                 this.playAnimation(sharkie_img['fin_slap']);
 
-            } else if (this.idle_counter < 3) {
-                this.playAnimation(sharkie_img['swimming']);
             }
-        }, 250);
+        }, 100);
+    }
+
+
+    idleControl() {
+        this.counter();
+        if (this.idle_counter >= 5 && this.idle_counter < 50) {
+            this.playAnimation(sharkie_img['idle']);
+            console.log(this.idle_counter);
+        }
+        if (this.idle_counter >= 50 && this.y <= 300) {
+            this.sinkDown();
+        }
+        if (this.idle_counter >= 80 && this.y >= 300) {
+            this.playAnimation(sharkie_img['sleeping'])
+        }
+    }
+
+    sinkDown() {
+        this.playAnimation(sharkie_img['sinking']);
+        let sinking_speed = 1;
+        this.y += sinking_speed;
+
     }
 
     counter() {
-        setInterval(() => {
-            this.idle_counter++
-        }, 1000);
+        this.idle_counter++
     }
-}
 
+    resetCounter() {
+        this.idle_counter = 0;
+    }
+
+
+
+
+
+}

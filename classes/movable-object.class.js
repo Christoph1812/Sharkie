@@ -38,7 +38,7 @@ class MovableObject extends DrawableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit; //Difference in ms
         timepassed = timepassed / 1000; //Difference in s
-        return timepassed = timepassed < 3;
+        return timepassed = timepassed < 2;
     }
 
 
@@ -63,7 +63,7 @@ class MovableObject extends DrawableObject {
 
     moveDown() {
         this.y += this.speed;
-        this.otherDirection = true;
+
     }
 
     playAnimation(images) {
