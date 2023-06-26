@@ -27,6 +27,12 @@ h1 {
     margin-bottom: 20px;
 }
 
+h2 {
+    margin-top: -10px;
+    font-weight: lighter;
+    font-style: italic;
+}
+
 .canvas-container {
     display: flex;
     justify-content: center;
@@ -99,9 +105,11 @@ h1 {
 }
 
 .settings-overlay {
+    border-color: white;
+    border-style: solid;
     border-radius: 15px;
     position: absolute;
-    width: 600px;
+    width: max-content;
     height: 400px;
     z-index: 2;
     background-color: rgba(0, 0, 0, 0.7);
@@ -109,16 +117,23 @@ h1 {
 
 
 .overview {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     font-weight: lighter;
-    margin: 12px;
     color: white;
 }
 
 .slider-container {
     display: flex;
+    justify-content: center;
     align-items: center;
-
     width: 300px;
+}
+
+.headline-volume {
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -149,9 +164,42 @@ output {
     font-family: 'Times New Roman', Times, serif;
 }
 
-
 .sound-icon {
     width: 35px;
     height: 35px;
     filter: brightness(0) invert(1);
+}
+
+.fullscreen-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+
+}
+
+.fullscreen-container img {
+    width: 12px;
+    height: 12px;
+    filter: brightness(0) invert(1);
+
+}
+
+
+
+.x-icon {
+
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+}
+
+.x {
+    margin-top: 12px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: flex-end;
 }
