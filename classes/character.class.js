@@ -10,8 +10,9 @@ class Character extends MovableObject {
         width: 80,
         height: 130
     }
-    idle_counter = 0;
+    idleCounter = 0;
     world;
+    bubbleAttack = false;
 
 
     constructor() {
@@ -19,6 +20,7 @@ class Character extends MovableObject {
         this.loadSharkyIamges();
         this.motionControl();
         this.animate();
+
 
     }
 
@@ -59,6 +61,14 @@ class Character extends MovableObject {
                     this.resetCounter()
                     this.playAnimation(sharkie_img['swimming']);
                 }
+                if (this.world.keyboard.d) {
+                    this.playAnimation(sharkie_img['blow_normal_bubble']);
+                    this.createNormalBubble();
+                }
+                if (this.world.keyboard.f) {
+                    this.playAnimation(sharkie_img['blow_poisend_bubble']);
+                    this.createPoisenBubble();
+                }
                 this.world.camera_x = -this.x + 100;
             }
 
@@ -79,7 +89,6 @@ class Character extends MovableObject {
                 this.playAnimation(sharkie_img['hurt_poisoned']);
             } if (this.world.keyboard.space) {
                 this.playAnimation(sharkie_img['fin_slap']);
-
             }
         }, 100);
     }
@@ -87,14 +96,13 @@ class Character extends MovableObject {
 
     idleControl() {
         this.counter();
-        if (this.idle_counter >= 5 && this.idle_counter < 50) {
+        if (this.idleCounter >= 5 && this.idleCounter < 50) {
             this.playAnimation(sharkie_img['idle']);
-            console.log(this.idle_counter);
         }
-        if (this.idle_counter >= 50 && this.y <= 300) {
+        if (this.idleCounter >= 50 && this.y <= 300) {
             this.sinkDown();
         }
-        if (this.idle_counter >= 80 && this.y >= 300) {
+        if (this.idleCounter >= 80 && this.y >= 300) {
             this.playAnimation(sharkie_img['sleeping'])
         }
     }
@@ -107,11 +115,23 @@ class Character extends MovableObject {
     }
 
     counter() {
-        this.idle_counter++
+        this.idleCounter++
     }
 
     resetCounter() {
-        this.idle_counter = 0;
+        this.idleCounter = 0;
+    }
+
+
+    createNormalBubble() {
+        let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, 'normal');
+        this.world.bubbles.push(bubble);
+    }
+
+    createPoisenBubble() {
+        let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, 'poision');
+        this.world.bubbles.push(bubble);
+
     }
 
 

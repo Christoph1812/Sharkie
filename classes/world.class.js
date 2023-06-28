@@ -80,11 +80,11 @@ class World {
         this.addendbossStatus();
         this.ctx.translate(+this.camera_x, 0);
 
-
-        this.addToMap(this.character);
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.collectebales);
         this.addObjectsToMap(this.bubbles);
+        this.addObjectsToMap(this.poisonedBubbles);
+        this.addToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);
 
@@ -136,6 +136,8 @@ class World {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
+
+
 }
 
 

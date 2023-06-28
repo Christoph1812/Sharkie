@@ -28,6 +28,7 @@ h1 {
 }
 
 h2 {
+    font-size: 35px;
     margin-top: -10px;
     font-weight: lighter;
     font-style: italic;
@@ -57,6 +58,7 @@ h2 {
 }
 
 .panel-top {
+    z-index: 2;
     margin: 12px;
     display: flex;
     justify-content: flex-end;
@@ -110,11 +112,10 @@ h2 {
     border-radius: 15px;
     position: absolute;
     width: max-content;
-    height: 400px;
-    z-index: 2;
-    background-color: rgba(0, 0, 0, 0.7);
+    height: 350px;
+    z-index: 3;
+    background-color: rgba(0, 0, 0, 0.8);
 }
-
 
 .overview {
     display: flex;
@@ -125,6 +126,7 @@ h2 {
 }
 
 .slider-container {
+    margin-bottom: 12px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -132,8 +134,25 @@ h2 {
 }
 
 .headline-volume {
+    font-size: 24px;
     display: flex;
     justify-content: center;
+}
+
+.x-icon {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: flex-end;
+    filter: brightness(0) invert(1);
+    cursor: pointer;
+}
+
+.x {
+    margin-top: 12px;
+    margin-right: 12px;
+    display: flex;
+    justify-content: flex-end;
 }
 
 
@@ -170,7 +189,17 @@ output {
     filter: brightness(0) invert(1);
 }
 
+
+
+/* <--------------------Menu-Points----------> */
+
+
+.credits-container,
+.instruction-container,
 .fullscreen-container {
+    font-size: 24px;
+    margin-bottom: 12px;
+    height: 30px;
     display: flex;
     align-items: center;
     gap: 6px;
@@ -178,28 +207,48 @@ output {
 
 }
 
+.credits-container img,
+.instruction-container img,
 .fullscreen-container img {
-    width: 12px;
-    height: 12px;
+    width: 18px;
+    height: 18px;
     filter: brightness(0) invert(1);
 
 }
 
-
-
-.x-icon {
-
-    width: 25px;
-    height: 25px;
-    display: flex;
-    justify-content: flex-end;
-    filter: brightness(0) invert(1);
-    cursor: pointer;
+.x-icon:hover,
+.credits-container:hover img,
+.instruction-container:hover img,
+.fullscreen-container:hover img {
+    -webkit-filter: drop-shadow(2px 2px 1px rgb(22, 126, 236));
+    filter: brightness(0) invert(1) drop-shadow(2px 2px 1px rgb(22, 126, 236));
 }
 
-.x {
-    margin-top: 12px;
-    margin-right: 12px;
-    display: flex;
-    justify-content: flex-end;
+.credits-container:hover p,
+.instruction-container:hover p,
+.fullscreen-container:hover p {
+    text-shadow: 2px 2px 1px rgb(22, 126, 236);
+}
+
+/* <--------CSS Classen für Fullscreen Modus -------> */
+.fullscreen {
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.start-screen-fullscreen {
+    height: 100%;
+    width: 100%;
+    background-size: cover !important
+}
+
+.panel-top-fullscreen {
+    height: 15vh;
+    width: 100vw;
+}
+
+.panel-bottom-fullscreen {
+    height: 85vh;
+    width: 100vw;
 }
