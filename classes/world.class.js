@@ -12,7 +12,7 @@ class World {
     statusBarEndboss = new StatusBar('endboss', 100, 400, 0);
     endboss;
     bubbles = [];
-    poisonedBubbles = [];
+    poisonBubbles = [];
 
 
     constructor(canvas, keyboard) {
@@ -83,7 +83,7 @@ class World {
         this.addObjectsToMap(this.level.enemies);
         this.addObjectsToMap(this.level.collectebales);
         this.addObjectsToMap(this.bubbles);
-        this.addObjectsToMap(this.poisonedBubbles);
+        this.addObjectsToMap(this.poisonBubbles);
         this.addToMap(this.character);
 
         this.ctx.translate(-this.camera_x, 0);

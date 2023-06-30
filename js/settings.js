@@ -83,3 +83,11 @@ function changeViewNormalScreen() {
 }
 
 // <---------------------------------------------------------------------------------------->
+
+function openCredits() {
+    document.getElementById('overview').classList.add('d-none');
+
+}
+
+
+// Sharke, der tapfere Hai, schwimmt durch das Meer. Er kämpft gegen Quallen und Kugelfische mit Blasen- und Flossenschlagattacken. Auf seiner Mission sammelt er vergiftete Flaschen und Münzen ein. Schließlich stellt er sich dem furchterregenden Endboss, einem Walfisch. Sharke setzt die vergifteten Flaschen geschickt als Waffen gegen den Walfisch ein, indem er ihm kräftige Schläge verpasst und seine Abwehrkräfte schwächt. Mit jedem gut gezielten Wurf wird der Walfisch immer verwundbarer. Am Ende triumphiert Sharke, stellt das Gleichgewicht des Ozeans wieder her und verdient sich den Titel eines legendären Beschützers.

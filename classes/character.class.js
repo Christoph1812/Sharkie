@@ -12,7 +12,7 @@ class Character extends MovableObject {
     }
     idleCounter = 0;
     world;
-    bubbleAttack = false;
+    isBubbleAttack = false;
 
 
     constructor() {
@@ -20,8 +20,6 @@ class Character extends MovableObject {
         this.loadSharkyIamges();
         this.motionControl();
         this.animate();
-
-
     }
 
     loadSharkyIamges() {
@@ -61,14 +59,7 @@ class Character extends MovableObject {
                     this.resetCounter()
                     this.playAnimation(sharkie_img['swimming']);
                 }
-                if (this.world.keyboard.d) {
-                    this.playAnimation(sharkie_img['blow_normal_bubble']);
-                    this.createNormalBubble();
-                }
-                if (this.world.keyboard.f) {
-                    this.playAnimation(sharkie_img['blow_poisend_bubble']);
-                    this.createPoisenBubble();
-                }
+
                 this.world.camera_x = -this.x + 100;
             }
 
@@ -90,6 +81,14 @@ class Character extends MovableObject {
             } if (this.world.keyboard.space) {
                 this.playAnimation(sharkie_img['fin_slap']);
             }
+            if (this.world.keyboard.d && !this.isBubbleAttack) {
+                this.bubbleAttack(sharkie_img['blow_normal_bubble'], 'normal');
+            }
+            if (this.world.keyboard.f && !this.isBubbleAttack) {
+                this.bubbleAttack(sharkie_img['blow_poisend_bubble'], 'poision');
+                this.isBubbleAttack = true;
+            }
+
         }, 100);
     }
 
@@ -123,15 +122,30 @@ class Character extends MovableObject {
     }
 
 
-    createNormalBubble() {
-        let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, 'normal');
-        this.world.bubbles.push(bubble);
+    createBubble(typ) {
+        let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, typ);
+        if (typ == 'normal') {
+            this.world.bubbles.push(bubble);
+        } else {
+            this.world.poisonBubbles.push(bubble);
+        }
+
     }
 
-    createPoisenBubble() {
-        let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, 'poision');
-        this.world.bubbles.push(bubble);
+    bubbleAttack(image, typ) {
+        this.isBubbleAttack = true;
+        this.currentImage = 0;
 
+        const intervalID = setInterval(() => {
+            if (this.currentImage < 8) {
+                this.playAnimation(image);
+                this.currentImage++;
+            } else {
+                clearInterval(intervalID); // Intervall stoppen nach dem Anzeigen der 8 Bilder
+                this.createBubble(typ); // createBubble-Methode aufrufen
+            }
+        }, 100);
+        this.isBubbleAttack = false;
     }
 
 

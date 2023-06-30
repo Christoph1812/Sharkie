@@ -17,7 +17,7 @@ let win_sound = new Audio('audio/win_sound.mp3');
 
 function playBackgroundSound() {
     play_sound.volume = currentVolume / 100;
-    //     play_sound.play();
+    play_sound.play();
 }
 
 
@@ -25,13 +25,15 @@ document.addEventListener("DOMContentLoaded", function () {
     const soundImage = document.getElementById('sound-icon')
     soundImage.addEventListener('click', function () {
         if (Image1) {
-            soundImage.src = 'img/assests/sound_on.png';
+            soundImage.src = 'img/assests/sound_off.png';
             volume = currentVolume;
+            currentVolume = 0;
+            play_sound.pause();
             Image1 = false;
         } else {
-            soundImage.src = 'img/assests/sound_off.png';
-            currentVolume = volume;
-            currentVolume = 0;
+            soundImage.src = 'img/assests/sound_on.png';
+            volume = currentVolume;
+            play_sound.play();
             Image1 = true;
         }
 
