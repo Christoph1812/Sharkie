@@ -12,7 +12,7 @@ class Character extends MovableObject {
     }
     idleCounter = 0;
     world;
-    isBubbleAttack = false;
+    isBubbleAttacking = false;
 
 
     constructor() {
@@ -68,6 +68,7 @@ class Character extends MovableObject {
     }
 
 
+
     animate() {
         setInterval(() => {
             if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up && !this.world.keyboard.down) {
@@ -78,18 +79,17 @@ class Character extends MovableObject {
             }
             if (this.isHurt() && !this.isDead()) {
                 this.playAnimation(sharkie_img['hurt_poisoned']);
-            } if (this.world.keyboard.space) {
+            } if (this.world.keyboard.space | this.isFinSlapAttacking) {
                 this.playAnimation(sharkie_img['fin_slap']);
             }
-            if (this.world.keyboard.d && !this.isBubbleAttack) {
+            if (this.world.keyboard.d || this.isBubbleAttacking) {
                 this.bubbleAttack(sharkie_img['blow_normal_bubble'], 'normal');
             }
-            if (this.world.keyboard.f && !this.isBubbleAttack) {
+            if (this.world.keyboard.f || this.isBubbleAttacking) {
                 this.bubbleAttack(sharkie_img['blow_poisend_bubble'], 'poision');
-                this.isBubbleAttack = true;
             }
 
-        }, 100);
+        }, 200);
     }
 
 
@@ -132,24 +132,19 @@ class Character extends MovableObject {
 
     }
 
+
     bubbleAttack(image, typ) {
-        this.isBubbleAttack = true;
-        this.currentImage = 0;
-
-        const intervalID = setInterval(() => {
-            if (this.currentImage < 8) {
-                this.playAnimation(image);
-                this.currentImage++;
-            } else {
-                clearInterval(intervalID); // Intervall stoppen nach dem Anzeigen der 8 Bilder
-                this.createBubble(typ); // createBubble-Methode aufrufen
-            }
-        }, 100);
-        this.isBubbleAttack = false;
+        if (!this.isBubbleAttacking) {
+            this.currentImage = 0;
+            this.isBubbleAttacking = true;
+        }
+        if (this.currentImage <= 7)
+            this.playAnimation(image);
+        this.currentImage++;
+        console.log(this.currentImage);
+        if (this.isBubbleAttacking && this.currentImage == 7) {
+            this.createBubble(typ);
+            this.isBubbleAttacking = false;
+        }
     }
-
-
-
-
-
 }

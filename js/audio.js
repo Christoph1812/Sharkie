@@ -22,34 +22,32 @@ function playBackgroundSound() {
 
 
 document.addEventListener("DOMContentLoaded", function () {
-    const soundImage = document.getElementById('sound-icon')
-    soundImage.addEventListener('click', function () {
-        if (Image1) {
-            soundImage.src = 'img/assests/sound_off.png';
-            volume = currentVolume;
-            currentVolume = 0;
-            play_sound.pause();
-            Image1 = false;
-        } else {
-            soundImage.src = 'img/assests/sound_on.png';
-            volume = currentVolume;
-            play_sound.play();
-            Image1 = true;
-        }
+    const soundImage = document.getElementById('sound-icon');
+    if (soundImage) {
+        soundImage.addEventListener('click', function () {
+            if (Image1) {
+                soundImage.src = 'img/assests/sound_off.png';
+                volume = currentVolume;
+                currentVolume = 0;
+                play_sound.pause();
+                Image1 = false;
+            } else {
+                soundImage.src = 'img/assests/sound_on.png';
+                volume = currentVolume;
+                play_sound.play();
+                Image1 = true;
+            }
+        });
+    }
 
-    });
+    const volumeSlider = document.getElementById("volume-slider");
+    const volumeValue = document.getElementById("volume-value");
+    if (volumeSlider) {
+        volume = 50;
+        volumeSlider.addEventListener("input", function () {
+            currentVolume = Number(volumeSlider.value);
+            volumeValue.innerHTML = currentVolume;
+            play_sound.volume = currentVolume / 100;
+        });
+    }
 });
-
-
-document.addEventListener("DOMContentLoaded", function () {
-    volume = 50;
-    let volumeSlider = document.getElementById("volume-slider");
-    let volumeValue = document.getElementById("volume-value");
-
-    volumeSlider.addEventListener("input", function () {
-        currentVolume = Number(volumeSlider.value);
-        volumeValue.innerHTML = currentVolume;
-        play_sound.volume = currentVolume / 100;
-    });
-});
-

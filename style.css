@@ -196,7 +196,7 @@ output {
 
 
 .credits-container,
-.instruction-container,
+.instruction-button,
 .fullscreen-container {
     font-size: 24px;
     margin-bottom: 12px;
@@ -209,7 +209,7 @@ output {
 }
 
 .credits-container img,
-.instruction-container img,
+.instruction-button img,
 .fullscreen-container img {
     width: 18px;
     height: 18px;
@@ -219,14 +219,14 @@ output {
 
 .x-icon:hover,
 .credits-container:hover img,
-.instruction-container:hover img,
+.instruction-button:hover img,
 .fullscreen-container:hover img {
     -webkit-filter: drop-shadow(2px 2px 1px rgb(22, 126, 236));
     filter: brightness(0) invert(1) drop-shadow(2px 2px 1px rgb(22, 126, 236));
 }
 
 .credits-container:hover p,
-.instruction-container:hover p,
+.instruction-button:hover p,
 .fullscreen-container:hover p {
     text-shadow: 2px 2px 1px rgb(22, 126, 236);
 }
@@ -253,3 +253,11 @@ output {
     height: 85vh;
     width: 100vw;
 }
+
+.instruction-container {
+    width: 400px;
+    font-weight: lighter;
+}
+
+
+/* <----------------------------------------------> */

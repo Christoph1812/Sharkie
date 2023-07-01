@@ -34,30 +34,12 @@
     <div class="canvas-container">
         <div class="settings-overlay d-none" id="settings-main-overlay">
             <div class="x">
+                <img onclick="openSettings()" src="img/assests/arrow-left.png" alt="Arrow-Left">
                 <img onclick="closeSettings()" class="x-icon" src="img/assests/x-mark.png" alt="X-Mark">
             </div>
-            <div id="subpages-content"></div>
-            <div class="overview" id="overview">
-                <h2>Settings</h2>
-                <span class="headline-volume">volume</span>
-                <div class="slider-container">
-                    <img class="sound-icon" id="sound-icon" src="img/assests/sound_on.png" alt="Sound">
-                    <input type="range" id="volume-slider" min="0" max="100" value="50" step="1">
-                    <output id="volume-value">50</output>
-                </div>
-                <div onclick="toggleFullscreen()" class="fullscreen-container" id="fullscreen-setting">
-                    <img src="img/assests/fullscreen-enter.png" alt="Fullscreen">
-                    <p>Enter Fullscreen</p>
-                </div>
-                <div class="instruction-container">
-                    <img src="img/assests/info.png" alt="Info">
-                    <p>Instruction</p>
-                </div>
-                <div onclick="openCredits()" class="credits-container">
-                    <img src="img/assests/copyright.png" alt="copyright">
-                    <p>Credits</p>
-                </div>
-            </div>
+
+
+            <div class="overview" id="overview"></div>
         </div>
         <div id="fullscreen">
             <div id="start-screen" class="start-screen">

@@ -25,14 +25,14 @@ class Endboss extends MovableObject {
     animate() {
         let i = 0
         setInterval(() => {
-            if (i < 10) {
-                this.playAnimationOnce(endboss_img['introducing']);
+            if (i <= 8) {
+                this.playAnimation(endboss_img['introducing']);
+                i++;
             }
             else {
                 this.playAnimation(endboss_img['swimming']);
             }
 
-            i++;
 
             if (this.world && this.world.character && this.world.character.x > 2000 && !this.hadFirstContact) {
                 i = 0;
