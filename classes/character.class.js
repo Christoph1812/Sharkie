@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     height = 190;
     width = 230;
-    speed = 2;
+    speed = 5;
     x = 150;
     y = 120;
     offset = {
@@ -13,6 +13,8 @@ class Character extends MovableObject {
     idleCounter = 0;
     world;
     isBubbleAttacking = false;
+    isFinSlaping = false;
+
 
 
     constructor() {
@@ -49,14 +51,13 @@ class Character extends MovableObject {
                 }
                 if (this.world.keyboard.up && this.y > -60) {
                     this.moveUp();
-                    this.otherDirection = false;
+
                 }
                 if (this.world.keyboard.down && this.y < 300) {
                     this.moveDown();
-                    this.otherDirection = false;
+
                 }
-                if (this.world.keyboard.right || this.world.keyboard.left || this.world.keyboard.up || this.world.keyboard.down) {
-                    this.resetCounter()
+                if (OneMovementKeyIsPressed()) {
                     this.playAnimation(sharkie_img['swimming']);
                 }
                 this.world.camera_x = -this.x + 100;
@@ -73,24 +74,83 @@ class Character extends MovableObject {
             // if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up && !this.world.keyboard.down) {
             //     this.idleControl()
             // }
-            if (this.isDead()) {
-                this.playAnimation(sharkie_img['dead_poisoned']);
-            }
-            if (this.isHurt() && !this.isDead()) {
-                this.playAnimation(sharkie_img['hurt_poisoned']);
-            } if (this.world.keyboard.space | this.isFinSlapAttacking) {
-                this.playAnimation(sharkie_img['fin_slap']);
-            }
-            if (this.world.keyboard.d || this.isBubbleAttacking) {
-                this.bubbleAttack(sharkie_img['blow_normal_bubble'], 'normal');
-            }
-            if (this.world.keyboard.f || this.isBubbleAttacking) {
-                this.bubbleAttack(sharkie_img['blow_poisend_bubble'], 'poision');
-            }
+            // if (this.isDead()) {
+            //     this.playAnimation(sharkie_img['dead_poisoned']);
+            // }
+            // if (this.isHurt() && !this.isDead()) {
+            //     this.playAnimation(sharkie_img['hurt_poisoned']);
 
-        }, 200);
+
+
+            //  <-----------------------------Attacken---------------------->   
+            if (this.world.keyboard.space) {
+                this.aktiveFinslapAttack('space');
+                this.playAnimation(sharkie_img['fin_slap']);
+                this.isFinSlaping = true;
+            }
+            if (this.world.keyboard.d) {
+                this.activeBubbleAttack('normal', 'd')
+                this.playAnimation(sharkie_img['blow_normal_bubble']);
+                this.isBubbleAttacking = true;
+
+            }
+            if (this.world.keyboard.f) {
+                this.activeBubbleAttack('poision', 'f')
+                this.playAnimation(sharkie_img['blow_poisend_bubble']);
+                this.isBubbleAttacking = true;
+            }
+        }, 100);
     }
 
+    aktiveFinslapAttack(key) {
+        if (!this.isFinSlaping) {
+            this.currentImage = 0;
+            let pressed = setInterval(() => {
+                this.isFinSlaping = true;
+                this.world.keyboard[key] = true;
+            }, 100)
+            setTimeout(() => {
+                clearInterval(pressed)
+                this.isFinSlaping = false;
+                this.world.keyboard[key] = false;
+            }, 700)
+        }
+    }
+
+
+    activeBubbleAttack(typ, key) {
+        if (!this.isBubbleAttacking) {
+            this.currentImage = 0;
+            let pressed = setInterval(() => {
+                this.isBubbleAttacking = true;
+                this.world.keyboard[key] = true;
+            }, 100)
+            setTimeout(() => {
+                clearInterval(pressed)
+                this.isBubbleAttacking = false;
+                this.world.keyboard[key] = false;
+                this.createBubble(typ);
+            }, 800)
+        }
+    }
+
+
+    OneMovementKeyIsPressed() {
+        return this.world.keyboard.left ||
+            this.world.keyboard.right ||
+            this.world.keyboard.up ||
+            this.world.keyboard.down;
+    }
+
+    allKeysArePressed() {
+        !this.world.keyboard.left &&
+            !this.world.keyboard.right &&
+            !this.world.keyboard.up &&
+            !this.world.keyboard.down &&
+            !this.world.keyboard.space &&
+            !this.world.keyboard.d &&
+            !this.world.keyboard.f;
+    }
 
     idleControl() {
         this.counter();
@@ -128,6 +188,7 @@ class Character extends MovableObject {
 
     createBubble(typ) {
         let bubble = new Bubble((this.x + this.offset.x) + (this.width - this.offset.width), this.y + this.offset.y, typ);
+        bubble.checkDirection(this.otherDirection, (this.width - this.offset.width));
         if (typ == 'normal') {
             this.world.bubbles.push(bubble);
         } else {
@@ -137,43 +198,16 @@ class Character extends MovableObject {
     }
 
 
-    activateAttack() {
-        if (!this.attacked) {
-            this.currentImage = 0;
-            let DIsPressed = setInterval(() => {
-                this.attacked = true;
-                this.world.keyboard.D = true;
-            }, 100)
-
-            setTimeout(() => {
-                clearInterval(DIsPressed)
-                this.attacked = false;
-                this.world.keyboard.D = false;
-                this.world.shootNormalBubble();
-            }, 500)
-        }
-    }
-
-    bubbleAttack(image, typ) {
-        if (!this.isBubbleAttacking) {
-            this.currentImage = 0;
-            let pressed = setInterval
-        }
 
 
 
-        bubbleAttack(image, typ) {
-            if (!this.isBubbleAttacking) {
-                this.currentImage = 0;
-                this.isBubbleAttacking = true;
-            }
-            if (this.currentImage <= 7)
-                this.playAnimation(image);
-            this.currentImage++;
-            console.log(this.currentImage);
-            if (this.isBubbleAttacking && this.currentImage == 7) {
-                this.createBubble(typ);
-                this.isBubbleAttacking = false;
-            }
-        }
-    }
+}
+
+
+
+
+
+
+
+
+
