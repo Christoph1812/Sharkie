@@ -34,20 +34,49 @@ class World {
 
     checkCollisions() {
         setInterval(() => {
-            this.checkCollisionsEnemy();
             this.checkCollisionsCollectables();
+            this.checkCollisionJellyFish();
+            this.checkcollisionBubble()
+
         }, 100)
     }
 
 
-    checkCollisionsEnemy() {
+    // checkCollisionsEnemy() {
+    //     this.level.enemies.forEach((enemy) => {
+    //         if (this.character.isColliding(enemy) && !this.character.isHurt()) {
+    //             this.character.hit();
+    //             this.statusBarLife.setPercentage(this.character.energy, 'life');
+    //         }
+    //     });
+    // }
+
+    checkCollisionJellyFish() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isHurt()) {
-                this.character.hit();
-                this.statusBarLife.setPercentage(this.character.energy, 'life');
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof JellyFish)) {
+                console.log('bubble');
             }
         });
     }
+
+
+    checkcollisionBubble() {
+        this.bubbles.forEach((bubble) => {
+            if (bubble.y <= 0)
+                this.bubbles.splice(this.bubbles.indexOf(bubble), 1);
+            this.level.enemies.forEach((enemy) => {
+                if (bubble.isColliding(enemy)) {
+                    this.bubbles.splice(this.bubbles.indexOf(bubble), 1);
+                    if (enemy instanceof JellyFish) {
+                        enemy.dead = true;
+                    }
+
+                }
+            })
+        })
+    }
+
+
 
     checkCollisionsCollectables() {
         this.level.collectebales.forEach((collecteable, index) => {

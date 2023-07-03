@@ -4,6 +4,7 @@ class MovableObject extends DrawableObject {
     speedY = 30;
     energy = 100;
     lastHit = 0;
+    timepassed;
     offset = {
         x: 0,
         y: 0,
@@ -12,11 +13,14 @@ class MovableObject extends DrawableObject {
     }
 
     // character.isColloding(JellyFish)
-    isColliding(obj) {
-        return ((this.x + this.offset.x) + (this.width - this.offset.width)) >= (obj.x + obj.offset.x) && (this.x + this.offset.x) <= ((obj.x + this.offset.x) + (obj.width - obj.width)) &&
-            ((this.y + this.offset.y) + (this.height - this.offset.height)) >= (obj.y + obj.offset.y) &&
+    isCollidingold(obj) {
+        return (this.x + this.width - this.offset.right) >= (obj.x + obj.offset.left) &&
+            (this.y + this.height) <=  &&
+            ((this.x + this.offset.y) + (this.height - this.offset.height)) >= (obj.y + obj.offset.y) &&
             (this.y + this.offset.y) <= ((obj.y + obj.offset.y) + (obj.height - obj.offset.height));
     }
+
+    isColliding(obj)
 
 
     hit() {
@@ -39,6 +43,14 @@ class MovableObject extends DrawableObject {
         let timepassed = new Date().getTime() - this.lastHit; //Difference in ms
         timepassed = timepassed / 1000; //Difference in s
         return timepassed = timepassed < 2;
+    }
+
+    isInvulnerable() {
+        if (this.timepassed < 2) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
 
