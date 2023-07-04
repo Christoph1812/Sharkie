@@ -14,6 +14,8 @@ class Character extends MovableObject {
     world;
     isBubbleAttacking = false;
     isFinSlaping = false;
+    killedByJellyFish = false;
+    hitByJellyFish = false;
 
 
 
@@ -22,6 +24,7 @@ class Character extends MovableObject {
         this.loadSharkyIamges();
         this.motionControl();
         this.animate();
+        this.attack();
     }
 
     loadSharkyIamges() {
@@ -31,7 +34,9 @@ class Character extends MovableObject {
         this.loadImages(sharkie_img['sinking']);
         this.loadImages(sharkie_img['sleeping']);
         this.loadImages(sharkie_img['hurt_poisoned']);
+        this.loadImages(sharkie_img['hurt_electric_shock'])
         this.loadImages(sharkie_img['dead_poisoned']);
+        this.loadImages[sharkie_img['dead_']]
         this.loadImages(sharkie_img['fin_slap']);
         this.loadImages(sharkie_img['blow_no_bubble']);
         this.loadImages(sharkie_img['blow_normal_bubble']);
@@ -55,34 +60,62 @@ class Character extends MovableObject {
                 }
                 if (this.world.keyboard.down && this.y < 300) {
                     this.moveDown();
-
                 }
-                if (OneMovementKeyIsPressed()) {
+                if (this.oneMovementKeyIsPressed()) {
                     this.playAnimation(sharkie_img['swimming']);
+                    this.resetCounter();
                 }
                 this.world.camera_x = -this.x + 100;
             }
-
         }, 1000 / 50);
 
     }
 
 
-
     animate() {
         setInterval(() => {
-            // if (!this.world.keyboard.right && !this.world.keyboard.left && !this.world.keyboard.up && !this.world.keyboard.down) {
-            //     this.idleControl()
-            // }
-            // if (this.isDead()) {
-            //     this.playAnimation(sharkie_img['dead_poisoned']);
-            // }
-            // if (this.isHurt() && !this.isDead()) {
-            //     this.playAnimation(sharkie_img['hurt_poisoned']);
+            if (this.isDead()) {
+                if (this.killedByJellyFish) {
+                    this.playAnimation(sharkie_img['dead_electro_shock']);
+                } else {
+                    this.playAnimation(sharkie_img['dead_poisoned']);
+                }
+            }
+            else if (this.isHurt() && !this.isDead()) {
+                if (this.hitByJellyFish) {
+                    this.playAnimation(sharkie_img['hurt_poisoned']);
+                } else
+                    this.playAnimation(sharkie_img['hurt_electric_shock']);
+            }
+            else if (this.noKeysArePressed()) {
+                this.playAnimation(sharkie_img['idle']);
+                this.idleControl();
+            }
+        },)
+    }
+
+    idleControl() {
+        this.counter();
+        if (this.idleCounter >= 50 && this.y <= 300) {
+            this.sinkDown();
+        }
+        if (this.idleCounter >= 80 && this.y >= 300) {
+            this.playAnimation(sharkie_img['sleeping'])
+        }
+    }
+
+    sinkDown() {
+        this.playAnimation(sharkie_img['sinking']);
+        let sinking_speed = 3;
+        this.y += sinking_speed;
+
+    }
 
 
 
-            //  <-----------------------------Attacken---------------------->   
+
+    attack() {
+        setInterval(() => {
             if (this.world.keyboard.space) {
                 this.aktiveFinslapAttack('space');
                 this.playAnimation(sharkie_img['fin_slap']);
@@ -135,47 +168,31 @@ class Character extends MovableObject {
     }
 
 
-    OneMovementKeyIsPressed() {
+    oneMovementKeyIsPressed() {
         return this.world.keyboard.left ||
             this.world.keyboard.right ||
             this.world.keyboard.up ||
-            this.world.keyboard.down;
+            this.world.keyboard.down
     }
 
-    allKeysArePressed() {
-        !this.world.keyboard.left &&
+    noKeysArePressed() {
+        return !this.world.keyboard.left &&
             !this.world.keyboard.right &&
             !this.world.keyboard.up &&
             !this.world.keyboard.down &&
             !this.world.keyboard.space &&
             !this.world.keyboard.d &&
-            !this.world.keyboard.f;
+            !this.world.keyboard.f
     }
 
-    idleControl() {
-        this.counter();
-        if (this.idleCounter >= 5 && this.idleCounter < 50) {
-            this.playAnimation(sharkie_img['idle']);
-        }
-        if (this.idleCounter >= 50 && this.y <= 300) {
-            this.sinkDown();
-        }
-        if (this.idleCounter >= 80 && this.y >= 300) {
-            this.playAnimation(sharkie_img['sleeping'])
-        }
-    }
+
 
     resetAttacking() {
         this.isBubbleAttacking =
             this.world.keyboard.H = this.world.keyboard.J = this.world.keyboard.SPACE = false;
     }
 
-    sinkDown() {
-        this.playAnimation(sharkie_img['sinking']);
-        let sinking_speed = 1;
-        this.y += sinking_speed;
 
-    }
 
     counter() {
         this.idleCounter++
