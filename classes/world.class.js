@@ -54,7 +54,8 @@ class World {
     checkCollisionJellyFish() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof JellyFish)) {
-                console.log('bubble');
+                this.character.hit();
+                this.character.hitByJellyFish = true;
             }
         });
     }
@@ -68,9 +69,8 @@ class World {
                 if (bubble.isColliding(enemy)) {
                     this.bubbles.splice(this.bubbles.indexOf(bubble), 1);
                     if (enemy instanceof JellyFish) {
-                        enemy.dead = true;
+                        enemy.catched = true;
                     }
-
                 }
             })
         })

@@ -1,4 +1,5 @@
 class JellyFish extends MovableObject {
+    color;
     height = 60;
     width = 50;
     move_right = false;
@@ -11,24 +12,29 @@ class JellyFish extends MovableObject {
         width: 0,
         height: 0
     }
+    dead = false;
+    catched = false;
+
 
 
     constructor(color, x, y, rangeX, rangeY) {
         super();
-        this.loadImage(JF_swimming_img[color][0]);
-        this.loadImages(JF_swimming_img[color]);
+        this.loadImage(jf_swimming_img[color][0])
+        this.loadImages(jf_swimming_img[color]);
+        this.loadImages(jf_dead_img[color]);
         this.color = color
         this.x = x;
         this.y = y;
         this.rangeX = rangeX;
         this.rangeY = rangeY;
         this.speed = 0.15 + Math.random() * 0.25;
-        this.animate(x, y)
-
+        this.motionControl(x, y);
+        this.animate()
     }
 
 
-    animate(x, y) {
+
+    motionControl(x, y) {
         setInterval(() => {
             if (!this.move_right && !this.rangeY >= 0) {
                 this.moveLeft();
@@ -56,11 +62,23 @@ class JellyFish extends MovableObject {
             }
 
         }, 1000 / 60);
+    }
 
+
+
+    animate() {
         setInterval(() => {
-            this.playAnimation(JF_swimming_img[this.color]);
-
-        }, 1000 / 3);
+            if (this.catched) {
+                this.dead = true;
+            }
+        }, 1);
+        setInterval(() => {
+            if (this.dead) {
+                this.playAnimation(jf_dead_img[this.color]);
+            } else {
+                this.playAnimation(jf_swimming_img[this.color]);
+            }
+        }, 200)
     }
 
 

@@ -44,7 +44,7 @@ class DrawableObject {
 
     // draw Frames
     drawFrame(ctx) {
-        if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject)) {
+        if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject) || (this instanceof Bubble)) {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'red';

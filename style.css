@@ -261,3 +261,20 @@ output {
 
 
 /* <----------------------------------------------> */
+
+.instruction-menu {
+    display: flex;
+
+}
+
+.button-menu {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.instruction-info {
+    color: white;
+    width: 400px;
+}

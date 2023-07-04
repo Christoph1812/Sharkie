@@ -12,15 +12,27 @@ class MovableObject extends DrawableObject {
         height: 0
     }
 
-    // character.isColloding(JellyFish)
-    isCollidingold(obj) {
-        return (this.x + this.width - this.offset.right) >= (obj.x + obj.offset.left) &&
-            (this.y + this.height) <=  &&
-            ((this.x + this.offset.y) + (this.height - this.offset.height)) >= (obj.y + obj.offset.y) &&
-            (this.y + this.offset.y) <= ((obj.y + obj.offset.y) + (obj.height - obj.offset.height));
-    }
+    // // character.isColloding(JellyFish)
+    // isCollidingold(obj) {
+    //     return (this.x + this.width - this.offset.right) >= (obj.x + obj.offset.left) &&
+    //         (this.y + this.height - this.bottom) >= (obj.y + obj.offset.top) &&
+    //         (this.x + this.offset.left) <= (obj.x + obj.width - obj.right) &&
+    //         (this.y + this.offset.top) <= (obj.y + obj.height - obj.offset.bottom)
+    // }
 
-    isColliding(obj)
+    // isColliding(obj) {
+    //     (this.x + this.width - this.offset.x) >= (obj.x + obj.offset.y) &&
+    //         (this.y + this.height - this.height) >= (obj.y + obj.offset.y) &&
+    //         (this.x + this.offset.x) <= (obj.x + obj.width - obj.y) &&
+    //         (this.y + this.offset.y) <= (obj.y + obj.height - obj.offset.height)
+    // }
+
+    isColliding(obj) {
+        return (this.x + this.offset.x + this.width - this.offset.width) > (obj.x + obj.offset.x) &&
+            (this.x + this.offset.x) < (obj.x + obj.offset.x + obj.width - obj.offset.width) &&
+            (this.y + this.offset.y + this.height - this.offset.height) > obj.y + obj.offset.y &&
+            (this.y + this.offset.y) < (obj.y + obj.offset.y + obj.height - obj.offset.height);
+    }
 
 
     hit() {

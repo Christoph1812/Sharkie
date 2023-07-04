@@ -17,11 +17,10 @@ let win_sound = new Audio('audio/win_sound.mp3');
 
 function playBackgroundSound() {
     play_sound.volume = currentVolume / 100;
-    play_sound.play();
+    // play_sound.play();
 }
 
-
-document.addEventListener("DOMContentLoaded", function () {
+function addMuteHandler() {
     const soundImage = document.getElementById('sound-icon');
     if (soundImage) {
         soundImage.addEventListener('click', function () {
@@ -40,6 +39,10 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+}
+
+
+function addSliderHandler() {
     const volumeSlider = document.getElementById("volume-slider");
     const volumeValue = document.getElementById("volume-value");
     if (volumeSlider) {
@@ -50,4 +53,4 @@ document.addEventListener("DOMContentLoaded", function () {
             play_sound.volume = currentVolume / 100;
         });
     }
-});
+}

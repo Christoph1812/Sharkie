@@ -93,7 +93,7 @@ const pf_die_img = {
 
 // Jelly Fish
 
-const JF_swimming_img = {
+const jf_swimming_img = {
     lila: [
         'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
         'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
@@ -122,7 +122,7 @@ const JF_swimming_img = {
     ]
 }
 
-const JF_dead_img = {
+const jf_dead_img = {
     lila: [
         'img/2.Enemy/2 Jelly fish/Dead/Lila/L1.png',
         'img/2.Enemy/2 Jelly fish/Dead/Lila/L2.png',
@@ -290,6 +290,18 @@ const sharkie_img = {
         'img/1.Sharkie/6.dead/1.Poisoned/10.png',
         'img/1.Sharkie/6.dead/1.Poisoned/11.png',
         'img/1.Sharkie/6.dead/1.Poisoned/12.png'
+    ],
+    dead_electro_shock: [
+        'img/1.Sharkie/6.dead/2.Electro_shock/1.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/2.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/3.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/4.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/5.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/6.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/7.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/8.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/9.png',
+        'img/1.Sharkie/6.dead/2.Electro_shock/10.png',
     ],
     fin_slap: [
         'img/1.Sharkie/4.Attack/Fin slap/1.png',

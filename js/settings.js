@@ -4,8 +4,8 @@ let enter_fullscreen = false;
 
 function openSettings() {
     document.getElementById('settings-main-overlay').classList.remove('d-none');
-    overview = document.getElementById('overview');
-    overview.innerHTML =/*html*/ `<h2>Settings</h2>
+    overview = document.getElementById('instruction-content');
+    overview.innerHTML =/*html*/ `<div class="overview" id="overview"><h2>Settings</h2>
     <span class="headline-volume">volume</span>
        <div class="slider-container">
            <img class="sound-icon" id="sound-icon" src="img/assests/sound_on.png" alt="Sound">
@@ -23,25 +23,99 @@ function openSettings() {
        <div onclick="openCredits()" class="credits-container">
            <img src="img/assests/copyright.png" alt="copyright">
            <p>Credits</p>
-       </div>`
+       </div>
+       </div>`;
+    addMuteHandler();
+    addSliderHandler();
+
 }
 
 function openInstruction() {
-    document.getElementById('overview').innerHTML =/*html*/`<h2>Story</h2><div class="instruction-container">Sharke, the brave shark, swims through the sea. He fights jellyfish and puffer fish with bubble and fin punch attacks. On his mission he collects gift bottles and coins. Finally, he faces the fearsome final boss, a whale. Sharkie cleverly uses the poison bottles as weapons by shooting him with poison bubbles and weakening his defenses. With each hit, the whale becomes more and more vulnerable.
-    In the end, Sharke triumphs, restoring the balance of the ocean.</div>`
-
+    document.getElementById('instruction-content').innerHTML =/*html*/`
+    <div class="instruction-menu">
+        <div class="button-menu">
+            <button class="instruction-button" onclick="showStory()">Story</button>
+            <button class="instruction-button" onclick="showAttack()">Attack</button>
+            <button class="instruction-button" onclick="showGather()">Gather</button>
+            <button class="instruction-button" onclick="showKeys()">Keys</button>
+        </div>
+        <div class="instruction-info" id="instruction-info"><div>Sharke, the brave shark, swims through the sea. He fights jellyfish and puffer fish with bubble and fin punch
+            attacks.
+            On his mission he collects gift bottles and coins. Finally, he faces the fearsome final boss, a whale.
+            Sharkie cleverly uses the poison bottles as weapons by shooting him with poison bubbles and weakening his
+            defenses.
+            With each hit, the whale becomes more and more vulnerable.
+            In the end, Sharke triumphs, restoring the balance of the ocean.
+        </div></div>
+    </div>`;
 }
 
 function showStory() {
 
+    document.getElementById('instruction-info').innerHTML =/*html*/`
+    <div>
+        <h2>Story</h2>
+        <div>Sharke, the brave shark, swims through the sea. He fights jellyfish and puffer fish with bubble and fin punch
+            attacks.
+            On his mission he collects gift bottles and coins. Finally, he faces the fearsome final boss, a whale.
+            Sharkie cleverly uses the poison bottles as weapons by shooting him with poison bubbles and weakening his
+            defenses.
+            With each hit, the whale becomes more and more vulnerable.
+            In the end, Sharke triumphs, restoring the balance of the ocean.
+        </div>
+    </div>`
 }
+
+
 
 function showAttack() {
-
+    document.getElementById('instruction-info').innerHTML =/*html*/`<div>
+    <h2>Attack</h2>
+    <span>Use the bubble attack against the jellyfish</span>
+    <img src="img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png" alt="poisoned-bubble">
+    <span>Use the fin slap attack against the bubble fishes</span>
+    <img src="img/1.Sharkie/4.Attack/Fin slap/7.png" alt="Fin-slap">
+    <span> Use the poisoned bubble attack against the final boss</span>
+    <img src="img/1.Sharkie/4.Attack/Bubble trap/For Whale/7.png" alt="poisoned-bubble">
+</div>`
 }
 
-function show() {
+function showGather() {
+    document.getElementById('instruction-info').innerHTML =/*html*/`<div>
+    <h2>Gather</h2>
+    <h3>Coins</h3>
+    <span>collect at least 5 coins for an extra life</span>
+    <img src="img/4. Marcadores/1. Coins/4.png" alt="coin">
+    <h3>poisoned bottles</h3>
+    <span>Flaschen sammeln, um vergiftete Seifenblasen zu blasen</span>
+    <img src="img/4. Marcadores/Posión/Animada/1.png" alt="bottle">
+</div>
+`
+}
 
+function showKeys() {
+    document.getElementById('instruction-info').innerHTML =/*html*/`<div>
+    <h2>Keys</h2>
+    <span>Use the arrow-Keys to move Sharkie</span>
+    <div class="arrow-keys">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+        <img src="" alt="">
+    </div>
+    <div>
+        <button>SPACE</button>
+        <span>Press SPACE for fin slap attack</span>
+    </div>
+    <div>
+        <button>D</button>
+        <span>Press D for normal bubble attack </span>
+    </div>
+    <div>
+        <button>F</button>
+        <span>Press F for poisened bubble attack</span>
+    </div>
+</div>`
 }
 
 

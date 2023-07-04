@@ -1,5 +1,11 @@
 class Bubble extends MovableObject {
 
+
+    uplift = 0;
+    speed = 2;
+    acceloration = 0.1;
+    characterWidth;
+
     constructor(x, y, typ) {
         super();
         this.checkTyp(typ)
@@ -11,10 +17,25 @@ class Bubble extends MovableObject {
     }
 
     blow() {
+        let startX = this.x;
         setInterval(() => {
-            this.x += 10;
-        }, 50);
+            if (this.otherDirection) {
+                this.x -= this.speed;
+                if (this.x <= (startX - this.characterWidth - this.width - 25)) {
+                    this.y -= this.uplift;
+                    this.uplift += this.acceloration;
+                }
+            } else {
+                this.x += this.speed;
+                if (this.x >= (startX + 25)) {
+                    this.y -= this.uplift;
+                    this.uplift += this.acceloration;
+                }
+            }
+        }, 1000 / 60)
     }
+
+
 
     checkTyp(typ) {
         if (typ == 'normal') {
@@ -24,8 +45,18 @@ class Bubble extends MovableObject {
         }
     }
 
-    checkDirection() {
 
+    checkDirection(otherDirection, changePosition) {
+        this.characterWidth = changePosition;
+        if (otherDirection) {
+            this.otherDirection = true;
+            this.x -= changePosition + this.width;
+        } else {
+            this.otherDirection = false;
+        }
     }
 
+
 }
+
+
