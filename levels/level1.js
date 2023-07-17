@@ -7,9 +7,9 @@ function initLevel() {
             new JellyFish('lila', 500, 100, 100, 0),
             new JellyFish('green', 800, 100, 0, 50),
             new JellyFish('green', 900, 100, 0, 50),
-            // new PufferFish('orange', 50, 50),
-            // new PufferFish('green', 200, 200),
-            new Endboss()
+            new PufferFish('orange', 50, 50),
+            new PufferFish('green', 200, 350),
+            new Endboss(),
         ],
         [
             new BackgroundObject('img/3. Background/Layers/5. Water/D2.png', 720 * -1),

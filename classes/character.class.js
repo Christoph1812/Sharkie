@@ -14,13 +14,18 @@ class Character extends MovableObject {
     world;
     isBubbleAttacking = false;
     isFinSlaping = false;
+    isblowNoBubble = false;
     killedByJellyFish = false;
     hitByJellyFish = false;
+    killedByPufferfishOrEndboss = false;
+    hitByPufferfishOrEndboss = false;
+
+
 
 
 
     constructor() {
-        super();
+        super().loadImage(sharkie_img['swimming'][0]);
         this.loadSharkyIamges();
         this.motionControl();
         this.animate();
@@ -28,7 +33,6 @@ class Character extends MovableObject {
     }
 
     loadSharkyIamges() {
-        this.loadImage(sharkie_img['swimming'][0]);
         this.loadImages(sharkie_img['swimming']);
         this.loadImages(sharkie_img['idle']);
         this.loadImages(sharkie_img['sinking']);
@@ -36,7 +40,7 @@ class Character extends MovableObject {
         this.loadImages(sharkie_img['hurt_poisoned']);
         this.loadImages(sharkie_img['hurt_electric_shock'])
         this.loadImages(sharkie_img['dead_poisoned']);
-        this.loadImages[sharkie_img['dead_']]
+        this.loadImages(sharkie_img['dead_electric_shock']);
         this.loadImages(sharkie_img['fin_slap']);
         this.loadImages(sharkie_img['blow_no_bubble']);
         this.loadImages(sharkie_img['blow_normal_bubble']);
@@ -61,10 +65,11 @@ class Character extends MovableObject {
                 if (this.world.keyboard.down && this.y < 300) {
                     this.moveDown();
                 }
-                if (this.oneMovementKeyIsPressed()) {
+                if (this.oneMovementKeyIsPressed() && !this.isHurt()) {
                     this.playAnimation(sharkie_img['swimming']);
                     this.resetCounter();
                 }
+
                 this.world.camera_x = -this.x + 100;
             }
         }, 1000 / 50);
@@ -76,22 +81,27 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.isDead()) {
                 if (this.killedByJellyFish) {
-                    this.playAnimation(sharkie_img['dead_electro_shock']);
+                    this.playAnimation(sharkie_img['dead_electric_shock']);
                 } else {
                     this.playAnimation(sharkie_img['dead_poisoned']);
                 }
             }
-            else if (this.isHurt() && !this.isDead()) {
+            if (this.isHurt() && !this.isDead()) {
                 if (this.hitByJellyFish) {
-                    this.playAnimation(sharkie_img['hurt_poisoned']);
-                } else
                     this.playAnimation(sharkie_img['hurt_electric_shock']);
+                } else
+                    this.playAnimation(sharkie_img['hurt_poisoned']);
+
             }
-            else if (this.noKeysArePressed()) {
+            if (this.noKeysArePressed() && !this.isHurt() && !this.isDead()) {
                 this.playAnimation(sharkie_img['idle']);
                 this.idleControl();
             }
-        },)
+            if (this.oneKeyIsPressed()) {
+                this.resetCounter();
+
+            }
+        }, 100)
     }
 
     idleControl() {
@@ -111,13 +121,10 @@ class Character extends MovableObject {
 
     }
 
-
-
-
     attack() {
         setInterval(() => {
             if (this.world.keyboard.space) {
-                this.aktiveFinslapAttack('space');
+                this.aktiveAttack('space', this.isFinSlaping);
                 this.playAnimation(sharkie_img['fin_slap']);
                 this.isFinSlaping = true;
             }
@@ -128,22 +135,32 @@ class Character extends MovableObject {
 
             }
             if (this.world.keyboard.f) {
-                this.activeBubbleAttack('poision', 'f')
-                this.playAnimation(sharkie_img['blow_poisend_bubble']);
-                this.isBubbleAttacking = true;
+                if (this.world.collectedPoison > 0 || this.isBubbleAttacking) {
+                    this.activeBubbleAttack('poision', 'f')
+                    this.playAnimation(sharkie_img['blow_poisend_bubble']);
+                    this.isBubbleAttacking = true;
+
+                } else {
+                    this.aktiveAttack('f', this.isblowNoBubble);
+                    this.playAnimation(sharkie_img['blow_no_bubble']);
+                    this.isblowNoBubble = true;
+                }
+
             }
         }, 100);
     }
 
-    aktiveFinslapAttack(key) {
-        if (!this.isFinSlaping) {
+
+    aktiveAttack(key, attack) {
+        if (!attack) {
             this.currentImage = 0;
             let pressed = setInterval(() => {
-                this.isFinSlaping = true;
+                attack = true;
                 this.world.keyboard[key] = true;
             }, 100)
             setTimeout(() => {
                 clearInterval(pressed)
+                this.isblowNoBubble = false;
                 this.isFinSlaping = false;
                 this.world.keyboard[key] = false;
             }, 700)
@@ -185,6 +202,19 @@ class Character extends MovableObject {
             !this.world.keyboard.f
     }
 
+    oneKeyIsPressed() {
+        return this.world.keyboard.left &&
+            this.world.keyboard.right &&
+            this.world.keyboard.up &&
+            this.world.keyboard.down &&
+            this.world.keyboard.space &&
+            this.world.keyboard.d &&
+            this.world.keyboard.f
+
+    }
+
+
+
 
 
     resetAttacking() {
@@ -210,9 +240,14 @@ class Character extends MovableObject {
             this.world.bubbles.push(bubble);
         } else {
             this.world.poisonBubbles.push(bubble);
+            this.world.collectedPoison--;
+            world.statusbarPoisoned.setPercentage(world.statusbarPoisoned.percentage -= 20, 'poisoned');
         }
-
     }
+
+
+
+
 
 
 

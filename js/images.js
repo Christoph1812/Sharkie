@@ -291,7 +291,7 @@ const sharkie_img = {
         'img/1.Sharkie/6.dead/1.Poisoned/11.png',
         'img/1.Sharkie/6.dead/1.Poisoned/12.png'
     ],
-    dead_electro_shock: [
+    dead_electric_shock: [
         'img/1.Sharkie/6.dead/2.Electro_shock/1.png',
         'img/1.Sharkie/6.dead/2.Electro_shock/2.png',
         'img/1.Sharkie/6.dead/2.Electro_shock/3.png',

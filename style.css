@@ -234,13 +234,13 @@ output {
 /* <--------CSS Classen für Fullscreen Modus -------> */
 .fullscreen {
     z-index: -1;
-    width: 100%;
-    height: 100%;
+    width: 80%;
+    height: 80%;
 }
 
 .start-screen-fullscreen {
-    height: 100%;
-    width: 100%;
+    height: 80%;
+    width: 80%;
     background-size: cover !important
 }
 

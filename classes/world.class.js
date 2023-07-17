@@ -13,6 +13,9 @@ class World {
     endboss;
     bubbles = [];
     poisonBubbles = [];
+    collectedPoison = 0;
+    triggerendboss = false;
+    endboss = level1.enemies.find(enemy => enemy instanceof Endboss);
 
 
     constructor(canvas, keyboard) {
@@ -22,13 +25,13 @@ class World {
         this.setWorld();
         this.draw();
         this.checkCollisions();
+
     }
 
     setWorld() {
         this.level = level1;
-        this.endboss = this.level.enemies.find(e => e instanceof Endboss);
         this.character.world = this;
-        this.endboss.world = this;
+
     }
 
 
@@ -36,26 +39,43 @@ class World {
         setInterval(() => {
             this.checkCollisionsCollectables();
             this.checkCollisionJellyFish();
-            this.checkcollisionBubble()
-
+            this.checkcollisionBubble();
+            this.checkCollisionEndboss();
+            this.checkCollisionPufferFish();
+            this.triggerEndboss();
         }, 100)
     }
 
 
-    // checkCollisionsEnemy() {
-    //     this.level.enemies.forEach((enemy) => {
-    //         if (this.character.isColliding(enemy) && !this.character.isHurt()) {
-    //             this.character.hit();
-    //             this.statusBarLife.setPercentage(this.character.energy, 'life');
-    //         }
-    //     });
-    // }
-
     checkCollisionJellyFish() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof JellyFish)) {
+                this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
                 this.character.hit();
-                this.character.hitByJellyFish = true;
+                if (world.character.energy == 0) {
+                    this.character.killedByJellyFish = true;
+                } else {
+                    this.character.hitByJellyFish = true;
+                }
+            }
+        });
+    }
+
+
+    checkCollisionEndboss() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof Endboss)) {
+                this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
+                this.character.hit();
+            }
+        });
+    }
+
+    checkCollisionPufferFish() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof PufferFish)) {
+                this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
+                this.character.hit();
             }
         });
     }
@@ -86,6 +106,7 @@ class World {
                 }
                 else if (collecteable.type == 'posion') {
                     this.statusbarPoisoned.setPercentage(this.statusbarPoisoned.percentage += 20, 'poisoned');
+                    this.collectedPoison++;
                 }
                 this.level.collectebales.splice(index, 1);
             }
@@ -166,6 +187,15 @@ class World {
         this.ctx.restore();
     }
 
+
+    triggerEndboss() {
+        if (this.character.x >= 2400 && !this.endboss.triggerendboss) {
+            this.endboss.hadFirstContact = true;
+        }
+
+
+
+    }
 
 }
 
