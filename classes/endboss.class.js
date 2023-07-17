@@ -10,36 +10,28 @@ class Endboss extends MovableObject {
         width: 70,
         height: 150
     }
-    world;
     hadFirstContact = false;
 
 
+
     constructor() {
-        super().loadImage(endboss_img['swimming'][0])
-        this.loadImages(endboss_img['swimming']);
-        this.loadImages(endboss_img['introducing']);
-        this.animate();
+        super().loadImage(endboss_img['introducing'][0])
+        this.loadAllImages();
 
     }
 
-    animate() {
-        let i = 0
-        setInterval(() => {
-            if (i <= 8) {
-                this.playAnimation(endboss_img['introducing']);
-                i++;
-            }
-            else {
-                this.playAnimation(endboss_img['swimming']);
-            }
+    loadAllImages() {
+        this.loadImages(endboss_img['swimming']);
+        this.loadImages(endboss_img['introducing']);
+        this loadImages(endboss)
+
+    }
 
 
-            if (this.world && this.world.character && this.world.character.x > 2000 && !this.hadFirstContact) {
-                i = 0;
-                this.hadFirstContact = true;
-            }
 
-        }, 150);
+
+    animationControll() {
+
     }
 
 
