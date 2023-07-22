@@ -79,7 +79,7 @@ class World {
         });
     }
 
-
+    // can possibly be deleted
     checkCollisionEndboss() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof Endboss)) {

@@ -79,7 +79,7 @@ const pf_bubbleswim_img = {
     ]
 }
 
-const pf_die_img = {
+const pf_dead_img = {
     green: [
         'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png'
     ],

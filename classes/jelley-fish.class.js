@@ -85,10 +85,8 @@ class JellyFish extends MovableObject {
     upLift() {
         this.y -= this.upLiftSpeed;
         if (this.y < 0) {
-            // Finde die Indexposition der aktuellen Instanz im Array "enemies" (oder wie auch immer du das Array nennst)
             const index = world.level.enemies.indexOf(this);
             if (index !== -1) {
-                // Entferne die Instanz aus dem Array
                 world.level.enemies.splice(index, 1);
             }
         }
