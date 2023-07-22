@@ -17,8 +17,7 @@ class Character extends MovableObject {
     isblowNoBubble = false;
     killedByJellyFish = false;
     hitByJellyFish = false;
-    killedByPufferfishOrEndboss = false;
-    hitByPufferfishOrEndboss = false;
+
 
     constructor() {
         super().loadImage(sharkie_img['swimming'][0]);
@@ -56,7 +55,6 @@ class Character extends MovableObject {
                 }
                 if (this.world.keyboard.up && this.y > -60) {
                     this.moveUp();
-
                 }
                 if (this.world.keyboard.down && this.y < 300) {
                     this.moveDown();
@@ -145,7 +143,6 @@ class Character extends MovableObject {
                     this.playAnimation(sharkie_img['blow_no_bubble']);
                     this.isblowNoBubble = true;
                 }
-
             }
         }, 100);
     }
@@ -212,13 +209,13 @@ class Character extends MovableObject {
             this.world.keyboard.space ||
             this.world.keyboard.d ||
             this.world.keyboard.f
-
     }
 
 
+    // can possibly be deleted
     resetAttacking() {
-        this.isBubbleAttacking =
-            this.world.keyboard.H = this.world.keyboard.J = this.world.keyboard.SPACE = false;
+        this.isBubbleAttacking = false
+        this.world.keyboard.H = this.world.keyboard.J = this.world.keyboard.SPACE = false;
     }
 
 
