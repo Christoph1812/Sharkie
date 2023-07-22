@@ -2,10 +2,12 @@ class PufferFish extends MovableObject {
     color;
     height = 50;
     width = 70;
+    characterIsNear = false;
 
     constructor(color, x, y) {
         super().loadImage(pf_swimming_img[color][0]);
         this.loadImages(pf_swimming_img[color]);
+        this.loadImages(pf_transition_img[color])
         this.x = x;
         this.y = y;
         this.color = color;
@@ -16,13 +18,15 @@ class PufferFish extends MovableObject {
 
     animate() {
         setInterval(() => {
-            this.playAnimation(pf_swimming_img[this.color]);
-
-        }, 1000 / 15);
+            if (this.characterIsNear) {
+                this.playAnimationOnce(pf_transition_img[this.color])
+            }
+        }, 100);
 
         setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
+
 
     }
 

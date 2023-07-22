@@ -6,10 +6,18 @@ function initLevel() {
             new JellyFish('lila', 500, 200, 100, 0),
             new JellyFish('lila', 500, 100, 100, 0),
             new JellyFish('green', 800, 100, 0, 50),
-            new JellyFish('green', 900, 100, 0, 50),
+            new JellyFish('green', 900, 200, 0, 50),
+            new JellyFish('lila', 1500, 200, 100, 0),
+            new JellyFish('lila', 1600, 100, 100, 0),
+            new JellyFish('green', 1700, 100, 0, 50),
+            new JellyFish('green', 2000, 150, 0, 50),
             new PufferFish('orange', 50, 50),
             new PufferFish('green', 200, 350),
-            new Endboss(),
+            new PufferFish('red', 800, 200),
+            new PufferFish('orange', 1000, 100),
+            new PufferFish('green', 1000, 350),
+            new PufferFish('red', 1800, 200),
+            new Endboss(2600, 200, 250, 250),
         ],
         [
             new BackgroundObject('img/3. Background/Layers/5. Water/D2.png', 720 * -1),
@@ -59,8 +67,8 @@ function initLevel() {
             new CollecteableObject('posion', 1600, 405),
             new CollecteableObject('posion', 1800, 415),
             new CollecteableObject('posion', 2500, 415),
-
-
+            new CollecteableObject('posion', 2000, 415),
+            new CollecteableObject('posion', 2600, 415),
         ]
     );
 }

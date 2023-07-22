@@ -2,6 +2,7 @@ class JellyFish extends MovableObject {
     color;
     height = 60;
     width = 50;
+    upLiftSpeed = 4;
     move_right = false;
     move_down = false;
     rangeX;
@@ -36,30 +37,33 @@ class JellyFish extends MovableObject {
 
     motionControl(x, y) {
         setInterval(() => {
-            if (!this.move_right && !this.rangeY >= 0) {
-                this.moveLeft();
+            if (!this.catched) {
+                if (!this.move_right && !this.rangeY >= 0) {
+                    this.moveLeft();
+                }
+                if (this.move_right && !this.rangeY >= 0) {
+                    this.moveRight();
+                }
+                if (!this.move_down && !this.rangeX >= 0) {
+                    this.moveUp();
+                }
+                if (this.move_down && !this.rangeX >= 0) {
+                    this.moveDown();
+                }
+                if (this.y >= y) {
+                    this.move_down = false;
+                }
+                if (this.y <= (y - this.rangeY)) {
+                    this.move_down = true;
+                }
+                if (this.x <= (x - this.rangeX)) {
+                    this.move_right = true;
+                }
+                if (this.x >= x) {
+                    this.move_right = false;
+                }
             }
-            if (this.move_right && !this.rangeY >= 0) {
-                this.moveRight();
-            }
-            if (!this.move_down && !this.rangeX >= 0) {
-                this.moveUp();
-            }
-            if (this.move_down && !this.rangeX >= 0) {
-                this.moveDown();
-            }
-            if (this.y >= y) {
-                this.move_down = false;
-            }
-            if (this.y <= (y - this.rangeY)) {
-                this.move_down = true;
-            }
-            if (this.x <= (x - this.rangeX)) {
-                this.move_right = true;
-            }
-            if (this.x >= x) {
-                this.move_right = false;
-            }
+
 
         }, 1000 / 60);
     }
@@ -69,17 +73,24 @@ class JellyFish extends MovableObject {
     animate() {
         setInterval(() => {
             if (this.catched) {
-                this.dead = true;
-            }
-        }, 1);
-        setInterval(() => {
-            if (this.dead) {
                 this.playAnimation(jf_dead_img[this.color]);
+                this.upLift();
             } else {
                 this.playAnimation(jf_swimming_img[this.color]);
             }
-        }, 200)
+        }, 100)
     }
 
 
+    upLift() {
+        this.y -= this.upLiftSpeed;
+        if (this.y < 0) {
+            // Finde die Indexposition der aktuellen Instanz im Array "enemies" (oder wie auch immer du das Array nennst)
+            const index = world.level.enemies.indexOf(this);
+            if (index !== -1) {
+                // Entferne die Instanz aus dem Array
+                world.level.enemies.splice(index, 1);
+            }
+        }
+    }
 }

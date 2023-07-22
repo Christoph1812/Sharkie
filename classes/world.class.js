@@ -40,10 +40,28 @@ class World {
             this.checkCollisionsCollectables();
             this.checkCollisionJellyFish();
             this.checkcollisionBubble();
+            this.checkcollisionPoisonBubble()
             this.checkCollisionEndboss();
             this.checkCollisionPufferFish();
             this.triggerEndboss();
+            this.checkIsNear();
         }, 100)
+    }
+
+
+    checkIsNear() {
+        this.level.enemies.forEach((enemy) => {
+            if (this.character.isNear(enemy) && (enemy instanceof Endboss)) {
+                this.endboss.characterIsNear = true;
+            }
+            else {
+                this.endboss.characterIsNear = false;
+
+            }
+            if (this.character.isNear(enemy) && (enemy instanceof PufferFish)) {
+                enemy.characterIsNear = true;
+            }
+        });
     }
 
 
@@ -90,6 +108,22 @@ class World {
                     this.bubbles.splice(this.bubbles.indexOf(bubble), 1);
                     if (enemy instanceof JellyFish) {
                         enemy.catched = true;
+                    }
+                }
+            })
+        })
+    }
+
+    checkcollisionPoisonBubble() {
+        this.poisonBubbles.forEach((bubble) => {
+            if (bubble.y <= 0)
+                this.poisonBubbles.splice(this.poisonBubbles.indexOf(bubble), 1);
+            this.level.enemies.forEach((enemy) => {
+                if (bubble.isColliding(enemy)) {
+                    this.poisonBubbles.splice(this.poisonBubbles.indexOf(bubble), 1);
+                    if (enemy instanceof Endboss) {
+                        this.statusBarEndboss.setPercentage(this.statusBarEndboss.percentage -= 20, 'endboss');
+                        enemy.hit();
                     }
                 }
             })
@@ -189,7 +223,7 @@ class World {
 
 
     triggerEndboss() {
-        if (this.character.x >= 2400 && !this.endboss.triggerendboss) {
+        if (this.character.x >= 2000 && !this.endboss.triggerendboss) {
             this.endboss.hadFirstContact = true;
         }
 

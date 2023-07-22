@@ -2,7 +2,7 @@ class Character extends MovableObject {
     height = 190;
     width = 230;
     speed = 5;
-    x = 150;
+    x = 2200;
     y = 120;
     offset = {
         x: 40,
@@ -19,10 +19,6 @@ class Character extends MovableObject {
     hitByJellyFish = false;
     killedByPufferfishOrEndboss = false;
     hitByPufferfishOrEndboss = false;
-
-
-
-
 
     constructor() {
         super().loadImage(sharkie_img['swimming'][0]);
@@ -99,20 +95,23 @@ class Character extends MovableObject {
             }
             if (this.oneKeyIsPressed()) {
                 this.resetCounter();
+                console.log(this.idleCounter);
 
             }
         }, 100)
     }
 
+
     idleControl() {
         this.counter();
-        if (this.idleCounter >= 50 && this.y <= 300) {
+        if (this.idleCounter >= 40 && this.y <= 300) {
             this.sinkDown();
         }
-        if (this.idleCounter >= 80 && this.y >= 300) {
+        if (this.idleCounter >= 60 && this.y >= 300) {
             this.playAnimation(sharkie_img['sleeping'])
         }
     }
+
 
     sinkDown() {
         this.playAnimation(sharkie_img['sinking']);
@@ -120,6 +119,7 @@ class Character extends MovableObject {
         this.y += sinking_speed;
 
     }
+
 
     attack() {
         setInterval(() => {
@@ -192,6 +192,7 @@ class Character extends MovableObject {
             this.world.keyboard.down
     }
 
+
     noKeysArePressed() {
         return !this.world.keyboard.left &&
             !this.world.keyboard.right &&
@@ -202,19 +203,17 @@ class Character extends MovableObject {
             !this.world.keyboard.f
     }
 
+
     oneKeyIsPressed() {
-        return this.world.keyboard.left &&
-            this.world.keyboard.right &&
-            this.world.keyboard.up &&
-            this.world.keyboard.down &&
-            this.world.keyboard.space &&
-            this.world.keyboard.d &&
+        return this.world.keyboard.left ||
+            this.world.keyboard.right ||
+            this.world.keyboard.up ||
+            this.world.keyboard.down ||
+            this.world.keyboard.space ||
+            this.world.keyboard.d ||
             this.world.keyboard.f
 
     }
-
-
-
 
 
     resetAttacking() {
@@ -223,10 +222,10 @@ class Character extends MovableObject {
     }
 
 
-
     counter() {
         this.idleCounter++
     }
+
 
     resetCounter() {
         this.idleCounter = 0;
@@ -244,14 +243,6 @@ class Character extends MovableObject {
             world.statusbarPoisoned.setPercentage(world.statusbarPoisoned.percentage -= 20, 'poisoned');
         }
     }
-
-
-
-
-
-
-
-
 
 }
 
