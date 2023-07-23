@@ -3,6 +3,7 @@ let enter_fullscreen = false;
 
 
 function openSettings() {
+    document.getElementById('back').classList.add('v-none');
     document.getElementById('settings-main-overlay').classList.remove('d-none');
     overview = document.getElementById('instruction-content');
     overview.innerHTML =/*html*/ `<div class="overview" id="overview"><h2>Settings</h2>
@@ -31,6 +32,7 @@ function openSettings() {
 }
 
 function openInstruction() {
+    document.getElementById('back').classList.remove('v-none');
     document.getElementById('instruction-content').innerHTML =/*html*/`
     <div class="instruction-menu">
         <div class="button-menu">
@@ -121,7 +123,6 @@ function showKeys() {
 
 function closeSettings() {
     document.getElementById('settings-main-overlay').classList.add('d-none');
-
 }
 
 

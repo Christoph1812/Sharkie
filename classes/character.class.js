@@ -2,7 +2,7 @@ class Character extends MovableObject {
     height = 190;
     width = 230;
     speed = 5;
-    x = 2200;
+    x = 100;
     y = 120;
     offset = {
         x: 40,
@@ -12,6 +12,7 @@ class Character extends MovableObject {
     }
     idleCounter = 0;
     world;
+    isImmune = false;
     isBubbleAttacking = false;
     isFinSlaping = false;
     isblowNoBubble = false;
@@ -67,7 +68,6 @@ class Character extends MovableObject {
                 this.world.camera_x = -this.x + 100;
             }
         }, 1000 / 50);
-
     }
 
 
@@ -93,8 +93,6 @@ class Character extends MovableObject {
             }
             if (this.oneKeyIsPressed()) {
                 this.resetCounter();
-                console.log(this.idleCounter);
-
             }
         }, 100)
     }
@@ -123,8 +121,8 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.world.keyboard.space) {
                 this.aktiveAttack('space', this.isFinSlaping);
-                this.playAnimation(sharkie_img['fin_slap']);
-                this.isFinSlaping = true;
+                this.finSlapingAttack();
+
             }
             if (this.world.keyboard.d) {
                 this.activeBubbleAttack('normal', 'd')
@@ -147,6 +145,12 @@ class Character extends MovableObject {
         }, 100);
     }
 
+    finSlapingAttack() {
+        this.playAnimation(sharkie_img['fin_slap']);
+        this.isFinSlaping = true;
+        this.isImmune = true;
+    }
+
 
     aktiveAttack(key, attack) {
         if (!attack) {
@@ -159,6 +163,7 @@ class Character extends MovableObject {
                 clearInterval(pressed)
                 this.isblowNoBubble = false;
                 this.isFinSlaping = false;
+                this.isImmune = false;
                 this.world.keyboard[key] = false;
             }, 700)
         }

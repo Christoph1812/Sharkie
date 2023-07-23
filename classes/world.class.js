@@ -92,8 +92,13 @@ class World {
     checkCollisionPufferFish() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof PufferFish)) {
-                this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
-                this.character.hit();
+                if (this.character.isImmune) {
+                    enemy.isHitByFinSlap = true;
+                } else {
+                    this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
+                    this.character.hit();
+                }
+
             }
         });
     }
@@ -113,6 +118,7 @@ class World {
             })
         })
     }
+
 
     checkcollisionPoisonBubble() {
         this.poisonBubbles.forEach((bubble) => {

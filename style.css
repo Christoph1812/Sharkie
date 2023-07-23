@@ -19,6 +19,10 @@ body {
     display: none !important;
 }
 
+.v-none {
+    visibility: hidden;
+}
+
 h1 {
     color: azure;
     -webkit-text-stroke: 2px black;
@@ -139,20 +143,17 @@ h2 {
     justify-content: center;
 }
 
-.x-icon {
+.settings-icon {
     width: 25px;
     height: 25px;
-    display: flex;
-    justify-content: flex-end;
     filter: brightness(0) invert(1);
     cursor: pointer;
 }
 
-.x {
-    margin-top: 12px;
-    margin-right: 12px;
+.back-close-panel {
+    margin: 12px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
 
@@ -277,4 +278,54 @@ output {
 .instruction-info {
     color: white;
     width: 400px;
+}
+
+
+
+
+/* <------------Media----------------------------> */
+
+@media (max-width: 900px),
+(max-height: 480px) {
+    .canvas-container {
+        display: block;
+        border: none;
+        border-radius: 0;
+        overflow-y: hidden;
+        overflow-x: hidden;
+    }
+
+    .panel-top {
+        margin: 0px;
+    }
+
+    .start-screen {
+        position: static;
+
+    }
+
+    h1 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width:720px) {
+    canvas {
+        width: 100%;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+}
+
+@media only screen and (max-height:480px) {
+    canvas {
+        height: 100vh;
+    }
+
+    body {
+        overflow-y: hidden;
+    }
+
 }

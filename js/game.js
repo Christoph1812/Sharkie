@@ -9,7 +9,7 @@ let gameRuns = false;
 
 function init() {
     canvas = document.getElementById('canvas');
-    playBackgroundSound();
+    // playBackgroundSound();
 }
 
 //  <-----------PausableIntervalle mus geprüft werden ---------------------->
@@ -30,7 +30,6 @@ function init() {
 
 function startGame() {
     initLevel();
-
     world = new World(canvas, keyboard);
     document.getElementById('start-screen').classList.add('d-none');
 
@@ -40,52 +39,64 @@ function resetGame() {
     intervallIds.forEach(clearInterval);
 }
 
-window.addEventListener('keydown', (e) => {
-    if (e.keyCode == 37) {
-        keyboard.left = true;
-    }
-    if (e.keyCode == 39) {
-        keyboard.right = true;
-    }
-    if (e.keyCode == 38) {
-        keyboard.up = true;
-    }
-    if (e.keyCode == 40) {
-        keyboard.down = true;
-    }
-    if (e.keyCode == 32) {
-        keyboard.space = true;
-    }
-    if (e.keyCode == 68) {
-        keyboard.d = true;
-    }
-    if (e.keyCode == 70) {
-        keyboard.f = true;
-    }
+/**
+ * This function handles key press events and updates key state data.
+ */
 
+window.addEventListener('keydown', (e) => {
+    switch (e.key) {
+        case 'ArrowLeft':
+            keyboard.left = true;
+            break;
+        case 'ArrowRight':
+            keyboard.right = true;
+            break;
+        case 'ArrowUp':
+            keyboard.up = true;
+            break;
+        case 'ArrowDown':
+            keyboard.down = true;
+            break;
+        case ' ':
+            keyboard.space = true;
+            break;
+        case 'd':
+            keyboard.d = true;
+            break;
+        case 'f':
+            keyboard.f = true;
+            break;
+
+    }
 });
 
-window.addEventListener('keyup', (e) => {
-    if (e.keyCode == 37) {
-        keyboard.left = false;
-    }
-    if (e.keyCode == 39) {
-        keyboard.right = false;
-    }
-    if (e.keyCode == 38) {
-        keyboard.up = false;
-    }
-    if (e.keyCode == 40) {
-        keyboard.down = false;
-    }
-    if (e.keyCode == 32) {
-        keyboard.space = false;
-    }
-    if (e.keyCode == 68) {
-        keyboard.d = false;
-    }
-    if (e.keyCode == 70) {
-        keyboard.f = false;
-    }
+/**
+ *  This function handels key release events and updates ky state data
+ */
 
-});     
+window.addEventListener('keyup', (e) => {
+    switch (e.key) {
+        case 'ArrowLeft':
+            keyboard.left = false;
+            break;
+        case 'ArrowRight':
+            keyboard.right = false;
+            break;
+        case 'ArrowUp':
+            keyboard.up = false;
+            break;
+        case 'ArrowDown':
+            keyboard.down = false;
+            break;
+        case ' ':
+            keyboard.space = false;
+            break;
+        case 'd':
+            keyboard.d = false;
+            break;
+        case 'f':
+            keyboard.f = false;
+            break;
+        // Add more cases for other keys if needed
+    }
+});

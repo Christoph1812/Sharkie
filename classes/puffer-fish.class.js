@@ -3,13 +3,15 @@ class PufferFish extends MovableObject {
     height = 50;
     width = 70;
     characterIsNear = false;
-    hitByFinSlap = false;
+    isHitByFinSlap = false;
     slapSpeed = 5;
+
 
     constructor(color, x, y) {
         super().loadImage(pf_swimming_img[color][0]);
         this.loadImages(pf_swimming_img[color]);
-        this.loadImages(pf_transition_img[color])
+        this.loadImages(pf_transition_img[color]);
+        this.loadImages(pf_dead_img[color]);
         this.x = x;
         this.y = y;
         this.color = color;
@@ -23,8 +25,10 @@ class PufferFish extends MovableObject {
             if (this.characterIsNear) {
                 this.playAnimationOnce(pf_transition_img[this.color]);
             }
-            if (this.hitByFinSlap && this.isInvulnerable) {
+            if (this.isHitByFinSlap) {
                 this.hitByFinSlap();
+            } else {
+                this.playAnimation(pf_swimming_img[this.color]);
             }
         }, 100);
 

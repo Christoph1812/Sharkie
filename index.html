@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" translate="no">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <title>Sharkie</title>
     <link rel="icon" type="image/x-icon" href="img/1.Sharkie/4.Attack/Fin slap/7.png">
     <script src="js/images.js"></script>
     <script src="classes/drawable-object.claas.js"></script>
@@ -33,9 +33,10 @@
     <h1>Sharkie</h1>
     <div class="canvas-container">
         <div class="settings-overlay d-none" id="settings-main-overlay">
-            <div class="x">
-                <img onclick="openSettings()" src="img/assests/arrow-left.png" alt="Arrow-Left">
-                <img onclick="closeSettings()" class="x-icon" src="img/assests/x-mark.png" alt="X-Mark">
+            <div class="back-close-panel">
+                <img onclick="openSettings()" class="settings-icon v-none" id="back" src="img/assests/arrow-left.png"
+                    alt="Arrow-Left">
+                <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
             </div>
             <div class="instruction-content" id="instruction-content"></div>
         </div>
