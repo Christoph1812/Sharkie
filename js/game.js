@@ -6,10 +6,12 @@ let gameIsPaused = true;
 let gameRuns = false;
 
 
-
+/**
+ * Saves the canvas in the canvas variable
+ */
 function init() {
     canvas = document.getElementById('canvas');
-    // playBackgroundSound();
+    rotateScreen();
 }
 
 //  <-----------PausableIntervalle mus geprüft werden ---------------------->
@@ -28,10 +30,14 @@ function init() {
 // }
 
 
+/**
+ * Initializes the game by setting up the level, creating the game world, hiding the start screen,and playing the background sound when the start button on the start screen is clicked.
+ */
 function startGame() {
     initLevel();
     world = new World(canvas, keyboard);
     document.getElementById('start-screen').classList.add('d-none');
+    playBackgroundSound();
 
 }
 
@@ -39,10 +45,10 @@ function resetGame() {
     intervallIds.forEach(clearInterval);
 }
 
-/**
- * This function handles key press events and updates key state data.
- */
 
+/**
+ * Handls key press events and updates key state data.
+ */
 window.addEventListener('keydown', (e) => {
     switch (e.key) {
         case 'ArrowLeft':
@@ -71,9 +77,8 @@ window.addEventListener('keydown', (e) => {
 });
 
 /**
- *  This function handels key release events and updates ky state data
+ *  Handels key release events and updates ky state data
  */
-
 window.addEventListener('keyup', (e) => {
     switch (e.key) {
         case 'ArrowLeft':
@@ -97,6 +102,21 @@ window.addEventListener('keyup', (e) => {
         case 'f':
             keyboard.f = false;
             break;
-        // Add more cases for other keys if needed
     }
 });
+
+// Funktion zum Rotieren des Bildschirms
+function rotateScreen() {
+    if (window.innerWidth >= 800) {
+        document.getElementById('game-container').classList.remove('d-none');
+
+    } else {
+        document.getElementById('game-container').classList.add('d-none');
+
+    }
+}
+
+// Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmbreite auszuführen
+window.addEventListener("resize", rotateScreen);
+
+

@@ -15,6 +15,10 @@ body {
     font-family: 'luckiestGuy', Arial, 'Helventica', sans-serif;
 }
 
+.canvas {
+    z-index: -1;
+}
+
 .d-none {
     display: none !important;
 }
@@ -22,6 +26,8 @@ body {
 .v-none {
     visibility: hidden;
 }
+
+/* == Start screen ==*/
 
 h1 {
     color: azure;
@@ -31,13 +37,6 @@ h1 {
     margin-bottom: 20px;
 }
 
-h2 {
-    font-size: 35px;
-    margin-top: -10px;
-    font-weight: lighter;
-    font-style: italic;
-}
-
 .canvas-container {
     display: flex;
     justify-content: center;
@@ -45,10 +44,6 @@ h2 {
     border: 20px groove rgba(35, 137, 204, 0.9);
     border-radius: 10px;
     margin-bottom: 200px;
-}
-
-.canvas {
-    z-index: -1;
 }
 
 .start-screen {
@@ -110,13 +105,30 @@ h2 {
     box-shadow: 0px 1px 0px 0px;
 }
 
+/* == Settings overlay == */
+h2 {
+    -webkit-text-stroke: 2px #3490c5;
+    margin: 0;
+    font-size: 35px;
+    margin-top: -10px;
+    font-weight: lighter;
+    font-style: italic;
+    text-align: center;
+}
+
+h3 {
+    font-size: 20px;
+    margin: 0;
+    text-align: center;
+}
+
 .settings-overlay {
     border-color: white;
     border-style: solid;
     border-radius: 15px;
     position: absolute;
     width: max-content;
-    height: 350px;
+    height: 400px;
     z-index: 3;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -129,13 +141,6 @@ h2 {
     color: white;
 }
 
-.slider-container {
-    margin-bottom: 12px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 300px;
-}
 
 .headline-volume {
     font-size: 24px;
@@ -156,8 +161,52 @@ h2 {
     justify-content: space-between;
 }
 
+.credits-container,
+.instruction-container,
+.fullscreen-container {
+    font-size: 24px;
+    margin-bottom: 12px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
 
-/* <-------------------VolumeSlider-----------------------> */
+}
+
+.credits-container img,
+.instruction-container img,
+.fullscreen-container img {
+    width: 18px;
+    height: 18px;
+    filter: brightness(0) invert(1);
+
+}
+
+.x-icon:hover,
+.credits-container:hover img,
+.instruction-container:hover img,
+.fullscreen-container:hover img {
+    -webkit-filter: drop-shadow(2px 2px 1px rgb(22, 126, 236));
+    filter: brightness(0) invert(1) drop-shadow(2px 2px 1px rgb(22, 126, 236));
+}
+
+.credits-container:hover p,
+.instruction-container:hover p,
+.fullscreen-container:hover p {
+    text-shadow: 2px 2px 1px rgb(22, 126, 236);
+}
+
+
+/* == Volume slider == */
+.slider-container {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
 input[type="range"] {
     -webkit-appearance: none;
     margin-right: 6px;
@@ -192,47 +241,7 @@ output {
 }
 
 
-
-/* <--------------------Menu-Points----------> */
-
-
-.credits-container,
-.instruction-button,
-.fullscreen-container {
-    font-size: 24px;
-    margin-bottom: 12px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-
-}
-
-.credits-container img,
-.instruction-button img,
-.fullscreen-container img {
-    width: 18px;
-    height: 18px;
-    filter: brightness(0) invert(1);
-
-}
-
-.x-icon:hover,
-.credits-container:hover img,
-.instruction-button:hover img,
-.fullscreen-container:hover img {
-    -webkit-filter: drop-shadow(2px 2px 1px rgb(22, 126, 236));
-    filter: brightness(0) invert(1) drop-shadow(2px 2px 1px rgb(22, 126, 236));
-}
-
-.credits-container:hover p,
-.instruction-button:hover p,
-.fullscreen-container:hover p {
-    text-shadow: 2px 2px 1px rgb(22, 126, 236);
-}
-
-/* <--------CSS Classen für Fullscreen Modus -------> */
+/* == Fullscreen modus == */
 .fullscreen {
     z-index: -1;
     width: 80%;
@@ -255,24 +264,22 @@ output {
     width: 100vw;
 }
 
-.instruction-container {
-    width: 400px;
-    font-weight: lighter;
-}
 
 
-/* <----------------------------------------------> */
-
+/* == Instruction == */
 .instruction-menu {
     display: flex;
+    gap: 15px;
 
 }
 
 .button-menu {
+    margin-left: 6px;
     width: 150px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    justify-content: center;
+    gap: 6px;
 }
 
 .instruction-info {
@@ -280,12 +287,123 @@ output {
     width: 400px;
 }
 
+.instruction-button {
+    border-style: solid;
+    color: white;
+    background-color: #3490c5;
+    border-radius: 5px;
+    font-family: 'luckiestGuy', Arial, 'Helventica', sans-serif;
+    font-size: 24px;
+    text-align: center;
+    height: 50px;
+}
+
+.attack-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.attack-image {
+    width: 120px;
+    height: 60px;
+}
 
 
 
-/* <------------Media----------------------------> */
+/* == Rotate the device scrren == */
 
-@media (max-width: 900px),
+@-moz-keyframes spin {
+    25% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@-webkit-keyframes spin {
+    25% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@keyframes spin {
+    25% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    50% {
+        -webkit-transform: rotate(90deg);
+    }
+
+    75% {
+        -webkit-transform: rotate(0deg);
+    }
+}
+
+@keyframes scaleIn {
+    0% {
+        scale: 0;
+    }
+
+    100% {
+        scale: 1;
+    }
+}
+
+.rotate-device-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5;
+}
+
+.rotate-device-screen img {
+    height: 96px;
+    width: 96px;
+    filter: invert();
+}
+
+.rotate-device-screen span {
+    color: white;
+    font-size: 32px;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+.rotate-phone {
+    -webkit-animation: spin 3s ease-in-out infinite;
+    -moz-animation: spin 3s linear infinite;
+    animation: spin 3s linear infinite;
+}
+
+
+
+/* == Media Queries ==*/
+
+@media (max-width: 800px),
 (max-height: 480px) {
     .canvas-container {
         display: block;
