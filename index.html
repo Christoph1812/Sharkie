@@ -30,30 +30,34 @@
 </head>
 
 <body onload="init()">
-    <h1>Sharkie</h1>
-    <div class="canvas-container">
-        <div class="settings-overlay d-none" id="settings-main-overlay">
-            <div class="back-close-panel">
-                <img onclick="openSettings()" class="settings-icon v-none" id="back" src="img/assests/arrow-left.png"
-                    alt="Arrow-Left">
-                <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
-            </div>
-            <div class="instruction-content" id="instruction-content"></div>
-        </div>
-        <div id="fullscreen">
-            <div id="start-screen" class="start-screen">
-                <div class="panel-top" id="panel-top">
-                    <img onclick="openSettings()" class="settings-img" src="img/assests/services-128.png" alt="Setting">
+    <div id="game-container">
+        <h1>Sharkie</h1>
+        <div class="canvas-container" id="canvas-container">
+            <div class="settings-overlay d-none" id="settings-main-overlay">
+                <div class="back-close-panel">
+                    <img onclick="openSettings()" class="settings-icon v-none" id="back"
+                        src="img/assests/arrow-left.png" alt="Arrow-Left">
+                    <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
                 </div>
-                <div class="panel-bottom" id="panel-bottom">
-                    <button class="button yellow" onclick="startGame()">Start</button>
-                </div>
+                <div class="instruction-content" id="instruction-content"></div>
             </div>
-            <canvas class="canvas" id="canvas" width="720" height="480"></canvas>
+            <div id="fullscreen">
+                <div id="start-screen" class="start-screen">
+                    <div class="panel-top" id="panel-top">
+                        <img onclick="openSettings()" class="settings-img" src="img/assests/services-128.png"
+                            alt="Setting">
+                    </div>
+                    <div class="panel-bottom" id="panel-bottom">
+                        <button class="button yellow" onclick="startGame()">Start</button>
+                    </div>
+                </div>
+                <canvas class="canvas" id="canvas" width="720" height="480"></canvas>
+            </div>
         </div>
-
-
-
+    </div>
+    <div class="rotate-device-screen" id="rotate-device-screen">
+        <img class="rotate-phone" src="img/assests/phone.png" alt="device">
+        <span>Please rotate your device</span>
     </div>
 
 

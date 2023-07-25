@@ -261,6 +261,7 @@ const sharkie_img = {
         'img/1.Sharkie/2.Long_IDLE/i9.png '
     ],
     sleeping: [
+        'img/1.Sharkie/2.Long_IDLE/I10.png',
         'img/1.Sharkie/2.Long_IDLE/I11.png',
         'img/1.Sharkie/2.Long_IDLE/I12.png',
         'img/1.Sharkie/2.Long_IDLE/I13.png'

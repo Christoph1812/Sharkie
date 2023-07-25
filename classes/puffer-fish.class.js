@@ -5,6 +5,12 @@ class PufferFish extends MovableObject {
     characterIsNear = false;
     isHitByFinSlap = false;
     slapSpeed = 5;
+    offset = {
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 10
+    }
 
 
     constructor(color, x, y) {

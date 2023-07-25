@@ -2,8 +2,8 @@ let storageVolume = 50;
 let currentVolume = 50;
 let Image1 = true;
 
-let play_sound = new Audio('audio/play_sound.wav');
-play_sound.loop = true;
+let background_sound = new Audio('audio/play_sound.wav');
+background_sound.loop = true;
 
 let collect_bottle_sound = new Audio('audio/collect_bottle.mp3');
 let collect_coin_sound = new Audio('audio/collect_coin.mp3');
@@ -15,11 +15,18 @@ let swim_sound = new Audio('audio/swim_sound.mp3');
 let win_sound = new Audio('audio/win_sound.mp3');
 
 
+
+/**
+ *  Plays the background music.
+ */
 function playBackgroundSound() {
-    play_sound.volume = currentVolume / 100;
-    // play_sound.play();
+    background_sound.volume = currentVolume / 100;
+    background_sound.play();
 }
 
+/**
+ *  Adds a click event listener to a sound icon element, allowing users to toggle the sound on and off. When clicked, the function mutes the sound if it's playing and restores the volume if it's muted.
+ */
 function addMuteHandler() {
     const soundImage = document.getElementById('sound-icon');
     if (soundImage) {
@@ -41,6 +48,10 @@ function addMuteHandler() {
 
 }
 
+
+/**
+ * Controls a volume slider , updating the displayed volume value and adjusting the audio volume in real-time as the user interacts with the slider.
+ */
 
 function addSliderHandler() {
     const volumeSlider = document.getElementById("volume-slider");

@@ -88,7 +88,7 @@ class Character extends MovableObject {
 
             }
             if (this.noKeysArePressed() && !this.isHurt() && !this.isDead()) {
-                this.playAnimation(sharkie_img['idle']);
+
                 this.idleControl();
             }
             if (this.oneKeyIsPressed()) {
@@ -100,11 +100,15 @@ class Character extends MovableObject {
 
     idleControl() {
         this.counter();
-        if (this.idleCounter >= 40 && this.y <= 300) {
+        if (this.idleCounter <= 40) {
+            this.playAnimation(sharkie_img['idle']);
+        }
+        else if (this.idleCounter >= 40 && this.y < 300) {
             this.sinkDown();
         }
-        if (this.idleCounter >= 60 && this.y >= 300) {
-            this.playAnimation(sharkie_img['sleeping'])
+        else if (this.idleCounter >= 60 && this.y >= 300) {
+            console.log(this.y)
+            this.playAnimation(sharkie_img['sleeping']);
         }
     }
 
@@ -112,7 +116,8 @@ class Character extends MovableObject {
     sinkDown() {
         this.playAnimation(sharkie_img['sinking']);
         let sinking_speed = 3;
-        this.y += sinking_speed;
+        if (this.y < 300)
+            this.y += sinking_speed;
 
     }
 
@@ -226,6 +231,7 @@ class Character extends MovableObject {
 
     counter() {
         this.idleCounter++
+        this.isSinkDown = false;
     }
 
 
