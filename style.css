@@ -27,6 +27,11 @@ body {
     visibility: hidden;
 }
 
+.headline {
+    display: flex;
+    justify-content: center;
+}
+
 /* == Start screen ==*/
 
 h1 {

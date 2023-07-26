@@ -11,7 +11,10 @@ let gameRuns = false;
  */
 function init() {
     canvas = document.getElementById('canvas');
-    rotateScreen();
+    updateVisibility();
+    window.addEventListener('resize', updateVisibility);
+    window.addEventListener('orientationchange', updateVisibility);
+
 }
 
 //  <-----------PausableIntervalle mus geprüft werden ---------------------->
@@ -105,18 +108,63 @@ window.addEventListener('keyup', (e) => {
     }
 });
 
-// Funktion zum Rotieren des Bildschirms
-function rotateScreen() {
-    if (window.innerWidth >= 800) {
-        document.getElementById('game-container').classList.remove('d-none');
 
-    } else {
-        document.getElementById('game-container').classList.add('d-none');
-
-    }
+/**
+ * Returns true if the device is an mobile device or your in developer tools
+ * @returns boolean
+ */
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent) ||
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 }
 
-// Eventlistener hinzufügen, um die Funktion bei Änderungen der Bildschirmbreite auszuführen
-window.addEventListener("resize", rotateScreen);
+
+
+function updateVisibility() {
+    const gameContainer = document.getElementById('game-container');
+    const rotateDeviceScreen = document.getElementById('rotate-device-screen');
+    const isMobile = isMobileDevice();
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+    const isWideScreen = window.innerWidth >= 800;
+
+    const showCanvas = (!isMobile && isWideScreen) || (isMobile && isLandscape);
+
+    gameContainer.classList.toggle('d-none', !showCanvas);
+    rotateDeviceScreen.classList.toggle('d-none', showCanvas);
+}
+
+// function updateVisibility() {
+//     const gameContainer = document.getElementById('game-container');
+//     const rotateDeviceScreen = document.getElementById('rotate-device-screen');
+//     const isMobile = isMobileDevice();
+//     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+//     const isWideScreen = window.innerWidth >= 800;
+
+//     if (!isMobile) {
+//         // Nicht auf einem mobilen Gerät, daher entweder Desktop oder Tablet
+//         if (isWideScreen) {
+//             // Breiter Bildschirm, Canvas anzeigen
+//             gameContainer.classList.remove('d-none');
+//             rotateDeviceScreen.classList.add('d-none');
+//         } else {
+//             // Schmaler Bildschirm, bitte Gerät drehen anzeigen
+//             gameContainer.classList.add('d-none');
+//             rotateDeviceScreen.classList.remove('d-none');
+//         }
+//     } else {
+//         // Auf einem mobilen Gerät, also nur im Landscape-Modus Canvas anzeigen
+//         if (isLandscape) {
+//             gameContainer.classList.remove('d-none');
+//             rotateDeviceScreen.classList.add('d-none');
+//         } else {
+//             gameContainer.classList.add('d-none');
+//             rotateDeviceScreen.classList.remove('d-none');
+//         }
+//     }
+
+
+
+
+
 
 

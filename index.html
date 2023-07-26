@@ -30,8 +30,10 @@
 </head>
 
 <body onload="init()">
-    <div id="game-container">
-        <h1>Sharkie</h1>
+    <div id="game-container" class="d-none">
+        <div class="headline">
+            <h1>Sharkie</h1>
+        </div>
         <div class="canvas-container" id="canvas-container">
             <div class="settings-overlay d-none" id="settings-main-overlay">
                 <div class="back-close-panel">
@@ -55,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="rotate-device-screen" id="rotate-device-screen">
+    <div class="rotate-device-screen d-none" id="rotate-device-screen">
         <img class="rotate-phone" src="img/assests/phone.png" alt="device">
         <span>Please rotate your device</span>
     </div>

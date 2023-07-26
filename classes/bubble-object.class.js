@@ -1,11 +1,16 @@
 class Bubble extends MovableObject {
-
-
     uplift = 0;
     speed = 2;
     acceloration = 0.1;
     characterWidth;
 
+    /**
+         * Creates 
+         * @param {number} x - The X-coordinate of the object.
+         * @param {number} y - The Y-coordinate of the object.
+         * @param {string} typ - The type of the object.
+         * @constructor
+     */
     constructor(x, y, typ) {
         super();
         this.checkTyp(typ)
