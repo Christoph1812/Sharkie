@@ -14,7 +14,7 @@ function init() {
     updateVisibility();
     window.addEventListener('resize', updateVisibility);
     window.addEventListener('orientationchange', updateVisibility);
-
+    mobileButtonsHandler();
 }
 
 //  <-----------PausableIntervalle mus geprüft werden ---------------------->
@@ -38,10 +38,12 @@ function init() {
  */
 function startGame() {
     initLevel();
+    gameRuns = true;
     world = new World(canvas, keyboard);
-    document.getElementById('start-screen').classList.add('d-none');
+    document.getElementById('panel-middle').classList.add('v-none');
+    document.getElementById('start-screen').removeAttribute('style');
+    showMobileButton()
     playBackgroundSound();
-
 }
 
 function resetGame() {
@@ -109,6 +111,69 @@ window.addEventListener('keyup', (e) => {
 });
 
 
+function mobileButtonsHandler() {
+    document.getElementById('btn-left').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.left = true;
+    });
+    document.getElementById('btn-left').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.left = false;
+    });
+    document.getElementById('btn-right').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.right = true;
+    });
+    document.getElementById('btn-right').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.right = false;
+    });
+    document.getElementById('btn-up').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.up = true;
+    });
+    document.getElementById('btn-up').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.up = false;
+    });
+    document.getElementById('btn-down').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.down = true;
+    });
+    document.getElementById('btn-down').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.down = false;
+    });
+    document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.d = true;
+    });
+    document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.d = false;
+    });
+    document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.space = true;
+    });
+    document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.space = false;
+    });
+    document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        keyboard.f = true;
+    });
+    document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
+        e.preventDefault();
+        keyboard.f = false;
+    });
+
+}
+
+
+
+
 /**
  * Returns true if the device is an mobile device or your in developer tools
  * @returns boolean
@@ -119,19 +184,45 @@ function isMobileDevice() {
 }
 
 
-
 function updateVisibility() {
     const gameContainer = document.getElementById('game-container');
     const rotateDeviceScreen = document.getElementById('rotate-device-screen');
     const isMobile = isMobileDevice();
     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
     const isWideScreen = window.innerWidth >= 800;
-
     const showCanvas = (!isMobile && isWideScreen) || (isMobile && isLandscape);
 
     gameContainer.classList.toggle('d-none', !showCanvas);
     rotateDeviceScreen.classList.toggle('d-none', showCanvas);
+    showMobileButton();
 }
+
+function showMobileButton() {
+    const panelBottom = document.getElementById('panel-bottom');
+    const isMobile = isMobileDevice();
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+    if (isMobile && isLandscape && gameRuns) {
+        panelBottom.classList.remove('d-none');
+    } else {
+        panelBottom.classList.add('d-none');
+    }
+}
+
+
+// function updateVisibility() {
+//     const gameContainer = document.getElementById('game-container');
+//     const rotateDeviceScreen = document.getElementById('rotate-device-screen');
+//     const isMobile = isMobileDevice();
+//     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+//     const isWideScreen = window.innerWidth >= 800;
+
+//     const showCanvas = (!isMobile && isWideScreen) || (isMobile && isLandscape);
+
+//     gameContainer.classList.toggle('d-none', !showCanvas);
+//     rotateDeviceScreen.classList.toggle('d-none', showCanvas);
+
+// }
 
 // function updateVisibility() {
 //     const gameContainer = document.getElementById('game-container');

@@ -7,7 +7,7 @@ let enter_fullscreen = false;
 function openSettings() {
     document.getElementById('back').classList.add('v-none');
     document.getElementById('settings-main-overlay').classList.remove('d-none');
-    overview = document.getElementById('instruction-content');
+    overview = document.getElementById('settings-content');
     overview.innerHTML =/*html*/ `<div class="overview" id="overview"><h2>Settings</h2>
     <span class="headline-volume">volume</span>
        <div class="slider-container">
@@ -38,7 +38,7 @@ function openSettings() {
  */
 function openInstruction() {
     document.getElementById('back').classList.remove('v-none');
-    document.getElementById('instruction-content').innerHTML =/*html*/`
+    document.getElementById('settings-content').innerHTML =/*html*/`
     <div class="instruction-menu">
         <div class="button-menu">
             <button class="instruction-button" onclick="showStory()">Story</button>
