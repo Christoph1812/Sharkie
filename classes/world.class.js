@@ -229,7 +229,7 @@ class World {
 
 
     triggerEndboss() {
-        if (this.character.x >= 2000 && !this.endboss.triggerendboss) {
+        if (this.character.x >= 2200 && !this.endboss.triggerendboss) {
             this.endboss.hadFirstContact = true;
         }
 

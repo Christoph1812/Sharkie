@@ -145,7 +145,7 @@ h3 {
     position: absolute;
     width: max-content;
     height: max-content;
-    z-index: 3;
+    z-index: 9999;
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -258,13 +258,9 @@ output {
 
 
 /* == Fullscreen modus == */
-.fullscreen {
-    z-index: -1;
-    width: 80%;
-    height: 80%;
-}
 
-.start-screen-fullscreen {
+
+/* .start-screen-fullscreen {
     height: 80%;
     width: 80%;
     background-size: cover !important
@@ -278,7 +274,7 @@ output {
 .panel-bottom-fullscreen {
     height: 85vh;
     width: 100vw;
-}
+} */
 
 
 

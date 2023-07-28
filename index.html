@@ -34,55 +34,59 @@
         <div class="headline">
             <h1>Sharkie</h1>
         </div>
-        <div class="canvas-container" id="canvas-container">
-            <div class="settings-overlay d-none" id="settings-main-overlay">
-                <div class="back-close-panel">
-                    <img onclick="openSettings()" class="settings-icon v-none" id="back"
-                        src="img/assests/arrow-back.png" alt="Arrow back">
-                    <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
+        <div id="fullscreen">
+            <div class="canvas-container" id="canvas-container">
+                <div class="settings-overlay d-none" id="settings-main-overlay">
+                    <div class="back-close-panel">
+                        <img onclick="openSettings()" class="settings-icon v-none" id="back"
+                            src="img/assests/arrow-back.png" alt="Arrow back">
+                        <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
+                    </div>
+                    <div class="settings-content" id="settings-content"></div>
                 </div>
-                <div class="settings-content" id="settings-content"></div>
-            </div>
-            <div id="fullscreen">
-                <div id="start-screen" class="start-screen"
-                    style="background-image: url('img/3. Background/Mesa de trabajo 1.png')">
-                    <div class="panel-top" id="panel-top">
-                        <img onclick="openSettings()" class="settings-img" src="img/assests/services-128.png"
-                            alt="Setting">
-                    </div>
-                    <div class="panel-middle" id="panel-middle">
-                        <button class="button yellow" onclick="startGame()">Start</button>
-                    </div>
-                    <div class="panel-bottom d-none" id="panel-bottom">
-                        <div class="key-block">
-                            <button class="mobile-button" id="btn-up"><img src="img/assests/arrow-up.png"> </button>
-                            <button class="mobile-button" id="btn-down"><img src="img/assests/arrow-down.png"></button>
+                <div id="fullscreen">
+                    <div id="start-screen" class="start-screen"
+                        style="background-image: url('img/3. Background/Mesa de trabajo 1.png')">
+                        <div class="panel-top" id="panel-top">
+                            <img onclick="openSettings()" class="settings-img" src="img/assests/services-128.png"
+                                alt="Setting">
                         </div>
-                        <div class="key-block">
-                            <button class="mobile-button" id="btn-bubble">
-                                <img src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="">
-                            </button>
-                            <button class="mobile-button" id="btn-fin-slap">
-                                <img src="img/assests/fin-slap-icon.png" alt="">
-                            </button>
-                            <button class="mobile-button" id="btn-poison-bubble">
-                                <img src="img/assests/poison-icon.png" alt="">
-                            </button>
+                        <div class="panel-middle" id="panel-middle">
+                            <button class="button yellow" onclick="startGame()">Start</button>
                         </div>
-                        <div class="key-block">
-                            <button class="mobile-button" id="btn-left">
-                                <img src="img/assests/arrow-left.png" alt="">
-                            </button>
-                            <button class="mobile-button" id=btn-right>
-                                <img src="img/assests/arrow-right.png" alt="">
-                            </button>
+                        <div class="panel-bottom d-none" id="panel-bottom">
+                            <div class="key-block">
+                                <button class="mobile-button" id="btn-up"><img src="img/assests/arrow-up.png"> </button>
+                                <button class="mobile-button" id="btn-down"><img
+                                        src="img/assests/arrow-down.png"></button>
+                            </div>
+                            <div class="key-block">
+                                <button class="mobile-button" id="btn-bubble">
+                                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="">
+                                </button>
+                                <button class="mobile-button" id="btn-fin-slap">
+                                    <img src="img/assests/fin-slap-icon.png" alt="">
+                                </button>
+                                <button class="mobile-button" id="btn-poison-bubble">
+                                    <img src="img/assests/poison-icon.png" alt="">
+                                </button>
+                            </div>
+                            <div class="key-block">
+                                <button class="mobile-button" id="btn-left">
+                                    <img src="img/assests/arrow-left.png" alt="">
+                                </button>
+                                <button class="mobile-button" id=btn-right>
+                                    <img src="img/assests/arrow-right.png" alt="">
+                                </button>
+                            </div>
                         </div>
                     </div>
+                    <canvas class="canvas" id="canvas" width="720" height="480"></canvas>
                 </div>
-                <canvas class="canvas" id="canvas" width="720" height="480"></canvas>
             </div>
         </div>
     </div>
+
     <div class="rotate-device-screen d-none" id="rotate-device-screen">
         <img class="rotate-phone" src="img/assests/phone.png" alt="device">
         <span>Please rotate your device</span>

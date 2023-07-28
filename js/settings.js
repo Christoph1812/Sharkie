@@ -158,16 +158,18 @@ function closeSettings() {
  */
 function toggleFullscreen() {
     let fullscreen_setting = document.getElementById('fullscreen-setting');
-
     if (!enter_fullscreen) {
-        fullscreen_setting.innerHTML = /*html*/ `< img src = "img/assests/fullscreen-exit.png" alt = "Fullscreen" >
+        fullscreen_setting.innerHTML = /*html*/ `
+       <img src="img/assests/fullscreen-exit.png" alt="Fullscreen ">
         <p>Exit fullscreen</p>`
-        enterFullscreen();
-    } else {
-        fullscreen_setting.innerHTML = /*html*/ `< img src = "img/assests/fullscreen-enter.png" alt = "Fullscreen" >
-        <p>Enter fullscreen</p>`;
         enter_fullscreen = true;
-        // exitFullscreen();
+        enterFullscreenModus();
+    } else {
+        fullscreen_setting.innerHTML = /*html*/ `
+      <img src="img/assests/fullscreen-enter.png" alt="Normalscreen">
+        <p>Enter fullscreen</p>`;
+        enter_fullscreen = false;
+        exitFullscreenModus();
     }
 }
 
@@ -175,7 +177,7 @@ function toggleFullscreen() {
 /**
  * Enables the "fullscreen" HTML element to enter fullscreen mode using the browser's Fullscreen API and makes further adjustments
  */
-function enterFullscreen() {
+function enterFullscreenModus() {
     let fullscreen = document.getElementById('fullscreen');
     if (fullscreen.requestFullscreen) {
         fullscreen.requestFullscreen();
@@ -183,18 +185,20 @@ function enterFullscreen() {
         fullscreen.mozRequestFullScreen();
     } else if (element.webkitRequestFullscreen) { // Chrome, Safari und Opera
         fullscreen.webkitRequestFullscreen();
+        overview.webkitRequestFullscreen()
     } else if (fullscreen.msRequestFullscreen) { // Internet Explorer und Edge
         fullscreen.msRequestFullscreen();
     }
     enter_fullscreen = true;
     changeViewFullscreen();
+
 }
 
 
 /**
  * Enables the exiting of the current fullscreen mode using the browser's respective methods .
  */
-function exitFullscreen() {
+function exitFullscreenModus() {
     if (document.exitFullscreen) {
         document.exitFullscreen();
     } else if (document.mozCancelFullScreen) { // Firefox
@@ -215,28 +219,33 @@ function exitFullscreen() {
 function changeViewFullscreen() {
     document.getElementById('canvas').style.width = '100vw';
     document.getElementById('canvas').style.height = '100vh';
-    document.getElementById('start-screen').classList.add('start-screen-fullscreen');
-    document.getElementById('panel-top').classList.add('panel-top-fullscreen');
-    document.getElementById('panel-bottom').classList.add('panel-bottom-fullscreen');
+
 
 }
+
 
 /**
  * Returns to normal mode.
  */
-
 function changeViewNormalScreen() {
-    document.getElementById('canvas-frame').classList.remove('d-none');
-    document.getElementById('canvas').style.width = '720px';
-    document.getElementById('canvas').style.height = '480px';
-    document.getElementById('pannel-container').classList.remove('startscreenFullScreen');
-    document.getElementById('top-pannel').classList.remove('topBotPannelFullScreen');
-    document.getElementById('mid-pannel').classList.remove('midPannelFullScreen');
-    document.getElementById('bottom-pannel').classList.remove('topBotPannelFullScreen');
+    document.getElementById('canvas').removeAttribute('style');
+
+}
+
+/**
+ * Closed fullscreen mode on browser events.
+ */
+function exitFullscreenEventHandler() {
+    if (!document.fullscreenElement && !document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement) {
+        exitFullscreenModus();
+    }
 }
 
 
-
+document.addEventListener('fullscreenchange', exitFullscreenEventHandler);
+document.addEventListener('webkitfullscreenchange', exitFullscreenEventHandler);
+document.addEventListener('mozfullscreenchange', exitFullscreenEventHandler);
+document.addEventListener('MSFullscreenChange', exitFullscreenEventHandler);
 
 
 

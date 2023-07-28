@@ -2,7 +2,7 @@ class Level {
     enemies;
     backgroundObjects;
     collectebales;
-    level_end_x = 3200;
+    level_end_x = 2800;
 
     constructor(enemies, backgroundObjects, collectebales) {
         this.enemies = enemies;

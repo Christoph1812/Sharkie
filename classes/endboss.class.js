@@ -2,7 +2,7 @@ class Endboss extends MovableObject {
     height = 290;
     width = 350;
     speed = 10;
-    x = 2600;
+    x = 2900;
     y = 0;
     offset = {
         x: 30,
