@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Sharkie</title>
-    <link rel="icon" type="image/x-icon" href="img/1.Sharkie/4.Attack/Fin slap/7.png">
+    <link rel="icon" type="image" href="img/1.Sharkie/4.Attack/Fin slap/7.png">
     <script src="js/images.js"></script>
     <script src="classes/drawable-object.claas.js"></script>
     <script src="classes/movable-object.class.js"></script>
@@ -35,16 +35,16 @@
             <h1>Sharkie</h1>
         </div>
         <div id="fullscreen">
-            <div class="canvas-container" id="canvas-container">
+            <div class="canvas-container canvas-border" id="canvas-container">
                 <div class="settings-overlay d-none" id="settings-main-overlay">
                     <div class="back-close-panel">
-                        <img onclick="openSettings()" class="settings-icon v-none" id="back"
+                        <img onclick="openSettings()" class="back-icon v-none" id="back"
                             src="img/assests/arrow-back.png" alt="Arrow back">
-                        <img onclick="closeSettings()" class="settings-icon" src="img/assests/x-mark.png" alt="X-Mark">
+                        <img onclick="closeSettings()" class="close-icon" src="img/assests/x-mark.png" alt="X-Mark">
                     </div>
                     <div class="settings-content" id="settings-content"></div>
                 </div>
-                <div id="fullscreen">
+                <div>
                     <div id="start-screen" class="start-screen"
                         style="background-image: url('img/3. Background/Mesa de trabajo 1.png')">
                         <div class="panel-top" id="panel-top">
@@ -52,7 +52,7 @@
                                 alt="Setting">
                         </div>
                         <div class="panel-middle" id="panel-middle">
-                            <button class="button yellow" onclick="startGame()">Start</button>
+                            <button class="button yellow" onclick="showLoadingScreen()">Start</button>
                         </div>
                         <div class="panel-bottom d-none" id="panel-bottom">
                             <div class="key-block">
@@ -81,12 +81,14 @@
                             </div>
                         </div>
                     </div>
+                    <div class="loading-screen d-none" id="loading-screen"></div>
+                    <div class="win-screen d-none" id="win-screen"></div>
+                    <div class="game-over-screen d-none" id="game-over-screen"></div>
                     <canvas class="canvas" id="canvas" width="720" height="480"></canvas>
                 </div>
             </div>
         </div>
     </div>
-
     <div class="rotate-device-screen d-none" id="rotate-device-screen">
         <img class="rotate-phone" src="img/assests/phone.png" alt="device">
         <span>Please rotate your device</span>

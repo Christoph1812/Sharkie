@@ -2,7 +2,7 @@
 let enter_fullscreen = false;
 
 /**
- *  Opens the first page of settings menu update the audio slider.
+ *  Opens the first page of settings menu and update the audio slider.
  */
 function openSettings() {
     document.getElementById('back').classList.add('v-none');
@@ -15,6 +15,10 @@ function openSettings() {
            <input type="range" id="volume-slider" min="0" max="100" value="50" step="1">
            <output id="volume-value">50</output>
        </div>
+       <div onclick="backToStart()" class="back-to-start-container" >
+            <img src="img/assests/back-to-start.png" alt="Exit">
+            <p>Back to start</p>
+       </div>
        <div onclick="toggleFullscreen()" class="fullscreen-container" id="fullscreen-setting">
            <img src="img/assests/fullscreen-enter.png" alt="Fullscreen">
            <p>Enter Fullscreen</p>
@@ -24,7 +28,7 @@ function openSettings() {
            <p>Instruction</p>
        </div>
        <div onclick="openCredits()" class="credits-container">
-           <img src="img/assests/copyright.png" alt="copyright">
+           <img src="img/assests/copyright.png" alt="Copyright">
            <p>Credits</p>
        </div>
        </div>`;
@@ -88,13 +92,16 @@ function showAttack() {
     document.getElementById('instruction-info').innerHTML =/*html*/`
     <div class="attack-container">
         <h2>Attack</h2>
-        <img class="attack-image" src="img/assests/sharkie-normal-bubble.png" alt="poisoned-bubble">
-        <span>Use the bubble attack against the jellyfish</span>
-        <img class="attack-image" src="img/assests/sharkie-fin-slap.png" alt="Fin-slap">
-        <span>Use the fin slap attack against the bubble fishes</span>
-        <img class="attack-image" src="img/assests/sharkie-posion-bubble.png" alt="poisoned-bubble">
-        <span> Use the poisoned bubble attack against the final boss</span>
-        
+        <div class="attack">
+            <img  src="img/assests/sharkie-normal-bubble.png" alt="poisoned-bubble">
+            <span>Use the bubble attack against <br> the jellyfish</span></div>
+        <div class="attack">
+             <img  src="img/assests/sharkie-fin-slap.png" alt="Fin-slap">
+            <span>Use the fin slap attack against <br> the bubble fishes</span></div>
+        <div class="attack">
+            <img src="img/assests/sharkie-posion-bubble.png" alt="poisoned-bubble">
+            <span> Use the poisoned bubble attack <br> against the whale</span>
+        </div>
     </div>`
 }
 
@@ -107,11 +114,15 @@ function showGather() {
     <div class="gather-container">
         <h2>Gather</h2>         
         <h3>Coins</h3>
-        <img src="img/4. Marcadores/1. Coins/4.png" alt="coin">
-        <span>collect at least 5 coins for an extra life</span>
+        <div class="gather">
+            <img src="img/4. Marcadores/1. Coins/4.png" alt="coin">
+            <span>collect at least 5 coins <br> for an extra life</span>
+        </div>
         <h3>poisoned bottles</h3>
-        <img src="img/4. Marcadores/Posión/Animada/1.png" alt="bottle">
-        <span>Collecting bottles to blow poisoned bubbles</span>
+        <div class="gather">
+            <img src="img/4. Marcadores/Posión/Animada/1.png" alt="bottle">
+            <span>Collecting bottles to blow <br> poisoned bubbles</span>
+        </div>  
     </div>
 `
 }
@@ -120,30 +131,50 @@ function showGather() {
  * Displays the key assignment when you click on the Buttons button.
  */
 function showKeys() {
-    document.getElementById('instruction-info').innerHTML =/*html*/`<div>
-    <h2>Keys</h2>
-    <span>Use the arrow-Keys to move Sharkie</span>
-    <div class="arrow-keys">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-        <img src="" alt="">
-    </div>
-    <div>
-        <button>SPACE</button>
-        <span>Press SPACE for fin slap attack</span>
-    </div>
-    <div>
-        <button>D</button>
-        <span>Press D for normal bubble attack </span>
-    </div>
-    <div>
-        <button>F</button>
-        <span>Press F for poisened bubble attack</span>
-    </div>
-</div>`
+    document.getElementById('instruction-info').innerHTML =/*html*/`
+    <div class="key-container">
+        <h2>Keys</h2>
+        <figure class="arrow-keys">
+            <div>
+                <div class="key-top" >
+                    <div class="instruction-key"><img src="img/assests/settings/in-arrow-up.png" alt="Key up"></div>
+                </div>
+                <div class="key-bottom">
+                    <div class="instruction-key"><img src="img/assests/settings/in-arrow-left.png" alt="key left"></div>
+                    <div class="instruction-key"><img src="img/assests/settings/in-arrow-down.png" alt="Key down"></div>
+                    <div class="instruction-key"><img src="img/assests/settings/in-arrow-right.png" alt="Key right"></div>
+                </div>
+            </div>
+            <figcaption>Use the arrow-Keys <br> to move Sharkie</figcaption>  
+        </figure>
+        <figure>
+            <div class="instruction-key">Space</div>
+            <figcaption>Press <kbd>Space</kbd> for fin slap attack</figcaption>
+        </figure>
+        <figure>
+            <div class="instruction-key">D</div>
+            <figcaption>Press <kbd>D</kbd> for normal bubble attack </figcaption>
+        </figure>
+        <figure>
+            <div class="instruction-key">F</div>
+            <figcaption>Press <kbd>F</kbd> for poisened bubble attack</figcaption>
+        </figure>
+    </div>`
 }
 
+
+function openCredits() {
+    document.getElementById('back').classList.remove('v-none');
+    overview = document.getElementById('settings-content');
+    overview.innerHTML =/*html*/`<div>
+    Music: Aquatic Ambiance by Thunder Hawk (Official)
+    Source: https://soundcloud.com/thunder_hawk/aquatic-ambiance
+    License: http://creativecommons.org/licenses/by/3.0/
+    Get music free for a link from https://starfrosch.com
+    https.freepik.com
+    </div>`
+
+}
 
 /**
  * Closes the settings.
@@ -175,7 +206,8 @@ function toggleFullscreen() {
 
 
 /**
- * Enables the "fullscreen" HTML element to enter fullscreen mode using the browser's Fullscreen API and makes further adjustments
+ * enables fullscreen mode for an HTML element identified by the ID "fullscreen."
+ * It ensures compatibility across different browsers and adjusts the view accordingly.
  */
 function enterFullscreenModus() {
     let fullscreen = document.getElementById('fullscreen');
@@ -183,20 +215,18 @@ function enterFullscreenModus() {
         fullscreen.requestFullscreen();
     } else if (fullscreen.mozRequestFullScreen) { // Firefox
         fullscreen.mozRequestFullScreen();
-    } else if (element.webkitRequestFullscreen) { // Chrome, Safari und Opera
+    } else if (fullscreen.webkitRequestFullscreen) { // Chrome, Safari und Opera
         fullscreen.webkitRequestFullscreen();
-        overview.webkitRequestFullscreen()
     } else if (fullscreen.msRequestFullscreen) { // Internet Explorer und Edge
         fullscreen.msRequestFullscreen();
     }
     enter_fullscreen = true;
     changeViewFullscreen();
-
 }
 
 
 /**
- * Enables the exiting of the current fullscreen mode using the browser's respective methods .
+ * 
  */
 function exitFullscreenModus() {
     if (document.exitFullscreen) {
@@ -219,17 +249,17 @@ function exitFullscreenModus() {
 function changeViewFullscreen() {
     document.getElementById('canvas').style.width = '100vw';
     document.getElementById('canvas').style.height = '100vh';
-
+    document.getElementById('canvas-container').classList.remove('canvas-border');
 
 }
 
 
 /**
- * Returns to normal mode.
+ * Returns the game to normal mode.
  */
 function changeViewNormalScreen() {
     document.getElementById('canvas').removeAttribute('style');
-
+    document.getElementById('canvas-container').classList.add('canvas-border');
 }
 
 /**
@@ -241,11 +271,55 @@ function exitFullscreenEventHandler() {
     }
 }
 
-
+/**
+ * These event listeners listen for changes in the fullscreen mode of the document and call the "exitFullscreenEventHandler" function
+ *  when the fullscreen mode is exited, regardless of whether it's a Webkit, Mozilla, or Microsoft browser event.
+ */
 document.addEventListener('fullscreenchange', exitFullscreenEventHandler);
 document.addEventListener('webkitfullscreenchange', exitFullscreenEventHandler);
 document.addEventListener('mozfullscreenchange', exitFullscreenEventHandler);
 document.addEventListener('MSFullscreenChange', exitFullscreenEventHandler);
 
+/**
+ * Returns true if the device is an mobile device.
+ * @returns boolean
+ */
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent) ||
+        (navigator.userAgent.includes("Mac") && "ontouchend" in document);
+}
 
+
+function updateVisibility() {
+    const gameContainer = document.getElementById('game-container');
+    const rotateDeviceScreen = document.getElementById('rotate-device-screen');
+    const isMobile = isMobileDevice();
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+    const isWideScreen = window.innerWidth >= 800;
+    const showCanvas = (!isMobile && isWideScreen) || (isMobile && isLandscape);
+
+    gameContainer.classList.toggle('d-none', !showCanvas);
+    rotateDeviceScreen.classList.toggle('d-none', showCanvas);
+    showMobileButton();
+}
+
+function showMobileButton() {
+    const panelBottom = document.getElementById('panel-bottom');
+    const isMobile = isMobileDevice();
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+
+    if (isMobile && isLandscape && gameRuns) {
+        panelBottom.classList.remove('d-none');
+    } else {
+        panelBottom.classList.add('d-none');
+    }
+}
+
+
+/**
+ * reload the page to return to the home screen
+ */
+function backToStart() {
+    window.location.reload();
+}
 

@@ -35,12 +35,12 @@ function addMuteHandler() {
                 soundImage.src = 'img/assests/sound_off.png';
                 volume = currentVolume;
                 currentVolume = 0;
-                play_sound.pause();
+                background_sound.pause();
                 Image1 = false;
             } else {
                 soundImage.src = 'img/assests/sound_on.png';
                 volume = currentVolume;
-                play_sound.play();
+                background_sound.play();
                 Image1 = true;
             }
         });
@@ -61,7 +61,7 @@ function addSliderHandler() {
         volumeSlider.addEventListener("input", function () {
             currentVolume = Number(volumeSlider.value);
             volumeValue.innerHTML = currentVolume;
-            play_sound.volume = currentVolume / 100;
+            background_sound.volume = currentVolume / 100;
         });
     }
 }

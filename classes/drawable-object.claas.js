@@ -18,7 +18,13 @@ class DrawableObject {
      * @param {string} path- The path to the image to be loaded
      */
     loadImage(path) {
+        imagesToLoad++;
         this.img = new Image();
+        this.img.onload = function () {
+            imagesLoaded++;
+            let percent = (imagesLoaded / imagesToLoad) * 100;
+            console.log(`${percent} loaded`);
+        }
         this.img.src = path;
     }
 

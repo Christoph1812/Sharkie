@@ -47,13 +47,14 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 20px groove rgba(35, 137, 204, 0.9);
-    border-radius: 10px;
-    margin-bottom: 200px;
+    margin-bottom: 300px;
     width: 720;
     height: 480;
+}
 
-
+.canvas-border {
+    border: 20px groove rgba(35, 137, 204, 0.9);
+    border-radius: 10px;
 }
 
 .start-screen {
@@ -133,9 +134,12 @@ h2 {
 }
 
 h3 {
+    -webkit-text-stroke: 1px #3490c5;
+    font-weight: lighter;
+    font-style: italic;
     font-size: 20px;
-    margin: 0;
-    text-align: center;
+    margin: 10px;
+
 }
 
 .settings-overlay {
@@ -164,7 +168,8 @@ h3 {
     justify-content: center;
 }
 
-.settings-icon {
+.back-icon,
+.close-icon {
     width: 25px;
     height: 25px;
     filter: brightness(0) invert(1);
@@ -177,6 +182,7 @@ h3 {
     justify-content: space-between;
 }
 
+.back-to-start-container,
 .credits-container,
 .instruction-container,
 .fullscreen-container {
@@ -190,6 +196,7 @@ h3 {
 
 }
 
+.back-to-start-container img,
 .credits-container img,
 .instruction-container img,
 .fullscreen-container img {
@@ -199,7 +206,9 @@ h3 {
 
 }
 
-.x-icon:hover,
+.close-icon:hover,
+.back-icon:hover,
+.back-to-start-container:hover img,
 .credits-container:hover img,
 .instruction-container:hover img,
 .fullscreen-container:hover img {
@@ -207,6 +216,7 @@ h3 {
     filter: brightness(0) invert(1) drop-shadow(2px 2px 1px rgb(22, 126, 236));
 }
 
+.back-to-start-container:hover p,
 .credits-container:hover p,
 .instruction-container:hover p,
 .fullscreen-container:hover p {
@@ -257,28 +267,8 @@ output {
 }
 
 
-/* == Fullscreen modus == */
-
-
-/* .start-screen-fullscreen {
-    height: 80%;
-    width: 80%;
-    background-size: cover !important
-}
-
-.panel-top-fullscreen {
-    height: 15vh;
-    width: 100vw;
-}
-
-.panel-bottom-fullscreen {
-    height: 85vh;
-    width: 100vw;
-} */
-
-
-
 /* == Instruction == */
+
 .instruction-menu {
     display: flex;
     gap: 15px;
@@ -318,11 +308,109 @@ output {
     justify-content: center;
 }
 
-.attack-image {
+.attack img {
     width: 120px;
     height: 60px;
 }
 
+.attack {
+    display: flex;
+    align-items: center;
+    gap: 12px
+}
+
+.gather img {
+    width: 45px;
+    height: 45px;
+}
+
+.gather {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.key-container {
+    display: flex;
+    flex-direction: column;
+
+}
+
+figure {
+    margin: 0px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px
+}
+
+
+
+.key-top img,
+.key-bottom img {
+    width: 20px;
+    height: 20px;
+
+}
+
+.key-bottom {
+    display: flex;
+    gap: 4px
+}
+
+
+.key-top {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 4px;
+}
+
+.instruction-key {
+    padding: 5px;
+    border-style: none;
+    color: black;
+    background-color: #cde4f4;
+    border-radius: 5px;
+    font-family: 'luckiestGuy', Arial, 'Helventica', sans-serif;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 25px;
+    width: max-content;
+}
+
+/* == Loading screen == */
+
+.loading-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background-color: lightblue;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* == Win screen == */
+/* == Game over screen ==*/
 
 
 /* == Rotate the device scrren == */
