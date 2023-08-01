@@ -26,6 +26,7 @@ class World {
         this.draw();
         this.checkCollisions();
 
+
     }
 
     setWorld() {
@@ -45,6 +46,7 @@ class World {
             this.checkCollisionPufferFish();
             this.triggerEndboss();
             this.checkIsNear();
+            this.checkEndOfGame();
         }, 100)
     }
 
@@ -233,8 +235,16 @@ class World {
             this.endboss.hadFirstContact = true;
         }
 
+    }
 
+    checkEndOfGame() {
+        if (this.endboss.isDead()) {
+            showWinScreen();
+        }
+        else if (this.character.isDead()) {
 
+            showGameOverScreen();
+        }
     }
 
 }

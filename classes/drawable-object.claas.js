@@ -13,6 +13,7 @@ class DrawableObject {
         height: 0
     }
 
+
     /**
      * This function loads an image using the specified 'path' and assigns it to the 'img' property
      * @param {string} path- The path to the image to be loaded
@@ -22,8 +23,9 @@ class DrawableObject {
         this.img = new Image();
         this.img.onload = function () {
             imagesLoaded++;
-            let percent = (imagesLoaded / imagesToLoad) * 100;
-            console.log(`${percent} loaded`);
+
+            // let percent = (imagesLoaded / imagesToLoad) * 100;
+            // console.log(`${percent} loaded`);
         }
         this.img.src = path;
     }
@@ -42,6 +44,7 @@ class DrawableObject {
         }
 
     }
+
 
     /**
     * Loads a list of images into the image cache.

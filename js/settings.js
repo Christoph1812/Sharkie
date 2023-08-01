@@ -316,10 +316,5 @@ function showMobileButton() {
 }
 
 
-/**
- * reload the page to return to the home screen
- */
-function backToStart() {
-    window.location.reload();
-}
+
 

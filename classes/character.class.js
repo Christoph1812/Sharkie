@@ -107,7 +107,6 @@ class Character extends MovableObject {
             this.sinkDown();
         }
         else if (this.idleCounter >= 60 && this.y >= 300) {
-            console.log(this.y)
             this.playAnimation(sharkie_img['sleeping']);
         }
     }

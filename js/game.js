@@ -9,6 +9,7 @@ let gameRuns = false;
 let imagesToLoad = 0;
 let imagesLoaded = 0;
 let chargeProgress = 0;
+let loadingInterval;
 
 
 
@@ -39,35 +40,60 @@ function init() {
 // }
 
 
+
 function showLoadingScreen() {
+    createGame()
     let loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.remove('d-none')
     loadingScreen.innerHTML = /*html*/`
-    <img src="img/assests/sharkie-sleeping.gif" alt="Sleeping Sharkie">
-    <div class="loading-bar-container">
-                <div class="loading-bar" id="loadingBar"></div>
-            </div>
-            <p>Loading...</p>`
+        <img src="img/assests/sharkie-sleeping.gif" alt="Sleeping Sharkie">
+        <div class="loading-bar-container">
+                <div class="loading-bar" id="loadingBar">${chargeProgress.toFixed(0)}%</div>
+        </div>`
+    loadingInterval = setInterval(updateLoadingBar, 100);
 }
 
 
+function updateLoadingBar() {
+    const loadingBar = document.getElementById('loadingBar');
+    if (chargeProgress < 100) {
+        chargeProgress = (imagesLoaded / imagesToLoad) * 100;
+        loadingBar.style.width = `${chargeProgress}%`;
+        loadingBar.innerHTML =/*html*/`<div class="loading-bar" id="loadingBar">${chargeProgress.toFixed(0)}%</div>`
+
+    } else {
+        setTimeout(() => {
+            clearInterval(loadingInterval);
+            startGame();
+        }, 1000);
+
+    }
+}
+
+function createGame() {
+    initLevel();
+    gameRuns = true;
+    world = new World(canvas, keyboard);
+}
 
 
 /**
  * Initializes the game by setting up the level, creating the game world, hiding the start screen,and playing the background sound when the start button on the start screen is clicked.
  */
 function startGame() {
-    initLevel();
-    gameRuns = true;
-    world = new World(canvas, keyboard);
-    document.getElementById('loading-screen').classList.remove('d-none');
+    document.getElementById('loading-screen').classList.add('d-none');
     document.getElementById('panel-middle').classList.add('v-none');
     document.getElementById('start-screen').removeAttribute('style');
     showMobileButton();
     playBackgroundSound();
 }
 
-
+/**
+ * reload the page to return to the home screen
+ */
+function backToStart() {
+    window.location.reload();
+}
 
 function resetGame() {
     intervallIds.forEach(clearInterval);
@@ -208,6 +234,11 @@ function mobileButtonBubble() {
     });
 }
 
+/**
+ * Event Handler auf "F" für poison bubble
+ * 
+ * 
+ */
 function mobileButtonPoisionBubble() {
     document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
         e.preventDefault();
@@ -220,15 +251,30 @@ function mobileButtonPoisionBubble() {
 }
 
 function showGameOverScreen() {
+    // document.getElementById('end-screen-headline').innerText = 'Game Over';
+    document.getElementById('end-screen-img').classList.remove('v-none');
+    document.getElementById('end-screen-container').classList.remove('d-none');
+
 
 }
-
 
 
 function showWinScreen() {
+    document.getElementById('end-screen-headline').innerText = 'Game Over';
+    document.getElementById('end-screen-img').classList.add('v-none');
+    document.getElementById('end-screen-container').classList.remove('d-none');
+}
+
+function tryAgain() {
+    clearAllIntervals();
+    init();
+    createGame();
+    document.getElementById('end-screen-container').classList.add('d-none');
 
 }
 
-
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+};
 
 
