@@ -1,4 +1,6 @@
 let canvas;
+
+
 let world;
 let keyboard = new Keyboard();
 let intervallIds = [];
@@ -21,24 +23,9 @@ function init() {
     updateVisibility();
     window.addEventListener('resize', updateVisibility);
     window.addEventListener('orientationchange', updateVisibility);
+    keyEventListeners();
     mobileButtonsHandler();
 }
-
-//  <-----------PausableIntervalle mus geprüft werden ---------------------->
-
-// setPausableInterval(() => setPausableFn(self, self.movement), 1000/60);
-// setPausableInterval(() => setPausableFn(self, self.animate), 200);
-
-// function setPausableInterval(fn, time) {
-//     let id = setInterval(fn, time);
-//     intervalIds.push(id);
-// }
-
-
-// function setPausableFn(self, fn) {
-//     if(!gameIsPaused) fn(self);
-// }
-
 
 
 function showLoadingScreen() {
@@ -60,13 +47,11 @@ function updateLoadingBar() {
         chargeProgress = (imagesLoaded / imagesToLoad) * 100;
         loadingBar.style.width = `${chargeProgress}%`;
         loadingBar.innerHTML =/*html*/`<div class="loading-bar" id="loadingBar">${chargeProgress.toFixed(0)}%</div>`
-
     } else {
         setTimeout(() => {
             clearInterval(loadingInterval);
             startGame();
         }, 1000);
-
     }
 }
 
@@ -100,167 +85,16 @@ function resetGame() {
 }
 
 
-/**
- * Handls key press events and updates key state data.
- */
-window.addEventListener('keydown', (e) => {
-    switch (e.key) {
-        case 'ArrowLeft':
-            keyboard.left = true;
-            break;
-        case 'ArrowRight':
-            keyboard.right = true;
-            break;
-        case 'ArrowUp':
-            keyboard.up = true;
-            break;
-        case 'ArrowDown':
-            keyboard.down = true;
-            break;
-        case ' ':
-            keyboard.space = true;
-            break;
-        case 'd':
-            keyboard.d = true;
-            break;
-        case 'f':
-            keyboard.f = true;
-            break;
-
-    }
-});
-
-/**
- *  Handels key release events and updates ky state data
- */
-window.addEventListener('keyup', (e) => {
-    switch (e.key) {
-        case 'ArrowLeft':
-            keyboard.left = false;
-            break;
-        case 'ArrowRight':
-            keyboard.right = false;
-            break;
-        case 'ArrowUp':
-            keyboard.up = false;
-            break;
-        case 'ArrowDown':
-            keyboard.down = false;
-            break;
-        case ' ':
-            keyboard.space = false;
-            break;
-        case 'd':
-            keyboard.d = false;
-            break;
-        case 'f':
-            keyboard.f = false;
-            break;
-    }
-});
-
-
-function mobileButtonsHandler() {
-    mobileButtonRigth();
-    mobileButtonLeft();
-    mobileButtonUp();
-    mobileButtonDown();
-    mobileButtonFinslap();
-    mobileButtonBubble();
-    mobileButtonPoisionBubble();
-}
-
-function mobileButtonRigth() {
-    document.getElementById('btn-right').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.right = true;
-    });
-    document.getElementById('btn-right').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.right = false;
-    });
-}
-
-function mobileButtonLeft() {
-    document.getElementById('btn-left').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.left = true;
-    });
-    document.getElementById('btn-left').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.left = false;
-    });
-}
-function mobileButtonUp() {
-    document.getElementById('btn-up').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.up = true;
-    });
-    document.getElementById('btn-up').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.up = false;
-    });
-}
-function mobileButtonDown() {
-    document.getElementById('btn-down').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.down = true;
-    });
-    document.getElementById('btn-down').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.down = false;
-    });
-}
-function mobileButtonFinslap() {
-    document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.space = true;
-    });
-    document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.space = false;
-    });
-}
-
-
-function mobileButtonBubble() {
-    document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.d = true;
-    });
-    document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.d = false;
-    });
-}
-
-/**
- * Event Handler auf "F" für poison bubble
- * 
- * 
- */
-function mobileButtonPoisionBubble() {
-    document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        keyboard.f = true;
-    });
-    document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
-        e.preventDefault();
-        keyboard.f = false;
-    });
-}
 
 function showGameOverScreen() {
-    // document.getElementById('end-screen-headline').innerText = 'Game Over';
+    document.getElementById('end-screen-headline').innerText = 'Game Over';
     document.getElementById('end-screen-img').classList.remove('v-none');
     document.getElementById('end-screen-container').classList.remove('d-none');
-
-
 }
 
 
 function showWinScreen() {
-    document.getElementById('end-screen-headline').innerText = 'Game Over';
+    document.getElementById('end-screen-headline').innerText = 'You Win';
     document.getElementById('end-screen-img').classList.add('v-none');
     document.getElementById('end-screen-container').classList.remove('d-none');
 }
@@ -278,3 +112,19 @@ function clearAllIntervals() {
 };
 
 
+/**
+ * Manages the visibility of game-related elements and a device rotation message based on the device type and screen orientation.
+ * It ensures a better user experience during gameplay on both mobile devices.
+ */
+function updateVisibility() {
+    const gameContainer = document.getElementById('game-container');
+    const rotateDeviceScreen = document.getElementById('rotate-device-screen');
+    const isMobile = isMobileDevice();
+    const isLandscape = window.matchMedia("(orientation: landscape)").matches;
+    const isWideScreen = window.innerWidth >= 800;
+    const showCanvas = (!isMobile && isWideScreen) || (isMobile && isLandscape);
+
+    gameContainer.classList.toggle('d-none', !showCanvas);
+    rotateDeviceScreen.classList.toggle('d-none', showCanvas);
+    showMobileButton();
+}

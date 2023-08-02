@@ -23,10 +23,9 @@ const pf_swimming_img = {
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim3.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim4.png',
         'img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/3.swim5.png'
-
     ]
-
 }
+
 
 const pf_transition_img = {
     green: [
@@ -55,6 +54,7 @@ const pf_transition_img = {
     ]
 }
 
+
 const pf_bubbleswim_img = {
     green: [
         'img/2.Enemy/1.Puffer fish (3 color options)/3.Bubbleeswim/1.bubbleswim1.png',
@@ -79,6 +79,7 @@ const pf_bubbleswim_img = {
     ]
 }
 
+
 const pf_dead_img = {
     green: [
         'img/2.Enemy/1.Puffer fish (3 color options)/4.DIE/1.Dead 1 (can animate by going up).png'
@@ -91,7 +92,6 @@ const pf_dead_img = {
     ]
 }
 
-// Jelly Fish
 
 const jf_swimming_img = {
     lila: [
@@ -121,6 +121,7 @@ const jf_swimming_img = {
 
     ]
 }
+
 
 const jf_dead_img = {
     lila: [
@@ -183,6 +184,7 @@ const posion_img = [
     'img/4. Marcadores/Posión/Animada/7.png',
     'img/4. Marcadores/Posión/Animada/8.png'
 ]
+
 
 const status_bar_img = {
     coin: [
@@ -344,6 +346,7 @@ const sharkie_img = {
 
 }
 
+
 const endboss_img = {
     swimming: [
         'img/2.Enemy/3 Final Enemy/2.floating/1.png',
@@ -393,8 +396,6 @@ const endboss_img = {
         'img/2.Enemy/3 Final Enemy/Hurt/3.png',
         'img/2.Enemy/3 Final Enemy/Hurt/4.png',
     ]
-
-
 }
 
 
