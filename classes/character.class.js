@@ -44,7 +44,7 @@ class Character extends MovableObject {
     }
 
     motionControl() {
-        setInterval(() => {
+        let interval1 = setInterval(() => {
             if (!this.isDead()) {
                 if (this.world.keyboard.right && this.x < this.world.level.level_end_x) {
                     this.moveRight();
@@ -64,10 +64,12 @@ class Character extends MovableObject {
                     this.playAnimation(sharkie_img['swimming']);
                     this.resetCounter();
                 }
-
-                this.world.camera_x = -this.x + 100;
+                if (this.x < 2500) {
+                    this.world.camera_x = -this.x + 100;
+                }
             }
         }, 1000 / 50);
+        intervalIds.push(interval1);
     }
 
 
@@ -126,20 +128,17 @@ class Character extends MovableObject {
             if (this.world.keyboard.space) {
                 this.aktiveAttack('space', this.isFinSlaping);
                 this.finSlapingAttack();
-
             }
             if (this.world.keyboard.d) {
                 this.activeBubbleAttack('normal', 'd')
                 this.playAnimation(sharkie_img['blow_normal_bubble']);
                 this.isBubbleAttacking = true;
-
             }
             if (this.world.keyboard.f) {
                 if (this.world.collectedPoison > 0 || this.isBubbleAttacking) {
                     this.activeBubbleAttack('poision', 'f')
                     this.playAnimation(sharkie_img['blow_poisend_bubble']);
                     this.isBubbleAttacking = true;
-
                 } else {
                     this.aktiveAttack('f', this.isblowNoBubble);
                     this.playAnimation(sharkie_img['blow_no_bubble']);

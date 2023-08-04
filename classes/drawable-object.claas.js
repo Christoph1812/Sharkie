@@ -59,16 +59,16 @@ class DrawableObject {
     }
 
 
-    //     // draw Frames
-    //     drawFrame(ctx) {
-    //         if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject) || (this instanceof Bubble) || (this instanceof PufferFish)) {
-    //             ctx.beginPath();
-    //             ctx.lineWidth = '1';
-    //             ctx.strokeStyle = 'red';
-    //             ctx.rect(this.x + this.offset.x, this.y + this.offset.y, this.width - this.offset.width, this.height - this.offset.height);
-    //             ctx.stroke();
-    //         }
-    //     }
+    // draw Frames
+    drawFrame(ctx) {
+        if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject) || (this instanceof Bubble) || (this instanceof PufferFish)) {
+            ctx.beginPath();
+            ctx.lineWidth = '1';
+            ctx.strokeStyle = 'red';
+            ctx.rect(this.x + this.offset.x, this.y + this.offset.y, this.width - this.offset.width, this.height - this.offset.height);
+            ctx.stroke();
+        }
+    }
 
-    //     // <--------Ende-------------->
+    // <--------Ende-------------->
 }

@@ -51,30 +51,134 @@ function attachKeyListener(key, keyName) {
  * Adds all eventhandlers for the mobilebuttons which are needed for the game
  */
 function mobileButtonsHandler() {
-    mobileButtonRigth();
+    mobileButtonRight();
     mobileButtonLeft();
     mobileButtonUp();
     mobileButtonDown();
     mobileButtonFinslap();
     mobileButtonBubble();
-    mobileButtonPoisionBubble();
+    mobileButtonPoisonBubble();
 }
 
+
+// /**
+//  * Adds an evenhandler for move right to the "arrow right" key.
+//  */
+// function mobileButtonRigth() {
+//     document.getElementById('btn-right').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.right = true;
+//     });
+//     document.getElementById('btn-right').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.right = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for move left to the "arrow left" key.
+//  */
+// function mobileButtonLeft() {
+//     document.getElementById('btn-left').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.left = true;
+//     });
+//     document.getElementById('btn-left').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.left = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for move up to the "arrow up" key.
+//  */
+// function mobileButtonUp() {
+//     document.getElementById('btn-up').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.up = true;
+//     });
+//     document.getElementById('btn-up').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.up = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for move down to the "arrow down" key.
+//  */
+// function mobileButtonDown() {
+//     document.getElementById('btn-down').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.down = true;
+//     });
+//     document.getElementById('btn-down').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.down = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for fin slap to the "space" key.
+//  */
+// function mobileButtonFinslap() {
+//     document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.space = true;
+//     });
+//     document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.space = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for normal bubble to the "D" key.
+//  */
+// function mobileButtonBubble() {
+//     document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.d = true;
+//     });
+//     document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.d = false;
+//     });
+// }
+
+
+// /**
+//  * Adds an evenhandler for poison bubble to the "F" key.
+//  */
+// function mobileButtonPoisionBubble() {
+//     document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
+//         e.preventDefault();
+//         keyboard.f = true;
+//     });
+//     document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
+//         e.preventDefault();
+//         keyboard.f = false;
+//     });
+// }
 
 /**
  * Adds an evenhandler for move right to the "arrow right" key.
  */
-function mobileButtonRigth() {
+function mobileButtonRight() {
     document.getElementById('btn-right').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.right = true;
-    });
+        setKeyStatus('right', true);
+    }, { passive: true });
+
     document.getElementById('btn-right').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.right = false;
-    });
+        setKeyStatus('right', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for move left to the "arrow left" key.
@@ -82,14 +186,14 @@ function mobileButtonRigth() {
 function mobileButtonLeft() {
     document.getElementById('btn-left').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.left = true;
-    });
+        setKeyStatus('left', true);
+    }, { passive: true });
+
     document.getElementById('btn-left').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.left = false;
-    });
+        setKeyStatus('left', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for move up to the "arrow up" key.
@@ -97,14 +201,14 @@ function mobileButtonLeft() {
 function mobileButtonUp() {
     document.getElementById('btn-up').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.up = true;
-    });
+        setKeyStatus('up', true);
+    }, { passive: true });
+
     document.getElementById('btn-up').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.up = false;
-    });
+        setKeyStatus('up', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for move down to the "arrow down" key.
@@ -112,14 +216,14 @@ function mobileButtonUp() {
 function mobileButtonDown() {
     document.getElementById('btn-down').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.down = true;
-    });
+        setKeyStatus('down', true);
+    }, { passive: true });
+
     document.getElementById('btn-down').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.down = false;
-    });
+        setKeyStatus('down', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for fin slap to the "space" key.
@@ -127,14 +231,14 @@ function mobileButtonDown() {
 function mobileButtonFinslap() {
     document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.space = true;
-    });
+        setKeyStatus('space', true);
+    }, { passive: true });
+
     document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.space = false;
-    });
+        setKeyStatus('space', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for normal bubble to the "D" key.
@@ -142,27 +246,33 @@ function mobileButtonFinslap() {
 function mobileButtonBubble() {
     document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.d = true;
-    });
+        setKeyStatus('d', true);
+    }, { passive: true });
+
     document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.d = false;
-    });
+        setKeyStatus('d', false);
+    }, { passive: true });
 }
-
 
 /**
  * Adds an evenhandler for poison bubble to the "F" key.
  */
-function mobileButtonPoisionBubble() {
+function mobileButtonPoisonBubble() {
     document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        keyboard.f = true;
-    });
+        setKeyStatus('f', true);
+    }, { passive: true });
+
     document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
         e.preventDefault();
-        keyboard.f = false;
-    });
+        setKeyStatus('f', false);
+    }, { passive: true });
+}
+
+function renderMobileButtons() {
+    let mobileButton = document.getElementById('panel-bottom');
+    mobileButton.innerHTML = createHtmlMobileButtons();
 }
 
 
@@ -170,13 +280,15 @@ function mobileButtonPoisionBubble() {
  * checks the screen size and orientation. In landscape mode on a mobile device, the mobile buttons are displayed.
  */
 function showMobileButton() {
-    const panelBottom = document.getElementById('panel-bottom');
+    const panelButtom = document.getElementById('panel-bottom');
     const isMobile = isMobileDevice();
     const isLandscape = window.matchMedia("(orientation: landscape)").matches;
 
     if (isMobile && isLandscape && gameRuns) {
-        panelBottom.classList.remove('d-none');
+        panelButtom.classList.remove('d-none');
+        renderMobileButtons();
+        mobileButtonsHandler();
     } else {
-        panelBottom.classList.add('d-none');
+        panelButtom.classList.add('d-none');
     }
 }

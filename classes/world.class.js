@@ -24,7 +24,7 @@ class World {
         this.keyboard = keyboard;
         this.setWorld();
         this.draw();
-        this.checkCollisions();
+        this.runIntervals();
 
 
     }
@@ -36,7 +36,7 @@ class World {
     }
 
 
-    checkCollisions() {
+    runIntervals() {
         setInterval(() => {
             this.checkCollisionsCollectables();
             this.checkCollisionJellyFish();
@@ -81,10 +81,10 @@ class World {
         });
     }
 
-    // can possibly be deleted
+
     checkCollisionEndboss() {
         this.level.enemies.forEach((enemy) => {
-            if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof Endboss)) {
+            if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof Endboss) && !enemy.isHurt()) {
                 this.statusBarLife.setPercentage(this.statusBarLife.percentage -= 20, 'life');
                 this.character.hit();
             }
@@ -139,7 +139,6 @@ class World {
     }
 
 
-
     checkCollisionsCollectables() {
         this.level.collectebales.forEach((collecteable, index) => {
             if (this.character.isColliding(collecteable)) {
@@ -189,7 +188,7 @@ class World {
 
 
     addendbossStatus() {
-        if (this.character.x >= 2000 || this.statusbarEndbossAdded) {
+        if (this.character.x >= 2200 || this.statusbarEndbossAdded) {
             this.addToMap(this.statusBarEndboss);
             this.statusbarEndbossAdded = true;
         }
@@ -209,7 +208,7 @@ class World {
 
         }
         mo.draw(this.ctx);
-        // mo.drawFrame(this.ctx);
+        mo.drawFrame(this.ctx);
 
         if (mo.otherDirection) {
             this.flipImageBack(mo);

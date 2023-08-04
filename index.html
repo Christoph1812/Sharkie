@@ -9,6 +9,7 @@
     <link rel="icon" type="image" href="img/1.Sharkie/4.Attack/Fin slap/7.png">
     <link rel="stylesheet" href="style.css">
     <script src="js/images.js"></script>
+
     <script src="classes/drawable-object.claas.js"></script>
     <script src="classes/movable-object.class.js"></script>
     <script src="classes/character.class.js"></script>
@@ -44,6 +45,7 @@
                         <img onclick="closeSettings()" class="close-icon" src="img/assests/x-mark.png" alt="X-Mark">
                     </div>
                     <div class="settings-content" id="settings-content"></div>
+
                 </div>
                 <div>
                     <div id="start-screen" class="start-screen"
@@ -55,42 +57,26 @@
                         <div class="panel-middle" id="panel-middle">
                             <button class="button yellow" onclick="showLoadingScreen()">Start</button>
                         </div>
-                        <div class="panel-bottom d-none" id="panel-bottom">
-                            <div class="key-block">
-                                <button class="mobile-button" id="btn-up"><img src="img/assests/arrow-up.png"> </button>
-                                <button class="mobile-button" id="btn-down"><img
-                                        src="img/assests/arrow-down.png"></button>
-                            </div>
-                            <div class="key-block">
-                                <button class="mobile-button" id="btn-bubble">
-                                    <img src="img/1.Sharkie/4.Attack/Bubble trap/Bubble.png" alt="">
-                                </button>
-                                <button class="mobile-button" id="btn-fin-slap">
-                                    <img src="img/assests/fin-slap-icon.png" alt="">
-                                </button>
-                                <button class="mobile-button" id="btn-poison-bubble">
-                                    <img src="img/assests/poison-icon.png" alt="">
-                                </button>
-                            </div>
-                            <div class="key-block">
-                                <button class="mobile-button" id="btn-left">
-                                    <img src="img/assests/arrow-left.png" alt="">
-                                </button>
-                                <button class="mobile-button" id=btn-right>
-                                    <img src="img/assests/arrow-right.png" alt="">
-                                </button>
-                            </div>
+                        <div class="panel-bottom " id="panel-bottom"></div>
+                        <div class="legal-notice-points" id="legal-notice-points">
+                            <p onclick="openImprint()">imprint</p>
+                            <p onclick="openPrivacyPolicy()">privacy policy</p>
+
                         </div>
+                        <div class="legal-notice-overlay d-none" id="legal-notice-overlay"></div>
+
                     </div>
                     <div class="loading-screen d-none" id="loading-screen"></div>
                     <div class="end-screen-container d-none" id="end-screen-container">
                         <div class="end-screen" id="endscreen">
                             <h1 id="end-screen-headline">GAME Over</h1>
-                            <img id="end-screen-img" src="img/1.Sharkie/6.dead/1.Poisoned/12.png" alt="Sharkie dead">
+                            <img class="test-shadow" id="end-screen-img" src="img/assests/Sharkie-dead.png"
+                                alt="Sharkie dead">
                             <div class="button-container">
                                 <button onclick="tryAgain()" class="button yellow">TRY AGAIN </button>
                                 <button onclick="backToStart()" class="button yellow">BACK TO START</button>
                             </div>
+
                         </div>
                     </div>
                     <canvas class="canvas" id="canvas" width="720" height="480"></canvas>

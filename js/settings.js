@@ -111,23 +111,22 @@ function enterFullscreenModus() {
 }
 
 
-/**
- * 
- */
+
 function exitFullscreenModus() {
-    if (document.exitFullscreen) {
-        document.exitFullscreen();
-    } else if (document.mozCancelFullScreen) { // Firefox
-        document.mozCancelFullScreen();
-    } else if (document.webkitExitFullscreen) { // Chrome, Safari und Opera
-        document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) { // Internet Explorer und Edge
-        document.msExitFullscreen();
+    if (document.fullscreenElement || document.webkitFullscreenElement || document.mozFullScreenElement || document.msFullscreenElement) {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.mozCancelFullScreen) {
+            document.mozCancelFullScreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
+        }
     }
     enter_fullscreen = false;
     changeViewNormalScreen();
 }
-
 
 /**
  * Displays the game in full screen mode.
@@ -177,6 +176,25 @@ function isMobileDevice() {
         (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 }
 
+function openImprint() {
+    document.getElementById('settings-main-overlay').classList.add('d-none');
+    legaleNotice = document.getElementById('legal-notice-overlay');
+    legaleNotice.classList.remove('d-none');
+    legaleNotice.innerHTML = createHtmlImprint();
+}
+
+function openPrivacyPolicy() {
+    document.getElementById('settings-main-overlay').classList.add('d-none');
+    legaleNotice = document.getElementById('legal-notice-overlay');
+    legaleNotice.classList.remove('d-none');
+    legaleNotice.innerHTML = createHtmlPrivacyPolicy();
+}
+
+
+function closeLegalNotice() {
+    legaleNotice = document.getElementById('legal-notice-overlay');
+    legaleNotice.classList.add('d-none');
+}
 
 
 

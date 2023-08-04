@@ -2,7 +2,7 @@ class Endboss extends MovableObject {
     height = 290;
     width = 350;
     speed = 10;
-    x = 2900;
+    x = 3200;
     y = 0;
     offset = {
         x: 30,
@@ -20,6 +20,8 @@ class Endboss extends MovableObject {
     rangeY;
     turnX = false;
     turnY = false;
+    finallyDead = false;
+    deadAnimation = false;
 
 
 
@@ -50,7 +52,7 @@ class Endboss extends MovableObject {
 
     animationControll() {
         setInterval(() => {
-            if (this.hadFirstContact) {
+            if (this.hadFirstContact && !this.finallyDead) {
                 if (!this.introduce) {
                     this.introduceAnimation()
                 }
@@ -58,7 +60,8 @@ class Endboss extends MovableObject {
                     this.playAnimation(endboss_img[`hurt`]);
                 }
                 else if (this.isDead()) {
-                    this.playAnimation(endboss_img['dead']);
+                    this.playDeadAnimation();
+                    this.deadAnimation = true;
                 }
                 else if (this.characterIsNear) {
                     this.playAnimation(endboss_img['attack']);
@@ -67,6 +70,19 @@ class Endboss extends MovableObject {
                     this.playAnimation(endboss_img['swimming']);
             }
         }, 200);
+    }
+
+
+    playDeadAnimation() {
+        if (!this.deadAnimation) {
+            this.currentImage = 0;
+        }
+        if (this.currentImage <= 4) {
+            this.playAnimationOnce(endboss_img['dead']);
+        } else {
+            this.finallyDead = true;
+        }
+
     }
 
 
@@ -91,12 +107,6 @@ class Endboss extends MovableObject {
         }, 200);
 
     }
-
-
-
-
-
-
 
 
     introduceAnimation() {

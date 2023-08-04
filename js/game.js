@@ -1,17 +1,14 @@
 let canvas;
-
-
 let world;
 let keyboard = new Keyboard();
-let intervallIds = [];
+let intervalIds = [];
 let gameIsPaused = true;
 let gameRuns = false;
-
-// variable for loading screen
-let imagesToLoad = 0;
-let imagesLoaded = 0;
-let chargeProgress = 0;
+let imagesToLoad = 0; // all images that need to be loaded
+let imagesLoaded = 0; //  images that are loaded
+let chargeProgress = 0; // the charge progress
 let loadingInterval;
+
 
 
 
@@ -24,7 +21,7 @@ function init() {
     window.addEventListener('resize', updateVisibility);
     window.addEventListener('orientationchange', updateVisibility);
     keyEventListeners();
-    mobileButtonsHandler();
+    // mobileButtonsHandler();
 }
 
 
@@ -68,10 +65,28 @@ function createGame() {
 function startGame() {
     document.getElementById('loading-screen').classList.add('d-none');
     document.getElementById('panel-middle').classList.add('v-none');
+    document.getElementById('legal-notice-points').classList.add('d-none');
     document.getElementById('start-screen').removeAttribute('style');
     showMobileButton();
     playBackgroundSound();
 }
+
+function stopInterval() {
+    if (gameRuns) {
+        clearInterval(interval);
+        gameRuns = false;
+    }
+}
+
+function startInterval() {
+    if (!isRunning) {
+        isRunning = true;
+        interval = setInterval(() => {
+
+        }, 1000); // Interval läuft alle 1000ms (1 Sekunde)
+    }
+}
+
 
 /**
  * reload the page to return to the home screen
@@ -87,16 +102,24 @@ function resetGame() {
 
 
 function showGameOverScreen() {
-    document.getElementById('end-screen-headline').innerText = 'Game Over';
-    document.getElementById('end-screen-img').classList.remove('v-none');
-    document.getElementById('end-screen-container').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('end-screen-headline').innerText = 'Game Over';
+        document.getElementById('end-screen-img').src = "img/assests/Sharkie-dead.png"
+        document.getElementById('end-screen-img').removeAttribute('style');
+        document.getElementById('end-screen-container').classList.remove('d-none');
+    }, 3000);
+
 }
 
 
 function showWinScreen() {
-    document.getElementById('end-screen-headline').innerText = 'You Win';
-    document.getElementById('end-screen-img').classList.add('v-none');
-    document.getElementById('end-screen-container').classList.remove('d-none');
+    setTimeout(() => {
+        document.getElementById('end-screen-headline').innerText = 'You Win';
+        document.getElementById('end-screen-img').src = "img/assests/Endboss-dead.png";
+        document.getElementById('end-screen-img').setAttribute('style', 'width')
+        document.getElementById('end-screen-container').classList.remove('d-none');
+    }, 3000);
+
 }
 
 function tryAgain() {
