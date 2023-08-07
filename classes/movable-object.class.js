@@ -62,25 +62,21 @@ class MovableObject extends DrawableObject {
 
     moveRight() {
         this.x += this.speed;
-
     }
 
 
     moveLeft() {
         this.x -= this.speed;
-
     }
 
 
     moveUp() {
         this.y -= this.speed;
-
     }
 
 
     moveDown() {
         this.y += this.speed;
-
     }
 
     /**movments for Enemeys */

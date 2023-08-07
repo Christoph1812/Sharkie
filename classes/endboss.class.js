@@ -10,22 +10,26 @@ class Endboss extends MovableObject {
         width: 70,
         height: 150
     }
-    hadFirstContact = false;
-    introduce = false;
-    characterIsNear = false;
-    // moventvariable
+    hadFirstContact = false; // set true in world.class
+    introduce = false;  // is true if the introduce animation was executed
+    characterIsNear = false; // set true in world.class
     startX;
     startY;
     rangeX;
     rangeY;
     turnX = false;
     turnY = false;
-    finallyDead = false;
-    deadAnimation = false;
+    finallyDead = false; // is true the end boss is dead
+    deadAnimation = false; // is true if dead animation is running
 
 
-
-
+    /**
+    * constructor for the endboss class:
+    * @param {number} x - The starting X position of the end boss.
+    * @param {number} startY - The starting Y position of the end boss.
+    * @param {number} rangeX - The horizontal movement range of the end boss.
+    * @param {number} rangeY - The vertical movement range of the end boss.
+    */
     constructor(x, startY, rangeX, rangeY) {
         super();
         this.x = x;
@@ -41,6 +45,9 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+     * Loads all images for the different animations of the end boss.
+     */
     loadAllImages() {
         this.loadImages(endboss_img['swimming']);
         this.loadImages(endboss_img['introducing']);
@@ -50,8 +57,11 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+     *  Controls the animation of the end boss.
+     */
     animationControll() {
-        setInterval(() => {
+        let interval6 = setInterval(() => {
             if (this.hadFirstContact && !this.finallyDead) {
                 if (!this.introduce) {
                     this.introduceAnimation()
@@ -66,13 +76,18 @@ class Endboss extends MovableObject {
                 else if (this.characterIsNear) {
                     this.playAnimation(endboss_img['attack']);
                 }
-                else
+                else {
                     this.playAnimation(endboss_img['swimming']);
+                }
             }
         }, 200);
+        intervalIds.push(interval6);
     }
 
 
+    /**
+     * Plays the dead animation
+     */
     playDeadAnimation() {
         if (!this.deadAnimation) {
             this.currentImage = 0;
@@ -86,8 +101,11 @@ class Endboss extends MovableObject {
     }
 
 
+    /**
+     * Controlls the animation of the end boss
+     */
     movecontroll() {
-        setInterval(() => {
+        let interval7 = setInterval(() => {
             if (!this.isDead() && this.introduce) {
                 if (!this.turnX && this.rangeX > 0) {
                     this.movmentLeft();
@@ -105,10 +123,15 @@ class Endboss extends MovableObject {
                 }
             }
         }, 200);
+        intervalIds.push(interval7);
 
     }
 
 
+    /**
+     * Plays the introducing animation of the end boss.
+     * After playing the introducing animation once, it sets the 'introduce' variable of true.
+     */
     introduceAnimation() {
         this.playAnimationOnce(endboss_img['introducing']);
         if (this.currentImage == 9) {

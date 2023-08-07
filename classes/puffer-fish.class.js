@@ -1,4 +1,5 @@
 class PufferFish extends MovableObject {
+
     color;
     height = 50;
     width = 70;
@@ -11,6 +12,8 @@ class PufferFish extends MovableObject {
         width: 0,
         height: 10
     }
+    isABubble = false;
+    transitionAnimation = false;
 
 
     constructor(color, x, y) {
@@ -18,30 +21,52 @@ class PufferFish extends MovableObject {
         this.loadImages(pf_swimming_img[color]);
         this.loadImages(pf_transition_img[color]);
         this.loadImages(pf_dead_img[color]);
+        this.loadImages(pf_bubbleswim_img[color]);
         this.x = x;
         this.y = y;
         this.color = color;
-        this.speed = 0.15 + Math.random() * 0.50;
+        this.speed = 0.15 + Math.random() * 0.10;
         this.animate();
+        this.movment();
     }
 
 
     animate() {
         setInterval(() => {
-            if (this.characterIsNear) {
-                this.playAnimationOnce(pf_transition_img[this.color]);
+            if (this.characterIsNear && !this.isABubble) {
+                this.playTransitionAnimation();
+                this.transitionAnimation = true;
             }
-            if (this.isHitByFinSlap) {
-                this.hitByFinSlap();
+            else if (this.isABubble) {
+                this.playAnimation(pf_bubbleswim_img[this.color])
             } else {
                 this.playAnimation(pf_swimming_img[this.color]);
             }
+            if (this.isHitByFinSlap) {
+                this.hitByFinSlap();
+            }
         }, 100);
+    }
 
+
+    playTransitionAnimation() {
+        if (!this.transitionAnimation) {
+            this.currentImage = 0;
+        }
+        if (this.currentImage <= 4) {
+            this.playAnimation(pf_transition_img[this.color]);
+        } else {
+            this.isABubble = true;
+        }
+    }
+
+
+    movment() {
         setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
     }
+
 
     hitByFinSlap() {
         this.playAnimation(pf_dead_img[this.color]);
@@ -53,7 +78,6 @@ class PufferFish extends MovableObject {
                 world.level.enemies.splice(index, 1);
             }
         }
-
     }
 
 

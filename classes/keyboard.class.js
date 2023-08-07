@@ -1,11 +1,11 @@
 class Keyboard {
-    left = false;
-    right = false;
-    up = false;
-    down = false;
-    space = false;
-    d = false;
-    f = false;
+    left = false; // arrow left
+    right = false; // arrow right
+    up = false; // arroww up
+    down = false; // arrow down 
+    space = false;  // fin slap
+    d = false; // normal bubble
+    f = false; // poison bubble
 
 }
 
