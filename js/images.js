@@ -154,7 +154,7 @@ const jf_dead_img = {
 }
 
 
-const collecteables = {
+const collectibles = {
     coin: [
         'img/4. Marcadores/1. Coins/1.png',
         'img/4. Marcadores/1. Coins/2.png',

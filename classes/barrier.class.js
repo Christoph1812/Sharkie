@@ -1,4 +1,0 @@
-class Barrier extends MovableObject {
-
-
-}

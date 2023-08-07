@@ -63,8 +63,6 @@ class JellyFish extends MovableObject {
                     this.move_right = false;
                 }
             }
-
-
         }, 1000 / 60);
     }
 

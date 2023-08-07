@@ -23,9 +23,6 @@ class DrawableObject {
         this.img = new Image();
         this.img.onload = function () {
             imagesLoaded++;
-
-            // let percent = (imagesLoaded / imagesToLoad) * 100;
-            // console.log(`${percent} loaded`);
         }
         this.img.src = path;
     }
@@ -61,7 +58,7 @@ class DrawableObject {
 
     // draw Frames
     drawFrame(ctx) {
-        if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollecteableObject) || (this instanceof Bubble) || (this instanceof PufferFish)) {
+        if ((this instanceof JellyFish) || (this instanceof Endboss) || (this instanceof Character) || (this instanceof CollectibleObject) || (this instanceof Bubble) || (this instanceof PufferFish)) {
             ctx.beginPath();
             ctx.lineWidth = '1';
             ctx.strokeStyle = 'red';
@@ -70,5 +67,5 @@ class DrawableObject {
         }
     }
 
-    // <--------Ende-------------->
+
 }

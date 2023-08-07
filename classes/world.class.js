@@ -38,7 +38,7 @@ class World {
 
     runIntervals() {
         setInterval(() => {
-            this.checkCollisionsCollectables();
+            this.checkCollisionsCollectibles();
             this.checkCollisionJellyFish();
             this.checkcollisionBubble();
             this.checkcollisionPoisonBubble()
@@ -139,17 +139,17 @@ class World {
     }
 
 
-    checkCollisionsCollectables() {
-        this.level.collectebales.forEach((collecteable, index) => {
-            if (this.character.isColliding(collecteable)) {
-                if (collecteable.type == 'coin') {
+    checkCollisionsCollectibles() {
+        this.level.collectibles.forEach((collectible, index) => {
+            if (this.character.isColliding(collectible)) {
+                if (collectible.type == 'coin') {
                     this.statusBarCoin.setPercentage(this.statusBarCoin.percentage += 20, 'coin');
                 }
-                else if (collecteable.type == 'posion') {
+                else if (collectible.type == 'posion') {
                     this.statusbarPoisoned.setPercentage(this.statusbarPoisoned.percentage += 20, 'poisoned');
                     this.collectedPoison++;
                 }
-                this.level.collectebales.splice(index, 1);
+                this.level.collectibles.splice(index, 1);
             }
         });
     }
@@ -167,12 +167,11 @@ class World {
         this.addToMap(this.statusBarLife);
         this.addToMap(this.statusBarCoin);
         this.addToMap(this.statusbarPoisoned);
-        // this.addToMap(this.statusBarEndboss);
         this.addendbossStatus();
         this.ctx.translate(+this.camera_x, 0);
 
         this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.collectebales);
+        this.addObjectsToMap(this.level.collectibles);
         this.addObjectsToMap(this.bubbles);
         this.addObjectsToMap(this.poisonBubbles);
         this.addToMap(this.character);
