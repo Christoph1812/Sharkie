@@ -1,10 +1,8 @@
 class PufferFish extends MovableObject {
-
     color;
     height = 50;
     width = 70;
-    characterIsNear = false;
-    isHitByFinSlap = false;
+
     slapSpeed = 5;
     offset = {
         x: 0,
@@ -12,10 +10,17 @@ class PufferFish extends MovableObject {
         width: 0,
         height: 10
     }
-    isABubble = false;
-    transitionAnimation = false;
+    characterIsNear = false; // is set true in world.class
+    isHitByFinSlap = false; // is set true in world.class
+    isABubble = false; // transition animation is already done
+    transitionAnimation = false; // transition animation is running
 
-
+    /**
+    * Constructor for the PufferFish class.
+    * @param {string} color - The color of the puffer fish.
+    * @param {number} x - The initial x-coordinate of the puffer fish.
+    * @param {number} y - The initial y-coordinate of the puffer fish.
+    */
     constructor(color, x, y) {
         super().loadImage(pf_swimming_img[color][0]);
         this.loadImages(pf_swimming_img[color]);
@@ -31,8 +36,11 @@ class PufferFish extends MovableObject {
     }
 
 
+    /**
+     * Animates the puffer fish's movements and animations.
+     */
     animate() {
-        setInterval(() => {
+        let interval9 = setInterval(() => {
             if (this.characterIsNear && !this.isABubble) {
                 this.playTransitionAnimation();
                 this.transitionAnimation = true;
@@ -46,9 +54,14 @@ class PufferFish extends MovableObject {
                 this.hitByFinSlap();
             }
         }, 100);
+        intervalIds.push(interval9);
+
     }
 
 
+    /**
+     * Plays the transition animation.
+     */
     playTransitionAnimation() {
         if (!this.transitionAnimation) {
             this.currentImage = 0;
@@ -61,13 +74,21 @@ class PufferFish extends MovableObject {
     }
 
 
+    /**
+     * Controls the puffer fish's basic movement behavior.
+     */
     movment() {
-        setInterval(() => {
+        let interval10 = setInterval(() => {
             this.moveLeft();
         }, 1000 / 60);
+        intervalIds.push(interval10);
+
     }
 
 
+    /**
+     * Handles the puffer fish being hit by a fin slap.
+     */
     hitByFinSlap() {
         this.playAnimation(pf_dead_img[this.color]);
         this.x += (this.slapSpeed / 2);

@@ -61,124 +61,20 @@ function mobileButtonsHandler() {
 }
 
 
-// /**
-//  * Adds an evenhandler for move right to the "arrow right" key.
-//  */
-// function mobileButtonRigth() {
-//     document.getElementById('btn-right').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.right = true;
-//     });
-//     document.getElementById('btn-right').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.right = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for move left to the "arrow left" key.
-//  */
-// function mobileButtonLeft() {
-//     document.getElementById('btn-left').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.left = true;
-//     });
-//     document.getElementById('btn-left').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.left = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for move up to the "arrow up" key.
-//  */
-// function mobileButtonUp() {
-//     document.getElementById('btn-up').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.up = true;
-//     });
-//     document.getElementById('btn-up').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.up = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for move down to the "arrow down" key.
-//  */
-// function mobileButtonDown() {
-//     document.getElementById('btn-down').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.down = true;
-//     });
-//     document.getElementById('btn-down').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.down = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for fin slap to the "space" key.
-//  */
-// function mobileButtonFinslap() {
-//     document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.space = true;
-//     });
-//     document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.space = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for normal bubble to the "D" key.
-//  */
-// function mobileButtonBubble() {
-//     document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.d = true;
-//     });
-//     document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.d = false;
-//     });
-// }
-
-
-// /**
-//  * Adds an evenhandler for poison bubble to the "F" key.
-//  */
-// function mobileButtonPoisionBubble() {
-//     document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
-//         e.preventDefault();
-//         keyboard.f = true;
-//     });
-//     document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
-//         e.preventDefault();
-//         keyboard.f = false;
-//     });
-// }
-
 /**
  * Adds an evenhandler for move right to the "arrow right" key.
  */
 function mobileButtonRight() {
     document.getElementById('btn-right').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('right', true);
-    }, { passive: true });
-
+        keyboard.right = true;
+    });
     document.getElementById('btn-right').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('right', false);
-    }, { passive: true });
+        keyboard.right = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for move left to the "arrow left" key.
@@ -186,14 +82,14 @@ function mobileButtonRight() {
 function mobileButtonLeft() {
     document.getElementById('btn-left').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('left', true);
-    }, { passive: true });
-
+        keyboard.left = true;
+    });
     document.getElementById('btn-left').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('left', false);
-    }, { passive: true });
+        keyboard.left = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for move up to the "arrow up" key.
@@ -201,14 +97,14 @@ function mobileButtonLeft() {
 function mobileButtonUp() {
     document.getElementById('btn-up').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('up', true);
-    }, { passive: true });
-
+        keyboard.up = true;
+    });
     document.getElementById('btn-up').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('up', false);
-    }, { passive: true });
+        keyboard.up = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for move down to the "arrow down" key.
@@ -216,14 +112,14 @@ function mobileButtonUp() {
 function mobileButtonDown() {
     document.getElementById('btn-down').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('down', true);
-    }, { passive: true });
-
+        keyboard.down = true;
+    });
     document.getElementById('btn-down').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('down', false);
-    }, { passive: true });
+        keyboard.down = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for fin slap to the "space" key.
@@ -231,14 +127,14 @@ function mobileButtonDown() {
 function mobileButtonFinslap() {
     document.getElementById('btn-fin-slap').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('space', true);
-    }, { passive: true });
-
+        keyboard.space = true;
+    });
     document.getElementById('btn-fin-slap').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('space', false);
-    }, { passive: true });
+        keyboard.space = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for normal bubble to the "D" key.
@@ -246,14 +142,14 @@ function mobileButtonFinslap() {
 function mobileButtonBubble() {
     document.getElementById('btn-bubble').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('d', true);
-    }, { passive: true });
-
+        keyboard.d = true;
+    });
     document.getElementById('btn-bubble').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('d', false);
-    }, { passive: true });
+        keyboard.d = false;
+    });
 }
+
 
 /**
  * Adds an evenhandler for poison bubble to the "F" key.
@@ -261,17 +157,19 @@ function mobileButtonBubble() {
 function mobileButtonPoisonBubble() {
     document.getElementById('btn-poison-bubble').addEventListener('touchstart', (e) => {
         e.preventDefault();
-        setKeyStatus('f', true);
-    }, { passive: true });
-
+        keyboard.f = true;
+    });
     document.getElementById('btn-poison-bubble').addEventListener('touchend', (e) => {
         e.preventDefault();
-        setKeyStatus('f', false);
-    }, { passive: true });
+        keyboard.f = false;
+    });
 }
+
+
 
 function renderMobileButtons() {
     let mobileButton = document.getElementById('panel-bottom');
+
     mobileButton.innerHTML = createHtmlMobileButtons();
 }
 

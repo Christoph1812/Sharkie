@@ -5,19 +5,23 @@ class World {
     ctx;
     keyboard;
     camera_x;
-    statusbarEndbossAdded = false;
+    statusbarEndbossAdded = false; // true if the character goes over the triggerpoint
     statusBarLife = new StatusBar('life', 100, 25, 0);
     statusBarCoin = new StatusBar('coin', 0, 25, 45);
     statusbarPoisoned = new StatusBar('poisoned', 0, 25, 90);
     statusBarEndboss = new StatusBar('endboss', 100, 400, 0);
-    endboss;
-    bubbles = [];
-    poisonBubbles = [];
+    bubbles = []; // arry with normal bubble objects
+    poisonBubbles = []; // array with poison bubble objects
     collectedPoison = 0;
     triggerendboss = false;
     endboss = level1.enemies.find(enemy => enemy instanceof Endboss);
 
 
+    /**
+     * Creates a new World instance.
+     * @param {HTMLCanvasElement} canvas - The canvas element to render the world.
+     * @param {Keyboard} keyboard - The keyboard handler for user input.
+     */
     constructor(canvas, keyboard) {
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
@@ -25,10 +29,12 @@ class World {
         this.setWorld();
         this.draw();
         this.runIntervals();
-
-
     }
 
+
+    /**
+     * Sets up the world by initializing the level and character.
+     */
     setWorld() {
         this.level = level1;
         this.character.world = this;
@@ -36,8 +42,11 @@ class World {
     }
 
 
+    /**
+     * Runs intervals for various game checks and updates.
+     */
     runIntervals() {
-        setInterval(() => {
+        let interval11 = setInterval(() => {
             this.checkCollisionsCollectibles();
             this.checkCollisionJellyFish();
             this.checkcollisionBubble();
@@ -48,9 +57,13 @@ class World {
             this.checkIsNear();
             this.checkEndOfGame();
         }, 100)
+        intervalIds.push(interval11);
     }
 
 
+    /**
+     * Checks if the character is near enemies and updates their behavior accordingly.
+     */
     checkIsNear() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isNear(enemy) && (enemy instanceof Endboss)) {
@@ -67,6 +80,9 @@ class World {
     }
 
 
+    /**
+     * Checks for collisions between the character and jellyfish enemies.
+     */
     checkCollisionJellyFish() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof JellyFish)) {
@@ -82,6 +98,9 @@ class World {
     }
 
 
+    /**
+     * Checks for collisions between the character and the end boss enemy.
+     */
     checkCollisionEndboss() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof Endboss) && !enemy.isHurt()) {
@@ -91,6 +110,10 @@ class World {
         });
     }
 
+
+    /**
+     * Checks for collisions between the character and puffer fish enemies.
+     */
     checkCollisionPufferFish() {
         this.level.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !this.character.isHurt() && (enemy instanceof PufferFish)) {
@@ -106,6 +129,9 @@ class World {
     }
 
 
+    /**
+     * Checks for collisions between bubbles and enemies.
+     */
     checkcollisionBubble() {
         this.bubbles.forEach((bubble) => {
             if (bubble.y <= 0)
@@ -122,6 +148,9 @@ class World {
     }
 
 
+    /**
+     * Checks for collisions between poison bubbles and enemies.
+     */
     checkcollisionPoisonBubble() {
         this.poisonBubbles.forEach((bubble) => {
             if (bubble.y <= 0)
@@ -139,15 +168,20 @@ class World {
     }
 
 
+    /**
+     * Checks for collisions between the character and collectible objects.
+     */
     checkCollisionsCollectibles() {
         this.level.collectibles.forEach((collectible, index) => {
             if (this.character.isColliding(collectible)) {
                 if (collectible.type == 'coin') {
                     this.statusBarCoin.setPercentage(this.statusBarCoin.percentage += 20, 'coin');
+                    collectCoinSound();
                 }
                 else if (collectible.type == 'posion') {
                     this.statusbarPoisoned.setPercentage(this.statusbarPoisoned.percentage += 20, 'poisoned');
                     this.collectedPoison++;
+                    playBottlesound();
                 }
                 this.level.collectibles.splice(index, 1);
             }
@@ -155,30 +189,19 @@ class World {
     }
 
 
+    /**
+     * Draws the game world and its components.
+     */
     draw() {
-        // delete World
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height); // delete World
         this.ctx.translate(this.camera_x, 0);
         this.addObjectsToMap(this.level.backgroundObjects);
-
         this.ctx.translate(-this.camera_x, 0);
-        //--------space for fixed objects---------------
-        this.addToMap(this.statusBarLife);
-        this.addToMap(this.statusBarCoin);
-        this.addToMap(this.statusbarPoisoned);
-        this.addendbossStatus();
+        this.fixedObjects();
         this.ctx.translate(+this.camera_x, 0);
-
-        this.addObjectsToMap(this.level.enemies);
-        this.addObjectsToMap(this.level.collectibles);
-        this.addObjectsToMap(this.bubbles);
-        this.addObjectsToMap(this.poisonBubbles);
-        this.addToMap(this.character);
-
+        this.movingObjects();
         this.ctx.translate(-this.camera_x, 0);
 
-        // Draw() wird immer wieder ausgeführt
         let self = this;
         requestAnimationFrame(function () {
             self.draw();
@@ -186,6 +209,32 @@ class World {
     }
 
 
+    /**
+     * Draws fixed objects, such as status bars and end boss status.
+     */
+    fixedObjects() {
+        this.addToMap(this.statusBarLife);
+        this.addToMap(this.statusBarCoin);
+        this.addToMap(this.statusbarPoisoned);
+        this.addendbossStatus();
+    }
+
+
+    /**
+     * Draws moving objects, including enemies, collectibles, bubbles, and the character.
+     */
+    movingObjects() {
+        this.addObjectsToMap(this.level.enemies);
+        this.addObjectsToMap(this.level.collectibles);
+        this.addObjectsToMap(this.bubbles);
+        this.addObjectsToMap(this.poisonBubbles);
+        this.addToMap(this.character);
+    }
+
+
+    /**
+     * Adds the end boss status bar to the map if conditions are met.
+     */
     addendbossStatus() {
         if (this.character.x >= 2200 || this.statusbarEndbossAdded) {
             this.addToMap(this.statusBarEndboss);
@@ -194,6 +243,10 @@ class World {
     }
 
 
+    /**
+     * Adds an array of objects to the map by calling the addToMap function for each object.
+     * @param {Array} objects - An array of objects to be added to the map.
+     */
     addObjectsToMap(objects) {
         objects.forEach(o => {
             this.addToMap(o)
@@ -201,20 +254,25 @@ class World {
     }
 
 
+    /**
+     * Adds a drawable object to the map and handles flipping the image if needed.
+     * @param {DrawableObject} mo - The drawable object to be added to the map.
+     */
     addToMap(mo) {
         if (mo.otherDirection) {
             this.flipImage(mo);
-
         }
         mo.draw(this.ctx);
-        mo.drawFrame(this.ctx);
-
+        // mo.drawFrame(this.ctx);
         if (mo.otherDirection) {
             this.flipImageBack(mo);
-
         }
     }
 
+    /**
+     * Flips the image of a drawable object horizontally.
+     * @param {DrawableObject} mo - The drawable object whose image will be flipped.
+     */
     flipImage(mo) {
         this.ctx.save();
         this.ctx.translate(mo.width, 0);
@@ -222,25 +280,35 @@ class World {
         mo.x = mo.x * -1;
     }
 
+
+    /**
+     * Restores the original image orientation after flipping.
+     * @param {DrawableObject} mo - The drawable object whose image was flipped.
+     */
     flipImageBack(mo) {
         mo.x = mo.x * -1;
         this.ctx.restore();
     }
 
 
+    /**
+     * Triggers the end boss by setting its "hadFirstContact" property to true under certain conditions.
+     */
     triggerEndboss() {
         if (this.character.x >= 2200 && !this.endboss.triggerendboss) {
             this.endboss.hadFirstContact = true;
         }
-
     }
 
+
+    /**
+     * Checks whether the game has ended and triggers the respective screen.
+     */
     checkEndOfGame() {
         if (this.endboss.isDead()) {
             showWinScreen();
         }
         else if (this.character.isDead()) {
-
             showGameOverScreen();
         }
     }

@@ -11,11 +11,11 @@ endboss_sound.loop = true;
 let collect_bottle_sound = new Audio('audio/collect_bottle.mp3');
 let collect_coin_sound = new Audio('audio/collect_coin.mp3');
 let electro_shock_sound = new Audio('audio/elektro_shock.mp3');
-
-let fin_slap = new Audio('audio/fin_slap_sound.mp3');
+let fin_slap_sound = new Audio('audio/fin_slap_sound.mp3');
 let poisend_sound = new Audio('audio/poisend_sound.mp3');
 let swim_sound = new Audio('audio/swim_sound.mp3');
 let win_sound = new Audio('audio/win_sound.mp3');
+let lose_sound = new Audio('audio/you_lose_sound.mp3')
 
 
 
@@ -27,9 +27,69 @@ function playBackgroundSound() {
     background_sound.play();
 }
 
+function playBottlesound() {
+    collect_bottle_sound.volume = currentVolume / 100;
+    collect_bottle_sound.play();
+}
+
+function collectCoinSound() {
+    collect_coin_sound.volume = currentVolume / 100;
+    collect_coin_sound.play();
+}
+
+function playElectroSound() {
+    electro_shock_sound.volume = currentVolume / 100;
+    electro_shock_sound.play();
+}
+
+function playFinSlapSound() {
+    fin_slap_sound.volume = currentVolume / 100;
+    fin_slap_sound.play();
+}
+
+function playPoisondSound() {
+    poisend_sound.volume = currentVolume / 100;
+    poisend_soundsound.play();
+}
+function playWinSound() {
+    win_sound.volume = currentVolume / 100;
+    win_sound.play();
+}
+function playLoseSound() {
+    lose_sound.volume = currentVolume / 100;
+    lose_sound.play();
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /**
- *  Adds a click event listener to a sound icon element, allowing users to toggle the sound on and off. When clicked, the function mutes the sound if it's playing and restores the volume if it's muted.
+ *  Adds a click event listener to a sound icon element, allowing users to toggle the sound on and off.
+ *  When clicked, the function mutes the sound, if it's playing and restores the volume if it's muted.
  */
 function addMuteHandler() {
     const soundImage = document.getElementById('sound-icon');

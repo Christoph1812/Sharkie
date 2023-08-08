@@ -138,9 +138,11 @@ class Character extends MovableObject {
         if (this.killedByJellyFish) {
             this.playDeadAnimation(sharkie_img['dead_electric_shock']);
             this.deadAnimation = true;
+            playElectroSound();
         } else {
             this.playDeadAnimation(sharkie_img['dead_poisoned']);
             this.deadAnimation = true;
+            playPoisondSound();
         }
     }
 
@@ -150,9 +152,11 @@ class Character extends MovableObject {
     handleHurtAnimation() {
         if (this.hitByJellyFish) {
             this.playAnimation(sharkie_img['hurt_electric_shock']);
+            playElectroSound()
         } else {
             this.playAnimation(sharkie_img['hurt_poisoned']);
             this.hitByJellyFish = false;
+            playPoisondSound();
         }
     }
 

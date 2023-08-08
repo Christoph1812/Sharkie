@@ -10,6 +10,7 @@ function openSettings() {
     document.getElementById('settings-main-overlay').classList.remove('d-none');
     overview = document.getElementById('settings-content');
     overview.innerHTML = createHtmlOpenSettings();
+
     addMuteHandler();
     addSliderHandler();
 }
@@ -71,6 +72,7 @@ function openCredits() {
  */
 function closeSettings() {
     document.getElementById('settings-main-overlay').classList.add('d-none');
+
 }
 
 

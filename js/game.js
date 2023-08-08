@@ -73,20 +73,22 @@ function startGame() {
 
 function stopInterval() {
     if (gameRuns) {
-        clearInterval(interval);
+        intervalIds.forEach(intervalId => {
+            clearInterval(intervalId);
+        });
         gameRuns = false;
     }
 }
 
 function startInterval() {
-    if (!isRunning) {
-        isRunning = true;
-        interval = setInterval(() => {
-
-        }, 1000); // Interval läuft alle 1000ms (1 Sekunde)
+    if (!gameRuns) {
+        gameRuns = true;
+        intervalIds.forEach(interval => {
+            const newIntervalId = setInterval(interval.code, interval.delay);
+            interval.id = newIntervalId;
+        });
     }
 }
-
 
 /**
  * reload the page to return to the home screen

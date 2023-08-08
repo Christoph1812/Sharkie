@@ -13,11 +13,16 @@ class JellyFish extends MovableObject {
         width: 0,
         height: 0
     }
-    dead = false;
-    catched = false;
+    catched = false; //JellyFish is catched
 
-
-
+    /**
+     * Constructor for JellyFish class.
+     * @param {string} color - The color of the JellyFish.
+     * @param {number} x - The initial x-coordinate of the JellyFish.
+     * @param {number} y - The initial y-coordinate of the JellyFish.
+     * @param {number} rangeX - The range of motion along the x-axis.
+     * @param {number} rangeY - The range of motion along the y-axis.
+     */
     constructor(color, x, y, rangeX, rangeY) {
         super();
         this.loadImage(jf_swimming_img[color][0])
@@ -34,9 +39,13 @@ class JellyFish extends MovableObject {
     }
 
 
-
+    /**
+     * Controls the motion behavior of the JellyFish character.
+     * @param {number} x - The initial x-coordinate of the JellyFish.
+     * @param {number} y - The initial y-coordinate of the JellyFish.
+     */
     motionControl(x, y) {
-        setInterval(() => {
+        let interval8 = setInterval(() => {
             if (!this.catched) {
                 if (!this.move_right && !this.rangeY >= 0) {
                     this.moveLeft();
@@ -64,22 +73,30 @@ class JellyFish extends MovableObject {
                 }
             }
         }, 1000 / 60);
+        intervalIds.push(interval8);
+
     }
 
 
-
+    /**
+     * Animates the behavior of the character, including swimming animation and handling when caught.
+     */
     animate() {
-        setInterval(() => {
+        let interval12 = setInterval(() => {
             if (this.catched) {
                 this.playAnimation(jf_dead_img[this.color]);
                 this.upLift();
             } else {
                 this.playAnimation(jf_swimming_img[this.color]);
             }
-        }, 100)
+        }, 100);
+        intervalIds.push(interval12);
     }
 
 
+    /**
+     * Moves the character upwards with a specific uplift speed and handles removal if it goes above a certain threshold.
+     */
     upLift() {
         this.y -= this.upLiftSpeed;
         if (this.y < 0) {
