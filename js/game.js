@@ -26,7 +26,6 @@ function init() {
 
 
 function showLoadingScreen() {
-    createGame()
     let loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.remove('d-none')
     loadingScreen.innerHTML = /*html*/`
@@ -48,6 +47,7 @@ function updateLoadingBar() {
         setTimeout(() => {
             clearInterval(loadingInterval);
             startGame();
+            createGame();
         }, 1000);
     }
 }
