@@ -26,6 +26,10 @@ function playBackgroundSound() {
     background_sound.volume = currentVolume / 100;
     background_sound.play();
 }
+function stopBackgroundSound() {
+    background_sound.volume = 0;
+    background_sound.play();
+}
 
 function playBottlesound() {
     collect_bottle_sound.volume = currentVolume / 100;
@@ -49,12 +53,18 @@ function playFinSlapSound() {
 
 function playPoisondSound() {
     poisend_sound.volume = currentVolume / 100;
-    poisend_soundsound.play();
+    poisend_sound.play();
 }
 function playWinSound() {
     win_sound.volume = currentVolume / 100;
     win_sound.play();
 }
+
+function stopLoseSound() {
+    lose_sound.volume = 0;
+
+}
+
 function playLoseSound() {
     lose_sound.volume = currentVolume / 100;
     lose_sound.play();

@@ -109,7 +109,11 @@ function showGameOverScreen() {
         document.getElementById('end-screen-img').src = "img/assests/Sharkie-dead.png"
         document.getElementById('end-screen-img').removeAttribute('style');
         document.getElementById('end-screen-container').classList.remove('d-none');
+        stopBackgroundSound();
+        playLoseSound();
+        clearAllIntervals();
     }, 3000);
+
 
 }
 
@@ -120,7 +124,12 @@ function showWinScreen() {
         document.getElementById('end-screen-img').src = "img/assests/Endboss-dead.png";
         document.getElementById('end-screen-img').setAttribute('style', 'width')
         document.getElementById('end-screen-container').classList.remove('d-none');
+        stopBackgroundSound();
+        playWinSound();
+        clearAllIntervals();
     }, 3000);
+
+
 
 }
 

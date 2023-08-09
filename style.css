@@ -48,6 +48,8 @@ body {
     justify-content: center;
     align-items: center;
     margin-bottom: 300px;
+    width: 720px;
+    height: 480px;
 
 
 }
@@ -365,6 +367,8 @@ body {
     .canvas-container {
         border: none;
         border-radius: 0;
+        height: auto;
+        width: auto;
     }
 
 

@@ -307,9 +307,11 @@ class World {
     checkEndOfGame() {
         if (this.endboss.isDead()) {
             showWinScreen();
+
         }
         else if (this.character.isDead()) {
             showGameOverScreen();
+
         }
     }
 

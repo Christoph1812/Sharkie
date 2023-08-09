@@ -136,6 +136,8 @@ function exitFullscreenModus() {
 function changeViewFullscreen() {
     document.getElementById('canvas').style.width = '100vw';
     document.getElementById('canvas').style.height = '100vh';
+    document.getElementById('canvas-container').style.width = '100vw';
+    document.getElementById('canvas-container').style.height = '100vh';
     document.getElementById('canvas-container').classList.remove('canvas-border');
 }
 
@@ -144,6 +146,7 @@ function changeViewFullscreen() {
  * Returns the game to normal mode.
  */
 function changeViewNormalScreen() {
+    document.getElementById('canvas-container').removeAttribute('style');
     document.getElementById('canvas').removeAttribute('style');
     document.getElementById('canvas-container').classList.add('canvas-border');
 }
