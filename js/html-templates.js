@@ -199,7 +199,11 @@ function createHtmlExitFullscreen() {
       <p>Enter fullscreen</p>`;
 }
 
-/*============================================================*/
+
+/**
+ * Template for Imprint
+ * @returns the Html for the Imprint
+ */
 
 function createHtmlImprint() {
     return /*html*/`
@@ -225,6 +229,11 @@ function createHtmlImprint() {
     </div>`
 }
 
+
+/**
+ * Template for privacy policy
+ * @returns the Html for the privacy policy
+ */
 function createHtmlPrivacyPolicy() {
     return/*html*/` 
     <div class="privacy-container">
@@ -458,6 +467,10 @@ function createHtmlPrivacyPolicy() {
 }
 
 
+/**
+ * Template for mobile buttons
+ * @returns the html for mobile buttons
+ */
 function createHtmlMobileButtons() {
     return/*html*/`
     <div class="mobile-button-container">

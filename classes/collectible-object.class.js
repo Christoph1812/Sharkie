@@ -38,9 +38,8 @@ class CollectibleObject extends MovableObject {
      * Animation of the collectibles
      */
     animate() {
-        let interval5 = setInterval(() => {
+        setInterval(() => {
             this.playAnimation(collectibles[this.type]);
         }, 300);
-        intervalIds.push(interval5);
     }
 }

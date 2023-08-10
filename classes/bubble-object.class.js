@@ -3,8 +3,8 @@ class Bubble extends MovableObject {
     speed = 2; // horizontal movement speed of the bubble
     acceloration = 0.1; // rate of increase in vertical uplift over time
     characterWidth; // width of the character 
-    height = 20;
-    width = 20;
+    height = 28;
+    width = 28;
 
 
     /**

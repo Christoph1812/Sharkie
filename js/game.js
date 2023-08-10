@@ -10,8 +10,6 @@ let chargeProgress = 0; // the charge progress
 let loadingInterval;
 
 
-
-
 /**
  * Saves the canvas in the canvas variable
  */
@@ -21,11 +19,14 @@ function init() {
     window.addEventListener('resize', updateVisibility);
     window.addEventListener('orientationchange', updateVisibility);
     keyEventListeners();
-    // mobileButtonsHandler();
 }
 
 
+/**
+ * shows the loading screen
+ */
 function showLoadingScreen() {
+    createGame();
     let loadingScreen = document.getElementById('loading-screen');
     loadingScreen.classList.remove('d-none')
     loadingScreen.innerHTML = /*html*/`
@@ -37,6 +38,9 @@ function showLoadingScreen() {
 }
 
 
+/**
+ * updates the loading bar.
+ */
 function updateLoadingBar() {
     const loadingBar = document.getElementById('loadingBar');
     if (chargeProgress < 100) {
@@ -47,11 +51,16 @@ function updateLoadingBar() {
         setTimeout(() => {
             clearInterval(loadingInterval);
             startGame();
-            createGame();
+
         }, 1000);
+
     }
 }
 
+
+/**
+ * 
+ */
 function createGame() {
     initLevel();
     gameRuns = true;

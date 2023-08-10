@@ -100,8 +100,5 @@ class PufferFish extends MovableObject {
             }
         }
     }
-
-
-
 }
 

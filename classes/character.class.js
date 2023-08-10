@@ -1,7 +1,7 @@
 class Character extends MovableObject {
     height = 190;
     width = 230;
-    speed = 4;
+    speed = 6;
     x = 100;
     y = 120;
     world;
@@ -84,6 +84,7 @@ class Character extends MovableObject {
         }
     }
 
+
     /**
      * Controls the vertical movments.
      */
@@ -115,7 +116,7 @@ class Character extends MovableObject {
      * Controls the anmations of the character, dead, hurt and idle.
      */
     animate() {
-        let interval3 = setInterval(() => {
+        setInterval(() => {
             if (this.isDead()) {
                 this.handleDeadAnimation();
             } else if (this.isHurt()) {
@@ -130,7 +131,7 @@ class Character extends MovableObject {
                 this.hitByJellyFish = false;
             }
         }, 100);
-        intervalIds.push(interval3);
+
     }
 
 
@@ -158,8 +159,6 @@ class Character extends MovableObject {
             playElectroSound()
         } else {
             this.playAnimation(sharkie_img['hurt_poisoned']);
-
-
             playPoisondSound();
         }
     }
@@ -213,7 +212,7 @@ class Character extends MovableObject {
      * Controls the attacks form the character.
      */
     attack() {
-        let interval4 = setInterval(() => {
+        setInterval(() => {
             if (this.world.keyboard.space) {
                 this.handleFinSlapAttack();
             }
@@ -224,7 +223,6 @@ class Character extends MovableObject {
                 this.handlepoisonBubbleAttack();
             }
         }, 100);
-        intervalIds.push(interval4);
     }
 
 
@@ -282,7 +280,7 @@ class Character extends MovableObject {
                 this.isFinSlaping = false;
                 this.isImmune = false;
                 this.world.keyboard[key] = false;
-            }, 700)
+            }, 600)
         }
     }
 

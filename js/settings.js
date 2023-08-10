@@ -181,6 +181,10 @@ function isMobileDevice() {
         (navigator.userAgent.includes("Mac") && "ontouchend" in document);
 }
 
+
+/**
+ * opens the imprint overlay
+ */
 function openImprint() {
     document.getElementById('settings-main-overlay').classList.add('d-none');
     legaleNotice = document.getElementById('legal-notice-overlay');
@@ -188,6 +192,10 @@ function openImprint() {
     legaleNotice.innerHTML = createHtmlImprint();
 }
 
+
+/**
+ * opens the privacy policy
+ */
 function openPrivacyPolicy() {
     document.getElementById('settings-main-overlay').classList.add('d-none');
     legaleNotice = document.getElementById('legal-notice-overlay');
@@ -195,7 +203,9 @@ function openPrivacyPolicy() {
     legaleNotice.innerHTML = createHtmlPrivacyPolicy();
 }
 
-
+/**
+ * close leal notice
+ */
 function closeLegalNotice() {
     legaleNotice = document.getElementById('legal-notice-overlay');
     legaleNotice.classList.add('d-none');

@@ -39,7 +39,7 @@ class Endboss extends MovableObject {
         this.startY = startY;
         this.loadImage(endboss_img['introducing'][0]);
         this.loadAllImages();
-        this.animationControll();
+        this.animationControl();
         this.movecontroll();
 
     }
@@ -58,30 +58,16 @@ class Endboss extends MovableObject {
 
 
     /**
-     *  Controls the animation of the end boss.
+     * plays the animation of the endboss
      */
-    animationControll() {
-        let interval6 = setInterval(() => {
-            if (this.hadFirstContact && !this.finallyDead) {
-                if (!this.introduce) {
-                    this.introduceAnimation()
-                }
-                else if (this.isHurt() && !this.isDead()) {
-                    this.playAnimation(endboss_img[`hurt`]);
-                }
-                else if (this.isDead()) {
-                    this.playDeadAnimation();
-                    this.deadAnimation = true;
-                }
-                else if (this.characterIsNear) {
-                    this.playAnimation(endboss_img['attack']);
-                }
-                else {
-                    this.playAnimation(endboss_img['swimming']);
-                }
-            }
+    animationControl() {
+        setInterval(() => {
+            if (!this.hadFirstContact || this.finallyDead) return;
+            if (!this.introduce) this.introduceAnimation();
+            else if (this.isHurt() && !this.isDead()) this.playAnimation(endboss_img['hurt']);
+            else if (this.isDead()) { this.playDeadAnimation(); this.deadAnimation = true; }
+            else this.playAnimation(this.characterIsNear ? endboss_img['attack'] : endboss_img['swimming']);
         }, 200);
-        intervalIds.push(interval6);
     }
 
 
@@ -105,15 +91,13 @@ class Endboss extends MovableObject {
      * Controlls the animation of the end boss
      */
     movecontroll() {
-        let interval7 = setInterval(() => {
+        setInterval(() => {
             if (!this.isDead() && this.introduce) {
                 if (!this.turnX && this.rangeX > 0) {
-                    this.movmentLeft();
-                    this.otherDirection = false;
+                    this.moveEndBossLeft();
                 }
                 if (this.turnX && this.rangeX > 0) {
-                    this.movmentRight();
-                    this.otherDirection = true;
+                    this.moveEndBossRight();
                 }
                 if (!this.turnY && this.rangeY > 0) {
                     this.movmentUp();
@@ -123,7 +107,25 @@ class Endboss extends MovableObject {
                 }
             }
         }, 200);
-        intervalIds.push(interval7);
+    }
+
+
+
+    /**
+     * moves the endboss left.
+     */
+    moveEndBossLeft() {
+        this.movmentLeft();
+        this.otherDirection = false;
+    }
+
+
+    /**
+     * moves the endboss right.
+     */
+    moveEndBossRight() {
+        this.movmentRight();
+        this.otherDirection = true;
 
     }
 

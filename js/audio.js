@@ -18,83 +18,85 @@ let win_sound = new Audio('audio/win_sound.mp3');
 let lose_sound = new Audio('audio/you_lose_sound.mp3')
 
 
-
 /**
- *  Plays the background music.
+ * plays the background sound.
  */
 function playBackgroundSound() {
     background_sound.volume = currentVolume / 100;
     background_sound.play();
 }
+
+
+/**
+ * stops the background sound.
+ */
 function stopBackgroundSound() {
     background_sound.volume = 0;
     background_sound.play();
 }
 
+
+/**
+ * plays the bottle sound.
+ */
 function playBottlesound() {
     collect_bottle_sound.volume = currentVolume / 100;
     collect_bottle_sound.play();
 }
 
+
+/**
+ * plays coin sound.
+ */
 function collectCoinSound() {
     collect_coin_sound.volume = currentVolume / 100;
     collect_coin_sound.play();
 }
 
+
+/**
+ * plays electro sound.
+ */
 function playElectroSound() {
     electro_shock_sound.volume = currentVolume / 100;
     electro_shock_sound.play();
 }
 
+
+/**
+ * plays fin slap sound.
+ */
 function playFinSlapSound() {
     fin_slap_sound.volume = currentVolume / 100;
     fin_slap_sound.play();
 }
 
+
+/**
+ * plays poison sound.
+ */
 function playPoisondSound() {
     poisend_sound.volume = currentVolume / 100;
     poisend_sound.play();
 }
+
+
+/**
+ * plays win sound.
+ */
 function playWinSound() {
     win_sound.volume = currentVolume / 100;
     win_sound.play();
 }
 
-function stopLoseSound() {
-    lose_sound.volume = 0;
 
-}
-
+/**
+ * plays lose sound.
+ */
 function playLoseSound() {
     lose_sound.volume = currentVolume / 100;
     lose_sound.play();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /**

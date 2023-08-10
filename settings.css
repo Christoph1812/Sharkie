@@ -88,13 +88,14 @@
 }
 
 
+
 .settings-overlay {
     border-color: white;
     border-style: solid;
     border-radius: 15px;
     position: absolute;
     width: max-content;
-    height: max-content;
+    height: 320px;
     z-index: 200;
     background-color: rgba(0, 0, 0, 0.8);
 }
@@ -177,6 +178,7 @@
 
 
 /* == Volume slider == */
+
 .slider-container {
     margin-bottom: 12px;
     display: flex;
@@ -185,6 +187,7 @@
     width: 300px;
 }
 
+#volume-value {}
 
 input[type="range"] {
     -webkit-appearance: none;
@@ -210,6 +213,7 @@ output {
     justify-content: center;
     font-weight: bold;
     font-size: 14px;
+    width: 30px;
     font-family: 'Times New Roman', Times, serif;
 }
 
@@ -243,6 +247,7 @@ output {
 .instruction-info {
     color: white;
     width: 400px;
+    height: 280px;
 }
 
 .instruction-button {

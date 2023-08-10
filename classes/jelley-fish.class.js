@@ -3,8 +3,8 @@ class JellyFish extends MovableObject {
     height = 60;
     width = 50;
     upLiftSpeed = 4;
-    move_right = false;
-    move_down = false;
+    move_right = true;
+    move_down = true;
     rangeX;
     rangeY;
     offset = {
@@ -45,37 +45,53 @@ class JellyFish extends MovableObject {
      * @param {number} y - The initial y-coordinate of the JellyFish.
      */
     motionControl(x, y) {
-        let interval8 = setInterval(() => {
+        setInterval(() => {
             if (!this.catched) {
-                if (!this.move_right && !this.rangeY >= 0) {
-                    this.moveLeft();
-                }
-                if (this.move_right && !this.rangeY >= 0) {
-                    this.moveRight();
-                }
-                if (!this.move_down && !this.rangeX >= 0) {
-                    this.moveUp();
-                }
-                if (this.move_down && !this.rangeX >= 0) {
-                    this.moveDown();
-                }
-                if (this.y >= y) {
-                    this.move_down = false;
-                }
-                if (this.y <= (y - this.rangeY)) {
-                    this.move_down = true;
-                }
-                if (this.x <= (x - this.rangeX)) {
-                    this.move_right = true;
-                }
-                if (this.x >= x) {
-                    this.move_right = false;
-                }
+                this.checkMoveLeftAndRight();
+                this.checkMoveUpAndDown();
+                this.checkDirectionVertical(y);
+                this.checkDirectionHorizontal(x);
             }
         }, 1000 / 60);
-        intervalIds.push(interval8);
-
     }
+
+
+    checkMoveLeftAndRight() {
+        if (!this.move_right && !this.rangeY >= 0) {
+            this.moveLeft();
+        }
+        if (this.move_right && !this.rangeY >= 0) {
+            this.moveRight();
+        }
+    }
+
+    checkMoveUpAndDown() {
+        if (!this.move_down && !this.rangeX >= 0) {
+            this.moveUp();
+        }
+        if (this.move_down && !this.rangeX >= 0) {
+            this.moveDown();
+        }
+    }
+
+    checkDirectionVertical(y) {
+        if (this.y >= y) {
+            this.move_down = false;
+        }
+        if (this.y <= (y - this.rangeY)) {
+            this.move_down = true;
+        }
+    }
+
+    checkDirectionHorizontal(x) {
+        if (this.x <= (x - this.rangeX)) {
+            this.move_right = true;
+        }
+        if (this.x >= x) {
+            this.move_right = false;
+        }
+    }
+
 
 
     /**

@@ -252,21 +252,22 @@ const sharkie_img = {
         'img/1.Sharkie/1.IDLE/18.png'
     ],
     sinking: [
-        'img/1.Sharkie/2.Long_IDLE/i1.png ',
-        'img/1.Sharkie/2.Long_IDLE/i2.png ',
-        'img/1.Sharkie/2.Long_IDLE/i3.png ',
-        'img/1.Sharkie/2.Long_IDLE/i4.png ',
-        'img/1.Sharkie/2.Long_IDLE/i5.png ',
-        'img/1.Sharkie/2.Long_IDLE/i6.png ',
-        'img/1.Sharkie/2.Long_IDLE/i7.png ',
-        'img/1.Sharkie/2.Long_IDLE/i8.png ',
-        'img/1.Sharkie/2.Long_IDLE/i9.png '
+        'img/1.Sharkie/2.Long_IDLE/I1.png ',
+        'img/1.Sharkie/2.Long_IDLE/I2.png ',
+        'img/1.Sharkie/2.Long_IDLE/I3.png ',
+        'img/1.Sharkie/2.Long_IDLE/I4.png ',
+        'img/1.Sharkie/2.Long_IDLE/I5.png ',
+        'img/1.Sharkie/2.Long_IDLE/I6.png ',
+        'img/1.Sharkie/2.Long_IDLE/I7.png ',
+        'img/1.Sharkie/2.Long_IDLE/I8.png ',
+        'img/1.Sharkie/2.Long_IDLE/I9.png '
     ],
     sleeping: [
         'img/1.Sharkie/2.Long_IDLE/I10.png',
         'img/1.Sharkie/2.Long_IDLE/I11.png',
         'img/1.Sharkie/2.Long_IDLE/I12.png',
-        'img/1.Sharkie/2.Long_IDLE/I13.png'
+        'img/1.Sharkie/2.Long_IDLE/I13.png',
+
     ],
     hurt_poisoned: [
         'img/1.Sharkie/5.Hurt/1.Poisoned/1.png',
