@@ -468,7 +468,7 @@ function createHtmlPrivacyPolicy() {
 
 
 /**
- * Template for mobile buttons
+ * Template for mobile buttons.
  * @returns the html for mobile buttons
  */
 function createHtmlMobileButtons() {
@@ -498,5 +498,17 @@ function createHtmlMobileButtons() {
             </button>
         </div>
     </div>`
+}
 
+
+/**
+ * Template for loading screen.
+ * @returns the html for loading screen
+ */
+function createHtmlLoadingScreen() {
+    return  /*html*/`
+    <img src="img/assests/sharkie-sleeping.gif" alt="Sleeping Sharkie">
+    <div class="loading-bar-container">
+        <div class="loading-bar" id="loadingBar">0%</div>
+    </div>`;
 }

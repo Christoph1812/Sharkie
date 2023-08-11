@@ -40,7 +40,7 @@ class PufferFish extends MovableObject {
      * Animates the puffer fish's movements and animations.
      */
     animate() {
-        let interval9 = setInterval(() => {
+        setInterval(() => {
             if (this.characterIsNear && !this.isABubble) {
                 this.playTransitionAnimation();
                 this.transitionAnimation = true;
@@ -54,8 +54,6 @@ class PufferFish extends MovableObject {
                 this.hitByFinSlap();
             }
         }, 100);
-        intervalIds.push(interval9);
-
     }
 
 

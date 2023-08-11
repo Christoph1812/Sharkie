@@ -28,38 +28,31 @@ function init() {
 function showLoadingScreen() {
     createGame();
     let loadingScreen = document.getElementById('loading-screen');
-    loadingScreen.classList.remove('d-none')
-    loadingScreen.innerHTML = /*html*/`
-        <img src="img/assests/sharkie-sleeping.gif" alt="Sleeping Sharkie">
-        <div class="loading-bar-container">
-                <div class="loading-bar" id="loadingBar">${chargeProgress.toFixed(0)}%</div>
-        </div>`
+    loadingScreen.classList.remove('d-none');
+    loadingScreen.innerHTML = createHtmlLoadingScreen();
     loadingInterval = setInterval(updateLoadingBar, 100);
 }
-
 
 /**
  * updates the loading bar.
  */
 function updateLoadingBar() {
     const loadingBar = document.getElementById('loadingBar');
-    if (chargeProgress < 100) {
-        chargeProgress = (imagesLoaded / imagesToLoad) * 100;
-        loadingBar.style.width = `${chargeProgress}%`;
-        loadingBar.innerHTML =/*html*/`<div class="loading-bar" id="loadingBar">${chargeProgress.toFixed(0)}%</div>`
-    } else {
+    chargeProgress = (imagesLoaded / imagesToLoad) * 100;
+    loadingBar.style.width = `${chargeProgress}%`;
+    loadingBar.innerText = `${chargeProgress.toFixed(0)}%`;
+
+    if (chargeProgress >= 100) {
         setTimeout(() => {
             clearInterval(loadingInterval);
             startGame();
-
         }, 1000);
-
     }
 }
 
 
 /**
- * 
+ *  * Initializes a new game by initializing the level, starting the game, and creating a new game world.
  */
 function createGame() {
     initLevel();
@@ -80,6 +73,10 @@ function startGame() {
     playBackgroundSound();
 }
 
+
+/**
+ * stops all intervals.
+ */
 function stopInterval() {
     if (gameRuns) {
         intervalIds.forEach(intervalId => {
@@ -89,6 +86,10 @@ function stopInterval() {
     }
 }
 
+
+/**
+ * Starts all intervals:
+ */
 function startInterval() {
     if (!gameRuns) {
         gameRuns = true;
@@ -99,6 +100,7 @@ function startInterval() {
     }
 }
 
+
 /**
  * reload the page to return to the home screen
  */
@@ -106,12 +108,10 @@ function backToStart() {
     window.location.reload();
 }
 
-function resetGame() {
-    intervallIds.forEach(clearInterval);
-}
 
-
-
+/**
+ * shows the game over screen
+ */
 function showGameOverScreen() {
     setTimeout(() => {
         document.getElementById('end-screen-headline').innerText = 'Game Over';
@@ -122,11 +122,12 @@ function showGameOverScreen() {
         playLoseSound();
         clearAllIntervals();
     }, 3000);
-
-
 }
 
 
+/**
+ * shows the game over screen
+ */
 function showWinScreen() {
     setTimeout(() => {
         document.getElementById('end-screen-headline').innerText = 'You Win';
@@ -137,19 +138,23 @@ function showWinScreen() {
         playWinSound();
         clearAllIntervals();
     }, 3000);
-
-
-
 }
 
+
+/**
+ * clears all intervals und create a new game. 
+ */
 function tryAgain() {
     clearAllIntervals();
     init();
     createGame();
     document.getElementById('end-screen-container').classList.add('d-none');
-
 }
 
+
+/**
+ * clears all intervals
+ */
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
 };
